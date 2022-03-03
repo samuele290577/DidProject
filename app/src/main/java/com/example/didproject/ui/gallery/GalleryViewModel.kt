@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class GalleryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Samuele Modifica per vedere se funge commit"
+        value = "This is gallery Samuele Modifica per vedere se funge commit, anche Matteo per lo stesso motivo"
     }
     val text: LiveData<String> = _text
 }
