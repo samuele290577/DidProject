@@ -8,7 +8,7 @@ class GalleryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is gallery Samuele Modifica per vedere se funge commit, anche Matteo per lo stesso motivo, prova" +
-                "mi aggiungo anche io (Ahmed) per vedere se funge"
+                "mi aggiungo anche io (Ahmed) per vedere se funge, e ci provo di nuovo"
     }
     val text: LiveData<String> = _text
 }
