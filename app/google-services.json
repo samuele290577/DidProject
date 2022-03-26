@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "336911064377",
+    "project_id": "iris-did",
+    "storage_bucket": "iris-did.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336911064377:android:7c572e48ee0a8a56f8dce8",
+        "android_client_info": {
+          "package_name": "com.example.didproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336911064377-9pqv4p669kj20i6poht052oh0ca43du6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.didproject",
+            "certificate_hash": "e87a013b64da48daae5dc7c41b2f99c2fdfc056d"
+          }
+        },
+        {
+          "client_id": "336911064377-puvugkfbe72f2sp1p4at2f3s25r4e5nu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7WMPch5d9enpUEUbAY7x6r3kG1Vjq3GY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336911064377-puvugkfbe72f2sp1p4at2f3s25r4e5nu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
