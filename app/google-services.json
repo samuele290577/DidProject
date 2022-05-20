@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "336911064377",
+    "firebase_url": "https://iris-did-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "iris-did",
     "storage_bucket": "iris-did.appspot.com"
   },
@@ -19,6 +20,14 @@
           "android_info": {
             "package_name": "com.example.didproject",
             "certificate_hash": "e87a013b64da48daae5dc7c41b2f99c2fdfc056d"
+          }
+        },
+        {
+          "client_id": "336911064377-oivp65ovkcqkv7t7qhge62qml868c1ag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.didproject",
+            "certificate_hash": "08ca8bbec129a68300f5c079288c5b0df330fceb"
           }
         },
         {
