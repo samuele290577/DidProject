@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/plantCategoryList">
+    app:startDestination="@id/profileFragment">
 
     <fragment
         android:id="@+id/nav_home"
@@ -26,4 +26,16 @@
         android:id="@+id/plantCategoryList"
         android:name="com.example.didproject.ui.PlantCategoryList"
         android:label="PlantCategoryList" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.didproject.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.didproject.ui.profile.EditProfileFragment"
+        android:label="EditProfileFragment" />
 </navigation>

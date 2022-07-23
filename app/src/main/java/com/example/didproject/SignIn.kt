@@ -61,13 +61,13 @@ class SignIn : AppCompatActivity() {
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         mFirebaseAuth.signInWithCredential(credential)
-            .addOnSuccessListener(this) { authResult: AuthResult? ->
+            .addOnSuccessListener(this) {
                 startActivity(Intent(this@SignIn, MainActivity::class.java))
                 finish()
             }
             .addOnFailureListener(
                 this
-            ) { e: Exception? ->
+            ) {
                 Toast.makeText(
                     this@SignIn, "Authentication failed.",
                     Toast.LENGTH_SHORT
