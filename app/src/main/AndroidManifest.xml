@@ -20,8 +20,12 @@
                 android:resource="@xml/provider_paths" />
         </provider>
         <activity
-            android:name=".SignIn"
+            android:name=".SignInActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -29,10 +33,7 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.DidProject.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <meta-data

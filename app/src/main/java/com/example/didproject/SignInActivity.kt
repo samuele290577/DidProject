@@ -1,5 +1,6 @@
 package com.example.didproject
 
+import android.app.ActivityOptions
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -12,13 +13,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
 
-class SignIn : AppCompatActivity() {
+class SignInActivity : AppCompatActivity() {
     lateinit var mFirebaseAuth: FirebaseAuth
     lateinit var button:Button
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,23 +54,27 @@ class SignIn : AppCompatActivity() {
             }
         }
 
-        button.text=mFirebaseAuth.currentUser?.email
+
     }
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         mFirebaseAuth.signInWithCredential(credential)
             .addOnSuccessListener(this) {
-                startActivity(Intent(this@SignIn, MainActivity::class.java))
-                finish()
+                startActivity(Intent(this@SignInActivity, MainActivity::class.java),ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+
             }
             .addOnFailureListener(
                 this
             ) {
                 Toast.makeText(
-                    this@SignIn, "Authentication failed.",
+                    this@SignInActivity, "Authentication failed.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
+    }
+
+    override fun onBackPressed() {
+
     }
 }

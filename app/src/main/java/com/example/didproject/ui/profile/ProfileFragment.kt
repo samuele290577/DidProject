@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentProfileBinding
 import com.example.didproject.viewmodel.ProfileViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 
 class ProfileFragment : Fragment() {
@@ -31,6 +32,7 @@ class ProfileFragment : Fragment() {
         val root: View = binding.root
         val name : TextView = binding.nameField
         val nickname : TextView = binding.nicknameField
+        val email : TextView = binding.emailField
         val bio : TextView = binding.bioField
         val profilePicture = binding.profilePicture
 
@@ -44,6 +46,7 @@ class ProfileFragment : Fragment() {
                 Picasso.get().load(it.imageUri).fit().centerCrop().into(profilePicture)
             }
         }
+        email.text = FirebaseAuth.getInstance().currentUser?.email?:"none"
 
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:id="@+id/top">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_garden"
+            android:icon="@drawable/nest_eco_leaf"
+            android:title="Il mio giardino" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_catalogue"
+            android:icon="@drawable/library_books"
+            android:title="Catalogo" />
+        <item
+            android:id="@+id/nav_friends"
+            android:icon="@drawable/group"
+            android:title="Amici" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/person"
+            android:title="Profilo" />
+    </group>
+    <group>
+        <item
+            android:id="@+id/nav_signIn"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
     </group>
 </menu>

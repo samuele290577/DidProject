@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
@@ -27,7 +27,7 @@
         android:name="com.example.didproject.ui.PlantCategoryList"
         android:label="PlantCategoryList" />
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/nav_profile"
         android:name="com.example.didproject.ui.profile.ProfileFragment"
         android:label="ProfileFragment" >
         <action
@@ -38,4 +38,8 @@
         android:id="@+id/editProfileFragment"
         android:name="com.example.didproject.ui.profile.EditProfileFragment"
         android:label="EditProfileFragment" />
+    <activity
+        android:id="@+id/nav_signIn"
+        android:name="com.example.didproject.SignInActivity"
+        android:label="SignIn" />
 </navigation>
