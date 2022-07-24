@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentProfileBinding
 import com.example.didproject.viewmodel.ProfileViewModel
+import com.squareup.picasso.Picasso
 
 class ProfileFragment : Fragment() {
 
@@ -31,14 +32,16 @@ class ProfileFragment : Fragment() {
         val name : TextView = binding.nameField
         val nickname : TextView = binding.nicknameField
         val bio : TextView = binding.bioField
+        val profilePicture = binding.profilePicture
 
 
 
-        profileViewModel.profile.observe(viewLifecycleOwner){
+        profileViewModel.user.observe(viewLifecycleOwner){
             if(it!=null){
                 name.text = it.name
                 nickname.text = it.nickname
                 bio.text = it.bio
+                Picasso.get().load(it.imageUri).fit().centerCrop().into(profilePicture)
             }
         }
 

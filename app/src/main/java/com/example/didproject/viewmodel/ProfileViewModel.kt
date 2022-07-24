@@ -10,11 +10,11 @@ import com.example.didproject.model.data.User
 
 class ProfileViewModel( ) : ViewModel() {
 
-    private val _profile = MutableLiveData<User>()
-    val profile: LiveData<User> = _profile
+    private val _user = MutableLiveData<User>()
+    val user: LiveData<User> = _user
 
     fun updateProfile(user: User){
-        _profile.value=user
+        _user.value=user
     }
 
 }

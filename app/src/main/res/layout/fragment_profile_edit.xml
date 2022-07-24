@@ -22,7 +22,7 @@
     </RelativeLayout>
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageEllipse13"
+        android:id="@+id/profilePicture"
         android:layout_width="192dp"
         android:layout_height="192dp"
         android:layout_marginTop="16dp"
@@ -40,9 +40,9 @@
         android:layout_height="48dp"
         android:background="@drawable/rounded_corner_full"
         android:src="@drawable/ic_outline_photo_camera_24"
-        app:layout_constraintBottom_toBottomOf="@+id/imageEllipse13"
-        app:layout_constraintEnd_toEndOf="@+id/imageEllipse13"
-        app:layout_constraintStart_toEndOf="@+id/imageEllipse13"
+        app:layout_constraintBottom_toBottomOf="@+id/profilePicture"
+        app:layout_constraintEnd_toEndOf="@+id/profilePicture"
+        app:layout_constraintStart_toEndOf="@+id/profilePicture"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageEllipse13">
+        app:layout_constraintTop_toBottomOf="@+id/profilePicture">
 
         <TextView
             android:id="@+id/name"

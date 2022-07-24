@@ -1,9 +1,12 @@
 package com.example.didproject.model.data
 
+import android.net.Uri
+
 data class User(
-    val id: String = "a",
-    var name: String = "a",
-    var nickname: String = "a",
-    var bio: String = "a",
+    val id: String = "",
+    var name: String = "",
+    var nickname: String = "",
+    var bio: String = "",
+    var imageUri : Uri = Uri.parse(""),
     val plants: ArrayList<UserPlant> = arrayListOf<UserPlant>()
 )

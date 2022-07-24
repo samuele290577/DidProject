@@ -51,6 +51,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation "androidx.activity:activity-ktx:1.5.0"
+    implementation "androidx.fragment:fragment-ktx:1.5.0"
     implementation 'com.squareup.picasso:picasso:2.71828'
 //   commented lines because even if is suggested in order to pair the app this is not working
 //   implementation 'com.google.firebase:firebase-firestore-ktx:24.0.2'
