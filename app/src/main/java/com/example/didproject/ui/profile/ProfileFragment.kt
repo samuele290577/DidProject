@@ -1,5 +1,6 @@
 package com.example.didproject.ui.profile
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -43,7 +44,7 @@ class ProfileFragment : Fragment() {
                 name.text = it.name
                 nickname.text = it.nickname
                 bio.text = it.bio
-                Picasso.get().load(it.imageUri).fit().centerCrop().into(profilePicture)
+                Picasso.get().load(Uri.parse(it.imageUri)).fit().centerCrop().into(profilePicture)
             }
         }
         email.text = FirebaseAuth.getInstance().currentUser?.email?:"none"

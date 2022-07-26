@@ -7,6 +7,17 @@ data class User(
     var name: String = "",
     var nickname: String = "",
     var bio: String = "",
-    var imageUri : Uri = Uri.parse(""),
-    val plants: ArrayList<UserPlant> = arrayListOf<UserPlant>()
-)
+    var imageUri : String = "",
+    val plants: List<UserPlant> = emptyList<UserPlant>()
+){
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "id" to id,
+            "name" to name,
+            "nickname" to nickname,
+            "bio" to bio,
+            "imageUri" to imageUri,
+            "plants" to plants
+        )
+    }
+}

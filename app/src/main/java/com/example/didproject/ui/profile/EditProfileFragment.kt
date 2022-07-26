@@ -56,14 +56,14 @@ class EditProfileFragment : Fragment() {
                 name.text = it.name
                 nickname.text = it.nickname
                 bio.text = it.bio
-                lastUri = it.imageUri
-                Picasso.get().load(it.imageUri).fit().centerCrop().into(profilePicture)
+                lastUri = Uri.parse(it.imageUri)
+                Picasso.get().load(Uri.parse(it.imageUri)).fit().centerCrop().into(profilePicture)
             }
         }
 
         getPhotoImage = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
             if (isSuccess) {
-                uriTmp?.let { uri ->
+                uriTmp.let { uri ->
                     lastUri=uri
                     Picasso.get().load(uri).fit().centerCrop().into(profilePicture)
                 }
@@ -93,7 +93,7 @@ class EditProfileFragment : Fragment() {
             binding.nameField.text.toString(),
             binding.nicknameField.text.toString(),
             binding.bioField.text.toString(),
-            lastUri
+            lastUri.toString()
             )
 
         profileViewModel.updateProfile(profile)

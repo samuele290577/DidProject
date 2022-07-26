@@ -62,19 +62,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:text="SimonaMarino" />
+            android:paddingEnd="32dp" />
 
         <TextView
             android:id="@+id/email"
+            style="@style/title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:paddingStart="32dp"
             android:paddingEnd="32dp"
-            android:text="Email"
-            style="@style/title_text"
-            tools:text="Email" />
+            android:text="Email" />
 
         <TextView
             android:id="@+id/email_field"
@@ -84,8 +82,7 @@
             android:layout_marginTop="4dp"
             android:gravity="start"
             android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:text="@string/msg_simomarino_gmai" />
+            android:paddingEnd="32dp" />
 
         <TextView
             android:id="@+id/nickname"
@@ -108,8 +105,7 @@
             android:layout_marginTop="4dp"
             android:gravity="start"
             android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:text="@string/lbl_simonetta98" />
+            android:paddingEnd="32dp" />
 
         <TextView
             android:id="@+id/bio"
@@ -131,8 +127,7 @@
             android:layout_marginTop="4dp"
             android:gravity="start"
             android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:text="@string/msg_ciao_sono_simon" />
+            android:paddingEnd="32dp" />
 
     </LinearLayout>
 
