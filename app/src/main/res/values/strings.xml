@@ -10,223 +10,225 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-        <string name="loading">Loading…</string>
-        <string name="no_internet_connection">No internet connection!</string>
-        <string name="lbl_i">I </string>
-        <string name="lbl_cerca_per_nome">CERCA PER NOME</string>
-        <string name="lbl_scatta_una_foto">Scatta una foto</string>
-        <string name="lbl_simona">Simona</string>
-        <string name="lbl_l">L</string>
-        <string name="msg_edit_pianta_cha">Edit Pianta Change Location</string>
-        <string name="lbl_achillea">Achillea
+    <string name="loading">Loading…</string>
+    <string name="no_internet_connection">No internet connection!</string>
+    <string name="lbl_i">I </string>
+    <string name="lbl_cerca_per_nome">CERCA PER NOME</string>
+    <string name="lbl_scatta_una_foto">Scatta una foto</string>
+    <string name="lbl_simona">Simona</string>
+    <string name="lbl_l">L</string>
+    <string name="msg_edit_pianta_cha">Edit Pianta Change Location</string>
+    <string name="lbl_achillea">Achillea
 </string>
-        <string name="lbl_m">M</string>
-        <string name="lbl_n">N</string>
-        <string name="lbl_back">BACK</string>
-        <string name="lbl_o">O</string>
-        <string name="lbl_irrigazione">Irrigazione</string>
-        <string name="lbl_logout">Logout</string>
-        <string name="lbl_p">P</string>
-        <string name="lbl_stato">Stato</string>
-        <string name="lbl_no">NO</string>
-        <string name="lbl_r">R</string>
-        <string name="msg_il_tuo_giardino">Il tuo giardino malee</string>
-        <string name="lbl_orchidea">Orchidea
+    <string name="lbl_m">M</string>
+    <string name="lbl_n">N</string>
+    <string name="lbl_back">BACK</string>
+    <string name="lbl_o">O</string>
+    <string name="lbl_irrigazione">Irrigazione</string>
+    <string name="lbl_logout">Logout</string>
+    <string name="lbl_p">P</string>
+    <string name="lbl_stato">Stato</string>
+    <string name="lbl_no">NO</string>
+    <string name="lbl_r">R</string>
+    <string name="msg_il_tuo_giardino">Il tuo giardino malee</string>
+    <string name="lbl_orchidea">Orchidea
 </string>
-        <string name="msg_seleziona_da_ga">Seleziona da galleria</string>
-        <string name="lbl_giglio">Giglio
+    <string name="msg_seleziona_da_ga">Seleziona da galleria</string>
+    <string name="lbl_giglio">Giglio
 </string>
-        <string name="msg_edit_pianta_new">Edit Pianta New Picture</string>
-        <string name="lbl_home">
+    <string name="msg_edit_pianta_new">Edit Pianta New Picture</string>
+    <string name="lbl_home">
                    Home</string>
-        <string name="lbl_alloro">Alloro
+    <string name="lbl_alloro">Alloro
 </string>
-        <string name="lbl_nuova_posizione">Nuova posizione</string>
-        <string name="lbl_i_miei_amici">I miei amici</string>
-        <string name="lbl_eucalipto">Eucalipto
+    <string name="lbl_nuova_posizione">Nuova posizione</string>
+    <string name="lbl_i_miei_amici">I miei amici</string>
+    <string name="lbl_eucalipto">Eucalipto
 </string>
-        <string name="lbl_noce">Noce</string>
-        <string name="msg_l_esposizione_d">L\u2019esposizione del rosmarino è essenziale: ama il sole, quindi scegliete la zona più soleggiata del vostro appartamento.
+    <string name="lbl_noce">Noce</string>
+    <string name="msg_l_esposizione_d">L\u2019esposizione del rosmarino è essenziale: ama il sole, quindi scegliete la zona più soleggiata del vostro appartamento.
 
 L\u2019annafiatura deve essere sporadica: se il terreno è umido, non date al rosmarino altra acqua.
 
 Aspettate che il terreno sia completamente asciutto per annaffiare la pianta e non esagerate mai con l\u2019acqua!</string>
-        <string name="lbl_app_navigation">App Navigation</string>
-        <string name="lbl_rosario">Rosario</string>
-        <string name="msg_il_tuo_giardino2">Il tuo giardino male</string>
-        <string name="lbl_aggiungi_amico">Aggiungi amico</string>
-        <string name="msg_il_rosmarino2">Il rosmarino è un arbusto sempreverde, coltivato per il fogliame aromatico, utilizzato in cucina. Richiedono sole e un terreno ben drenato, non temono la siccità, ma non devono essere irrigati troppo frequentemente.
+    <string name="lbl_app_navigation">App Navigation</string>
+    <string name="lbl_rosario">Rosario</string>
+    <string name="msg_il_tuo_giardino2">Il tuo giardino male</string>
+    <string name="lbl_aggiungi_amico">Aggiungi amico</string>
+    <string name="msg_il_rosmarino2">Il rosmarino è un arbusto sempreverde, coltivato per il fogliame aromatico, utilizzato in cucina. Richiedono sole e un terreno ben drenato, non temono la siccità, ma non devono essere irrigati troppo frequentemente.
 
 Le foglie sono aghiformi e i fiori, solitamente azzurri, sbocciano in primavera e estate.
 
 Essendo resistente a molti parassiti e necessitando di poca acqua e fertilizzante risulta un\u2019ottima pianta per chi è alle prime armi.</string>
-        <string name="lbl_iris">Iris
+    <string name="lbl_iris">Iris
 </string>
-        <string name="lbl_amico_da_4_mesi">Amico da 4 mesi</string>
-        <string name="lbl_50">50%</string>
-        <string name="lbl_ortensia">Ortensia</string>
-        <string name="msg_livello_acqua">
+    <string name="lbl_amico_da_4_mesi">Amico da 4 mesi</string>
+    <string name="lbl_50">50%</string>
+    <string name="lbl_ortensia">Ortensia</string>
+    <string name="msg_livello_acqua">
 Livello acqua: 30%
 Aggiungi dell\u2019acqua!</string>
-        <string name="msg_sei_sicuro_di_v2">Sei sicuro di voler voler cacciare Hagrid dal tuo giardino? </string>
-        <string name="lbl_location">location</string>
-        <string name="msg_il_rosmarino">Il rosmarino è un arbusto sempreverde, coltivato per il fogliame aromatico, utilizzato in cucina. Richiedono sole e un terreno ben drenato, non temono la siccità, ma non devono essere irrigati troppo frequentemente.
+    <string name="msg_sei_sicuro_di_v2">Sei sicuro di voler voler cacciare Hagrid dal tuo giardino? </string>
+    <string name="lbl_location">location</string>
+    <string name="msg_il_rosmarino">Il rosmarino è un arbusto sempreverde, coltivato per il fogliame aromatico, utilizzato in cucina. Richiedono sole e un terreno ben drenato, non temono la siccità, ma non devono essere irrigati troppo frequentemente.
 </string>
-        <string name="lbl_giorno">giorno </string>
-        <string name="msg_sign_in_with_go">Sign in with Google</string>
-        <string name="lbl_samue">Samue</string>
-        <string name="lbl_consigli">Consigli</string>
-        <string name="lbl_a">A</string>
-        <string name="lbl_b">B</string>
-        <string name="msg_simonicolosi_gm">simonicolosi@gmail.com</string>
-        <string name="lbl_e">E </string>
-        <string name="lbl_la_mia_app">La mia app </string>
-        <string name="lbl_g">G</string>
-        <string name="lbl_bulbose">Bulbose</string>
-        <string name="msg_bentornata_sim">Bentornata, Simona</string>
-        <string name="msg_pianta_nel_cata">Pianta nel Catalogo Infoo</string>
-        <string name="lbl_rosa_floribunda">Rosa floribunda</string>
-        <string name="msg_piantato_il_10">Piantato il 10 gennaio</string>
-        <string name="msg_profile_edit_pi">Profile Edit Picture</string>
-        <string name="lbl_40">40%</string>
-        <string name="msg_piantando_galle">piantando galleria</string>
-        <string name="lbl_info">Info</string>
-        <string name="msg_alcune_piante_h2">Alcune piante hanno bisogno di te!</string>
-        <string name="lbl_begonia">Begonia</string>
-        <string name="lbl_pomodoro">Pomodoro
+    <string name="lbl_giorno">giorno </string>
+    <string name="msg_sign_in_with_go">Sign in with Google</string>
+    <string name="lbl_samue">Samue</string>
+    <string name="lbl_consigli">Consigli</string>
+    <string name="lbl_a">A</string>
+    <string name="lbl_b">B</string>
+    <string name="msg_simonicolosi_gm">simonicolosi@gmail.com</string>
+    <string name="lbl_e">E </string>
+    <string name="lbl_la_mia_app">La mia app </string>
+    <string name="lbl_g">G</string>
+    <string name="lbl_bulbose">Bulbose</string>
+    <string name="msg_bentornata_sim">Bentornata, Simona</string>
+    <string name="msg_pianta_nel_cata">Pianta nel Catalogo Infoo</string>
+    <string name="lbl_rosa_floribunda">Rosa floribunda</string>
+    <string name="msg_piantato_il_10">Piantato il 10 gennaio</string>
+    <string name="msg_profile_edit_pi">Profile Edit Picture</string>
+    <string name="lbl_40">40%</string>
+    <string name="msg_piantando_galle">piantando galleria</string>
+    <string name="lbl_info">Info</string>
+    <string name="msg_alcune_piante_h2">Alcune piante hanno bisogno di te!</string>
+    <string name="lbl_begonia">Begonia</string>
+    <string name="lbl_pomodoro">Pomodoro
 </string>
-        <string name="msg_modifica_profil">Modifica profilo</string>
-        <string name="lbl_medio">Medio</string>
-        <string name="lbl_rosmary">Rosmary</string>
-        <string name="msg_simomarino_gmai">simomarino@gmail.com</string>
-        <string name="lbl_mandarino">Mandarino
+    <string name="msg_modifica_profil">Modifica profilo</string>
+    <string name="lbl_medio">Medio</string>
+    <string name="lbl_rosmary">Rosmary</string>
+    <string name="msg_simomarino_gmai">simomarino@gmail.com</string>
+    <string name="lbl_mandarino">Mandarino
 </string>
-        <string name="msg_piantata_il_6_a">Piantata il 6 aprile</string>
-        <string name="lbl_giardino">Giardino</string>
-        <string name="msg_piantando_calen">piantando calendario</string>
-        <string name="msg_catalogo_aromat">Catalogo Aromatiche</string>
-        <string name="lbl_elimina_pianta">ELIMINA PIANTA</string>
-        <string name="lbl_sole">Sole</string>
-        <string name="lbl_media">Media</string>
-        <string name="lbl_da_interno">Da interno</string>
-        <string name="lbl_profilo2">
+    <string name="msg_piantata_il_6_a">Piantata il 6 aprile</string>
+    <string name="lbl_giardino">Giardino</string>
+    <string name="msg_piantando_calen">piantando calendario</string>
+    <string name="msg_catalogo_aromat">Catalogo Aromatiche</string>
+    <string name="lbl_elimina_pianta">ELIMINA PIANTA</string>
+    <string name="lbl_sole">Sole</string>
+    <string name="lbl_media">Media</string>
+    <string name="lbl_da_interno">Da interno</string>
+    <string name="lbl_profilo2">
                     Profilo</string>
-        <string name="msg_check_your_app">"Check your app's UI from the below demo screens of your app."</string>
-        <string name="msg_ciao_sono_simon">Ciao sono Simona e voglio imparare a coltivare pomodori</string>
-        <string name="lbl_slidermenu">SliderMenu</string>
-        <string name="lbl_profile_edit">Profile Edit</string>
-        <string name="lbl_rosmarino2">Rosmarino</string>
-        <string name="lbl_peppers">Peppers</string>
-        <string name="lbl_facile">Facile</string>
-        <string name="lbl_catalogo">Catalogo</string>
-        <string name="lbl_pomello">Pomello</string>
-        <string name="lbl_i_tuoi_amicii">I tuoi amicii</string>
-        <string name="lbl_bio">Bio</string>
-        <string name="lbl_i_tuoi_amici">I tuoi amici</string>
-        <string name="msg_dettaglio_piant">Dettaglio Pianta Info</string>
-        <string name="lbl_rucola">Rucola
+    <string name="msg_check_your_app">"Check your app's UI from the below demo screens of your app."</string>
+    <string name="msg_ciao_sono_simon">Ciao sono Simona e voglio imparare a coltivare pomodori</string>
+    <string name="lbl_slidermenu">SliderMenu</string>
+    <string name="lbl_profile_edit">Profile Edit</string>
+    <string name="lbl_rosmarino2">Rosmarino</string>
+    <string name="lbl_peppers">Peppers</string>
+    <string name="lbl_facile">Facile</string>
+    <string name="lbl_catalogo">Catalogo</string>
+    <string name="lbl_pomello">Pomello</string>
+    <string name="lbl_i_tuoi_amicii">I tuoi amicii</string>
+    <string name="lbl_bio">Bio</string>
+    <string name="lbl_i_tuoi_amici">I tuoi amici</string>
+    <string name="msg_dettaglio_piant">Dettaglio Pianta Info</string>
+    <string name="lbl_rucola">Rucola
 </string>
-        <string name="msg_staccate_le_fog">Staccate le foglie e i fiori del rosmarino da usare immediatamente o raccogliete le spighe per essiccarle ed usarle in seguito.
+    <string name="msg_staccate_le_fog">Staccate le foglie e i fiori del rosmarino da usare immediatamente o raccogliete le spighe per essiccarle ed usarle in seguito.
 </string>
-        <string name="msg_pianta_nel_giar">PIANTA NEL GIARDINO</string>
-        <string name="msg_rosmarinus_offi">Rosmarinus officinalis</string>
-        <string name="lbl_fatto">FATTO!</string>
-        <string name="lbl_simona_marino">Simona Marino</string>
-        <string name="msg_simona_marino_s">
+    <string name="msg_pianta_nel_giar">PIANTA NEL GIARDINO</string>
+    <string name="msg_rosmarinus_offi">Rosmarinus officinalis</string>
+    <string name="lbl_fatto">FATTO!</string>
+    <string name="lbl_simona_marino">Simona Marino</string>
+    <string name="msg_simona_marino_s">
 Simona Marino
 simonicolosi@gmail.com</string>
-        <string name="lbl_aromatiche">Aromatiche</string>
-        <string name="lbl_elimina_amico">Elimina amico</string>
-        <string name="msg_controlla_lo_st">Controlla lo stato del tuo recipiente d\u2019acqua</string>
-        <string name="lbl_nickname2">nickname</string>
-        <string name="msg_prima_volta_pia">Prima volta piantata</string>
-        <string name="msg_edit_pianta_cha2">Edit Pianta Change Date</string>
-        <string name="msg_piantando_locat">piantando location</string>
-        <string name="lbl_limone">Limone
+    <string name="lbl_aromatiche">Aromatiche</string>
+    <string name="lbl_elimina_amico">Elimina amico</string>
+    <string name="msg_controlla_lo_st">Controlla lo stato del tuo recipiente d\u2019acqua</string>
+    <string name="lbl_nickname2">nickname</string>
+    <string name="msg_prima_volta_pia">Prima volta piantata</string>
+    <string name="msg_edit_pianta_cha2">Edit Pianta Change Date</string>
+    <string name="msg_piantando_locat">piantando location</string>
+    <string name="lbl_limone">Limone
 </string>
-        <string name="lbl_basilichino">Basilichino</string>
-        <string name="msg_amico_elimina_a">Amico elimina amico</string>
-        <string name="lbl_si">SI</string>
-        <string name="lbl_annaffiami">ANNAFFIAMI</string>
-        <string name="msg_il_giardino_di">Il giardino di Hagrid</string>
-        <string name="lbl_homepage">Homepage</string>
-        <string name="lbl_interno">Interno</string>
-        <string name="msg_solanum_esculen">Solanum esculentum</string>
-        <string name="lbl_10">10%</string>
-        <string name="lbl_elimina_profilo">ELIMINA PROFILO
+    <string name="lbl_basilichino">Basilichino</string>
+    <string name="msg_amico_elimina_a">Amico elimina amico</string>
+    <string name="lbl_si">SI</string>
+    <string name="lbl_annaffiami">ANNAFFIAMI</string>
+    <string name="msg_il_giardino_di">Il giardino di Hagrid</string>
+    <string name="lbl_homepage">Homepage</string>
+    <string name="lbl_interno">Interno</string>
+    <string name="msg_solanum_esculen">Solanum esculentum</string>
+    <string name="lbl_10">10%</string>
+    <string name="lbl_elimina_profilo">ELIMINA PROFILO
 </string>
-        <string name="msg_il_tuo_recipien">Il tuo recipiente è quasi vuoto! Riempilo!</string>
-        <string name="lbl_edit_pianta">Edit Pianta</string>
-        <string name="msg_non_c_abbasta">Non c\u2019è abbastanza acqua! \u2028Impossibile annaffiare la pianta!</string>
-        <string name="lbl_terrarium">Terrarium</string>
-        <string name="lbl_umidit">Umidità</string>
-        <string name="msg_alcune_piante_h">
+    <string name="msg_il_tuo_recipien">Il tuo recipiente è quasi vuoto! Riempilo!</string>
+    <string name="lbl_edit_pianta">Edit Pianta</string>
+    <string name="msg_non_c_abbasta">Non c\u2019è abbastanza acqua! \u2028Impossibile annaffiare la pianta!</string>
+    <string name="lbl_terrarium">Terrarium</string>
+    <string name="lbl_umidit">Umidità</string>
+    <string name="msg_alcune_piante_h">
 Alcune piante hanno bisogno di te!</string>
-        <string name="lbl_garofano">Garofano
+    <string name="lbl_garofano">Garofano
 </string>
-        <string name="lbl_profile">Profile</string>
-        <string name="lbl_narciso">Narciso
+    <string name="lbl_profile">Profile</string>
+    <string name="lbl_narciso">Narciso
 </string>
-        <string name="lbl_2_sett">2/sett</string>
-        <string name="lbl_sonia">Sonia</string>
-        <string name="lbl_laurus_nobilis">Laurus nobilis</string>
-        <string name="msg_ocimum_basilicu">Ocimum basilicum</string>
-        <string name="lbl_simona_marino2">Simona Marino
+    <string name="lbl_2_sett">2/sett</string>
+    <string name="lbl_sonia">Sonia</string>
+    <string name="lbl_laurus_nobilis">Laurus nobilis</string>
+    <string name="msg_ocimum_basilicu">Ocimum basilicum</string>
+    <string name="lbl_simona_marino2">Simona Marino
 </string>
-        <string name="msg_catalogo_comple">Catalogo Completo Ricerca</string>
-        <string name="lbl_profilo">Profilo</string>
-        <string name="lbl_rosmarino">Rosmarino
+    <string name="msg_catalogo_comple">Catalogo Completo Ricerca</string>
+    <string name="lbl_profilo">Profilo</string>
+    <string name="lbl_rosmarino">Rosmarino
 </string>
-        <string name="msg_sembra_che_rosm">Sembra che Rosmary sia in perfetta forma! </string>
-        <string name="lbl_nickname">Nickname</string>
-        <string name="lbl_email">Email</string>
-        <string name="lbl_simonetta98">simonetta98</string>
-        <string name="lbl_snape">Snape</string>
-        <string name="lbl_il_tuo_giardino">Il tuo giardino</string>
-        <string name="msg_dettaglio_piant2">Dettaglio Pianta Consigli</string>
-        <string name="msg_piantata_il_10">Piantata il 10 gennaio</string>
-        <string name="msg_friend_since_19">friend since 1900</string>
-        <string name="lbl_chiodino">Chiodino</string>
-        <string name="lbl_saluta">Saluta</string>
-        <string name="msg_dettaglio_piant3">Dettaglio Pianta Amico Info</string>
-        <string name="lbl_3">3</string>
-        <string name="lbl_grasse">Grasse</string>
-        <string name="msg_la_parola_par">\u201cLa parola \u201cparadiso\u201d, attraverso il latino (paradisus) e il greco (paradeisos), ha origine dal persiano pairidaez, che significa giardino.\u201d</string>
-        <string name="lbl_7">7</string>
-        <string name="msg_sei_sicuro_di_v">Sei sicuro di voler sradicare questa pianta dal tuo giardino?</string>
-        <string name="lbl_9">9</string>
-        <string name="lbl_rosetta">Rosetta</string>
-        <string name="msg_rosario_stata">Rosario è stata annaffiata!</string>
-        <string name="msg_amico_sicuro_di">Amico Sicuro di eliminare amico</string>
-        <string name="lbl_login">Login</string>
-        <string name="lbl_giulio">Giulio</string>
-        <string name="lbl_nome">Nome</string>
-        <string name="msg_vai_al_tuo_giar">VAI AL TUO GIARDINO</string>
-        <string name="msg_ciao_sono_hagri">Ciao sono Hagrid e adoro curare il mio orto!</string>
-        <string name="lbl_cura">Cura</string>
-        <string name="lbl_melo">Melo</string>
-        <string name="msg_staccate_le_fog2">Staccate le foglie e i fiori del rosmarino da usare immediatamente o raccogliete le spighe per essiccarle ed usarle in seguito.
+    <string name="msg_sembra_che_rosm">Sembra che Rosmary sia in perfetta forma! </string>
+    <string name="lbl_nickname">Nickname</string>
+    <string name="lbl_email">Email</string>
+    <string name="lbl_simonetta98">simonetta98</string>
+    <string name="lbl_snape">Snape</string>
+    <string name="lbl_il_tuo_giardino">Il tuo giardino</string>
+    <string name="msg_dettaglio_piant2">Dettaglio Pianta Consigli</string>
+    <string name="msg_piantata_il_10">Piantata il 10 gennaio</string>
+    <string name="msg_friend_since_19">friend since 1900</string>
+    <string name="lbl_chiodino">Chiodino</string>
+    <string name="lbl_saluta">Saluta</string>
+    <string name="msg_dettaglio_piant3">Dettaglio Pianta Amico Info</string>
+    <string name="lbl_3">3</string>
+    <string name="lbl_grasse">Grasse</string>
+    <string name="msg_la_parola_par">\u201cLa parola \u201cparadiso\u201d, attraverso il latino (paradisus) e il greco (paradeisos), ha origine dal persiano pairidaez, che significa giardino.\u201d</string>
+    <string name="lbl_7">7</string>
+    <string name="msg_sei_sicuro_di_v">Sei sicuro di voler sradicare questa pianta dal tuo giardino?</string>
+    <string name="lbl_9">9</string>
+    <string name="lbl_rosetta">Rosetta</string>
+    <string name="msg_rosario_stata">Rosario è stata annaffiata!</string>
+    <string name="msg_amico_sicuro_di">Amico Sicuro di eliminare amico</string>
+    <string name="lbl_login">Login</string>
+    <string name="lbl_giulio">Giulio</string>
+    <string name="lbl_nome">Nome</string>
+    <string name="msg_vai_al_tuo_giar">VAI AL TUO GIARDINO</string>
+    <string name="msg_ciao_sono_hagri">Ciao sono Hagrid e adoro curare il mio orto!</string>
+    <string name="lbl_cura">Cura</string>
+    <string name="lbl_melo">Melo</string>
+    <string name="msg_staccate_le_fog2">Staccate le foglie e i fiori del rosmarino da usare immediatamente o raccogliete le spighe per essiccarle ed usarle in seguito.
 
 Oltre ad essere usate come condimento, le foglie possono anche essere usate per tinture per capelli.</string>
-        <string name="lbl_dianthus">Dianthus</string>
-        <string name="lbl_basilico">Basilico</string>
-        <string name="lbl_i_miei_amici2">
+    <string name="lbl_dianthus">Dianthus</string>
+    <string name="lbl_basilico">Basilico</string>
+    <string name="lbl_i_miei_amici2">
                     I miei amici</string>
-        <string name="lbl_rosa">Rosa
+    <string name="lbl_rosa">Rosa
 </string>
-        <string name="lbl_alloro2">Alloro</string>
-        <string name="lbl_bentornata">Bentornata, </string>
-        <string name="lbl_samuele">Samuele</string>
-        <string name="msg_annaffiami_stro">ANNAFFIAMI STRONZO!</string>
-        <string name="msg_aggiungi_dell_a">Aggiungi dell\u2019acqua!</string>
-        <string name="lbl_hagrid">Hagrid</string>
-        <string name="lbl_capsicum_annuum">Capsicum annuum</string>
-        <string name="msg_sembra_che_rosa">Sembra che Rosario abbia un po\u2019 di sete... Annaffialo! </string>
-        <string name="msg_catalogo_comple2">Catalogo Completo</string>
-        <string name="lbl_balcone">Balcone</string>
-        <string name="lbl_melograno">Melograno</string>
-        <string name="lbl_amico_da_3_mesi">Amico da 3 mesi</string>
-        <string name="lbl_amico">Amico</string>
-        <string name="lbl_il_mio_giardino">
+    <string name="lbl_alloro2">Alloro</string>
+    <string name="lbl_bentornata">Bentornata, </string>
+    <string name="lbl_samuele">Samuele</string>
+    <string name="msg_annaffiami_stro">ANNAFFIAMI STRONZO!</string>
+    <string name="msg_aggiungi_dell_a">Aggiungi dell\u2019acqua!</string>
+    <string name="lbl_hagrid">Hagrid</string>
+    <string name="lbl_capsicum_annuum">Capsicum annuum</string>
+    <string name="msg_sembra_che_rosa">Sembra che Rosario abbia un po\u2019 di sete... Annaffialo! </string>
+    <string name="msg_catalogo_comple2">Catalogo Completo</string>
+    <string name="lbl_balcone">Balcone</string>
+    <string name="lbl_melograno">Melograno</string>
+    <string name="lbl_amico_da_3_mesi">Amico da 3 mesi</string>
+    <string name="lbl_amico">Amico</string>
+    <string name="lbl_il_mio_giardino">
                  Il mio giardino</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

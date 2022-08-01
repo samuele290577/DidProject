@@ -23,7 +23,7 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
-        android:id="@+id/plantCategoryList"
+        android:id="@+id/nav_catalogue"
         android:name="com.example.didproject.ui.PlantCategoryList"
         android:label="PlantCategoryList" />
     <fragment
@@ -42,4 +42,9 @@
         android:id="@+id/nav_signIn"
         android:name="com.example.didproject.SignInActivity"
         android:label="SignIn" />
+    <fragment
+        android:id="@+id/cataloguePlantFragment"
+        android:name="com.example.didproject.CataloguePlantFragment"
+        android:label="fragment_catalogue_plant"
+        tools:layout="@layout/fragment_catalogue_plant" />
 </navigation>

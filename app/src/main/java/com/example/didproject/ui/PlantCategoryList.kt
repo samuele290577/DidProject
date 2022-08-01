@@ -3,21 +3,25 @@ package com.example.didproject.ui
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.model.`object`.PlantCategory
 import com.example.didproject.model.adapter.PlantCategoryAdapter
+import com.example.didproject.viewmodel.PlantCatalogueViewModel
 
 
 class PlantCategoryList : Fragment(R.layout.fragment_plant_category_list) {
 
+    private lateinit var plantCatalogueViewModel: PlantCatalogueViewModel
     private lateinit var recyclerView: RecyclerView
     private var category: String = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        plantCatalogueViewModel = ViewModelProvider(requireActivity())[PlantCatalogueViewModel::class.java]
         recyclerView = view.findViewById(R.id.recyclerView_plant_category_list)
 
         // configuring recyclerview
@@ -25,6 +29,8 @@ class PlantCategoryList : Fragment(R.layout.fragment_plant_category_list) {
         var categoryList = mutableListOf<String>()
         initialize(categoryList)
         recyclerView.adapter = PlantCategoryAdapter(categoryList)
+
+
     }
 
 

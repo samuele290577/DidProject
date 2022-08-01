@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.didproject.model.data.Plant
 import com.example.didproject.model.data.User
 import com.example.didproject.model.repository.UserRepository
 import com.google.firebase.auth.FirebaseAuth
@@ -14,33 +15,35 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 
-class ProfileViewModel( ) : ViewModel() {
+class PlantCatalogueViewModel( ) : ViewModel() {
 
     private val dr = Firebase.database.reference
-    private val ur = UserRepository()
-    private val _user = MutableLiveData<User>()
+    private lateinit var p :String
+    private val _plantList = MutableLiveData<ArrayList<Plant>>()
     private lateinit var listener :ValueEventListener
-    val user: LiveData<User> = _user
+    val plantList: LiveData<ArrayList<Plant>> = _plantList
 
     init {
-        val id=FirebaseAuth.getInstance().currentUser?.email
-        if(id!=null)
-            readUser(id.replace(".",","))
+            readList()
     }
 
-    fun updateProfile(user: User){
-        ur.writeUser(user)
+    fun getCategory(category: String):List<Plant>{
+        return _plantList.value?.filter { it.category==category }?.toList()!!
     }
 
-    private fun readUser(id: String){
-        var user = User(FirebaseAuth.getInstance().currentUser?.email!!.replace(".",","))
+    private fun readList(){
         val userEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                var plantListTmp = arrayListOf<Plant>()
                 // Get Post object and use the values to update the UI
-                _user.value = dataSnapshot.getValue(User::class.java)?:user
+                p=dataSnapshot.child("name").getValue(String::class.java)?:""
+                plantListTmp.add(dataSnapshot.getValue(Plant::class.java)!!)
+                _plantList.value=plantListTmp
+
                 // ...
             }
 
@@ -49,7 +52,7 @@ class ProfileViewModel( ) : ViewModel() {
                 Log.w(ContentValues.TAG, "loadPost:onCancelled", databaseError.toException())
             }
         }
-        dr.child("users").child(id).addValueEventListener(userEventListener)
+        dr.child("plants").child("rosmarino").addValueEventListener(userEventListener)
     }
 
 }

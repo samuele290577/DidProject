@@ -27,9 +27,13 @@ class PlantCategoryAdapter(private var data:List<String>) : RecyclerView.Adapter
             category.text = entity
             Picasso.get().load(entity.getImageResourceId()).fit().centerCrop().into(categoryImage)
 
-            /*card.setOnClickListener {
+            card.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("category",entity)
 
-            }*/
+                Navigation.findNavController(view = it)
+                    .navigate(R.id.cataloguePlantFragment, bundle)
+            }
         }
 
 
