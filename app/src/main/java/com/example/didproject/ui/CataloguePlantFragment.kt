@@ -1,6 +1,5 @@
-package com.example.didproject
+package com.example.didproject.ui
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -9,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.didproject.databinding.FragmentCataloguePlantBinding
 import com.example.didproject.model.repository.PlantRepository
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
-import com.example.didproject.viewmodel.ProfileViewModel
 
 class CataloguePlantFragment : Fragment() {
 
@@ -34,7 +32,7 @@ class CataloguePlantFragment : Fragment() {
 
 
 
-        val plant = plantCatalogueViewModel.getCategory(arguments?.getString("category")!!)[0]
+        val plant = plantCatalogueViewModel.getByName(arguments?.getString("name")!!)
         name.text=plant.name
         scName.text=plant.scName
         info.text=plant.info

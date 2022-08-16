@@ -7,7 +7,10 @@ data class Plant(
     val info: String="",
     val tips: String="",
     val care: String="",
-    val category: String=""
+    val category: String="",
+    val difficulty: Int=0,
+    val sun: Int=0,
+    val humidity: Int=0
 ) {
     fun toMap(): Map<String, Any?> {
         return mapOf(
@@ -17,7 +20,10 @@ data class Plant(
             "info" to info,
             "tips" to tips,
             "care" to care,
-            "category" to category
+            "category" to category,
+            "difficulty" to difficulty,
+            "humidity" to humidity,
+            "sun" to sun
         )
     }
 }

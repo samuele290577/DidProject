@@ -29,10 +29,11 @@ class PlantCategoryAdapter(private var data:List<String>) : RecyclerView.Adapter
 
             card.setOnClickListener {
                 val bundle = Bundle()
+                bundle.putString("key", "category")
                 bundle.putString("category",entity)
 
                 Navigation.findNavController(view = it)
-                    .navigate(R.id.cataloguePlantFragment, bundle)
+                    .navigate(R.id.plantListFragment, bundle)
             }
         }
 

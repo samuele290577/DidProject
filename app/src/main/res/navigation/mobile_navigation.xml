@@ -44,7 +44,11 @@
         android:label="SignIn" />
     <fragment
         android:id="@+id/cataloguePlantFragment"
-        android:name="com.example.didproject.CataloguePlantFragment"
+        android:name="com.example.didproject.ui.CataloguePlantFragment"
         android:label="fragment_catalogue_plant"
         tools:layout="@layout/fragment_catalogue_plant" />
+    <fragment
+        android:id="@+id/plantListFragment"
+        android:name="com.example.didproject.ui.PlantListFragment"
+        android:label="fragment_plant_list" />
 </navigation>
