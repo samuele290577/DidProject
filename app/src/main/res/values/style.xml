@@ -5,6 +5,16 @@
         <item name="android:textColor">@color/primary_light</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
     </style>
+    <style name="Divider">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/secondary</item>
+    </style>
+    <style name= "accent_title" >
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+    </style>
     <style name= "body_main_color" >
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/primary_main</item>
@@ -18,5 +28,8 @@
 
     <style name="circle">
         <item name="cornerSize">50%</item>
+    </style>
+    <style name="round_square">
+        <item name="cornerSize">25%</item>
     </style>
 </resources>
