@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../DidProject/app/src/main/res/drawable/search-48px.xml" value="0.1275" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_catalogue_plant.xml" value="0.16875" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_plant_category_list.xml" value="0.19947916666666668" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_plant_list.xml" value="0.19947916666666668" />
         <entry key="../DidProject/app/src/main/res/layout/plant_category_list_item.xml" value="0.15885416666666666" />
         <entry key="../DidProject/app/src/main/res/layout/plant_list_item.xml" value="0.1578125" />
+        <entry key="../DidProject/app/src/main/res/menu/search_menu.xml" value="0.2982456140350877" />
         <entry key="..\:/DidProject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/DidProject/app/src/main/res/layout/app_bar_main.xml" value="0.25416666666666665" />
         <entry key="..\:/DidProject/app/src/main/res/layout/content_main.xml" value="0.25416666666666665" />

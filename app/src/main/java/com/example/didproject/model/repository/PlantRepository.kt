@@ -21,8 +21,8 @@ class PlantRepository () {
         fun getAll(){
 
         }
-        fun findByCategory(category:String):List<Plant>{
 
+        fun findByCategory(category:String):List<Plant>{
             return plantList.filter { a -> a.category==category }
         }
 

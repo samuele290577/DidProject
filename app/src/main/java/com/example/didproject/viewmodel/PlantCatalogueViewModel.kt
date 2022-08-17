@@ -24,29 +24,38 @@ class PlantCatalogueViewModel( ) : ViewModel() {
     private val dr = Firebase.database.reference
     private lateinit var p :String
     private val _plantList = MutableLiveData<ArrayList<Plant>>()
-    private lateinit var listener :ValueEventListener
     val plantList: LiveData<ArrayList<Plant>> = _plantList
+    private val _plantNamesList = MutableLiveData<ArrayList<String>>()
+    val plantNamesList: LiveData<ArrayList<String>> = _plantNamesList
 
     init {
             readList()
     }
 
+    fun getByInputName(name: String):List<Plant>{
+        return plantList.value?.filter{ it.name.contains(name)}!!
+    }
+
     fun getByCategory(category: String):List<Plant>{
-        return _plantList.value?.filter { it.category==category }?.toList()!!
+        return plantList.value?.filter { it.category==category }?.toList()!!
     }
 
     fun getByName(name:String):Plant{
-        return _plantList.value?.first { it.name==name }!!
+        return plantList.value?.first { it.name==name }!!
     }
 
     private fun readList(){
         val userEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                var plantListTmp = arrayListOf<Plant>()
+                val plantListTmp = arrayListOf<Plant>()
+                val plantNamesListTmp = arrayListOf<String>()
                 // Get Post object and use the values to update the UI
-                dataSnapshot.children.forEach { a-> plantListTmp.add(a.getValue(Plant::class.java)!!) }
+                dataSnapshot.children.forEach { a->
+                    plantListTmp.add(a.getValue(Plant::class.java)!!);
+                    plantNamesListTmp.add(a.key!!)
+                }
                 _plantList.value=plantListTmp
-
+                _plantNamesList.value=plantNamesListTmp
                 // ...
             }
 
@@ -55,7 +64,7 @@ class PlantCatalogueViewModel( ) : ViewModel() {
                 Log.w(ContentValues.TAG, "loadPost:onCancelled", databaseError.toException())
             }
         }
-        dr.child("plants").addValueEventListener(userEventListener)
+        dr.child("plants").addListenerForSingleValueEvent(userEventListener)
     }
 
 }

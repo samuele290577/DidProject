@@ -6,15 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toDrawable
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.model.data.Plant
-import com.example.didproject.model.getImageResourceId
-import com.google.firebase.ktx.Firebase
-import com.squareup.picasso.Picasso
 
 class PlantItemAdapter(private var data:List<Plant>) : RecyclerView.Adapter<PlantItemAdapter.PlantItemViewHolder>() {
 
@@ -59,6 +54,7 @@ class PlantItemAdapter(private var data:List<Plant>) : RecyclerView.Adapter<Plan
         }
 
         override fun getItemCount() = data.size
+
 
 }
 
