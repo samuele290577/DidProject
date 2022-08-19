@@ -51,4 +51,8 @@
         android:id="@+id/plantListFragment"
         android:name="com.example.didproject.ui.PlantListFragment"
         android:label="fragment_plant_list" />
+    <fragment
+        android:id="@+id/addPlantToGardenFragment"
+        android:name="com.example.didproject.ui.AddPlantToGardenFragment"
+        android:label="fragment_add_plant_to_garden" />
 </navigation>

@@ -2,9 +2,12 @@ package com.example.didproject.ui
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import com.example.didproject.R
 import com.example.didproject.databinding.FragmentCataloguePlantBinding
 import com.example.didproject.model.repository.PlantRepository
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
@@ -14,7 +17,6 @@ class CataloguePlantFragment : Fragment() {
 
     private var _binding: FragmentCataloguePlantBinding? = null
     private val binding get() = _binding!!
-    private val plantRepo = PlantRepository()
     private lateinit var plantCatalogueViewModel: PlantCatalogueViewModel
 
     override fun onCreateView(
@@ -29,6 +31,7 @@ class CataloguePlantFragment : Fragment() {
         val info : TextView = binding.plantInfoCatalogue
         val care : TextView = binding.plantCareCatalogue
         val tips : TextView = binding.plantTipCatalogue
+        val button : Button = binding.plantButton
 
 
 
@@ -38,6 +41,14 @@ class CataloguePlantFragment : Fragment() {
         info.text=plant.info
         tips.text=plant.tips
         care.text=plant.care
+
+        button.setOnClickListener{
+            val bundle = Bundle()
+            bundle.putString("name", plant.name)
+
+            Navigation.findNavController(view = it)
+                .navigate(R.id.addPlantToGardenFragment, bundle)
+        }
 
         return root
     }

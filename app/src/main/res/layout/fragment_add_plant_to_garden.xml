@@ -38,9 +38,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/PlantPersonalImage"
-        app:layout_constraintTop_toTopOf="@+id/PlantPersonalImage" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view"
@@ -92,10 +93,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/DayButton"
         app:layout_constraintEnd_toEndOf="@+id/PlantPersonalImage"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PlantPersonalImage">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/NicknamePlantEdit"
