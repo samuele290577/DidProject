@@ -8,7 +8,8 @@ data class User(
     var nickname: String = "",
     var bio: String = "",
     var imageUri : String = "",
-    val plants: ArrayList<UserPlant> = arrayListOf()
+    val plants: ArrayList<UserPlant> = arrayListOf(),
+    val friends: ArrayList<User> = arrayListOf()
 ){
     fun toMap(): Map<String, Any?> {
         return mapOf(
@@ -17,7 +18,8 @@ data class User(
             "nickname" to nickname,
             "bio" to bio,
             "imageUri" to imageUri,
-            "plants" to plants
+            "plants" to plants,
+            "friends" to friends
         )
     }
 }
