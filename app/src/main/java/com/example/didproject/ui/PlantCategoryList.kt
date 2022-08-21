@@ -82,21 +82,11 @@ class PlantCategoryList : Fragment(R.layout.fragment_plant_category_list) {
                     }
                 })
             }
-
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.actionbar_edit -> {
-                        val navController = findNavController()
-                        navController.navigate(R.id.editProfileFragment)
-                        return true
-                    }
-                    else -> false
-                }
+                return false
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-
     }
-
 
     private fun initialize(list:MutableList<String>) {
             list.add(PlantCategory.ARBUSTI)

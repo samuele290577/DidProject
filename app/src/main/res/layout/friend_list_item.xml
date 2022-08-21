@@ -37,32 +37,58 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="32dp">
+                android:padding="16dp">
 
                 <!-- Title, secondary and supporting text -->
                 <TextView
-                    android:id="@+id/friend_card_name"
+                    android:id="@+id/friend_card_nickname"
                     style="@style/accent_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"
-
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 <TextView
-                    android:id="@+id/friend_card_n_plants"
+                    android:id="@+id/friend_card_name"
                     style="@style/body_white_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"
-                    android:paddingTop="16dp"
+                    android:paddingTop="8dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/nest_eco_leaf"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/friend_profile_n_of_plants"
+                        style="@style/body_white_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="Title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:drawableTint="@color/white" />
+                </LinearLayout>
 
             </LinearLayout>
 
             <!-- Buttons -->
 
         </LinearLayout>
+
+
 
     </com.google.android.material.card.MaterialCardView>
 

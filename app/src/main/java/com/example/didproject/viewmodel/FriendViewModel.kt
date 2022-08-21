@@ -24,13 +24,19 @@ class FriendViewModel : ViewModel() {
     }
 
     fun searchUser(name: String): List<User>{
-        return users.value?.filter { it.name.contains(name) || it.nickname.contains(name) } as List<User>
+        return _users.value?.filter { it.name.contains(name) || it.nickname.contains(name) } as List<User>
+    }
+
+    fun searchUserById(id: String):User{
+        return _users.value?.first{it.id==id}!!
     }
 
     private fun readAllUsers(){
         val userEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                dataSnapshot.children.forEach { _users.value?.add(it.getValue(User::class.java)!!) }
+                val userListTmp = arrayListOf<User>()
+                dataSnapshot.children.forEach { userListTmp.add(it.getValue(User::class.java)!!) }
+                _users.value=userListTmp
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

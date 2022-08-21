@@ -37,8 +37,6 @@ class ProfileFragment : Fragment() {
         val bio : TextView = binding.bioField
         val profilePicture = binding.profilePicture
 
-
-
         profileViewModel.user.observe(viewLifecycleOwner){
             if(it!=null){
                 name.text = it.name
@@ -68,7 +66,5 @@ class ProfileFragment : Fragment() {
 
         return root
     }
-
-
 
 }
