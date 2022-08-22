@@ -45,17 +45,22 @@
         app:layout_constraintStart_toEndOf="@+id/profilePicture"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <LinearLayout
-
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePicture">
+        app:layout_constraintTop_toBottomOf="@+id/profilePicture"
+        >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/name"
@@ -141,6 +146,7 @@
                 android:text="@string/msg_ciao_sono_simon" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
+    </ScrollView>
 
 
     <androidx.constraintlayout.widget.Guideline
