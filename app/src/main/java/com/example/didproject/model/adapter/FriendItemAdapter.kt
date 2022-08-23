@@ -1,15 +1,18 @@
 package com.example.didproject.model.adapter
 
+import android.content.ContentProvider
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.model.data.User
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 class FriendItemAdapter(private var data:List<User>, private var newFriend:Boolean) : RecyclerView.Adapter<FriendItemAdapter.FriendItemViewHolder>() {
@@ -29,9 +32,25 @@ class FriendItemAdapter(private var data:List<User>, private var newFriend:Boole
             userCard.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("id", user.id)
-                bundle.putBoolean("new", newFriend)
-                Navigation.findNavController(view = it)
-                    .navigate(R.id.friendProfileFragment, bundle)
+                if(newFriend){
+                    MaterialAlertDialogBuilder(userCard.context)
+                        .setIcon(R.drawable.group)
+                        .setTitle("Nuovo vicino")
+                        .setMessage("Vuoi aggiungere ${user.nickname} ai tuoi vicini?")
+                        .setNeutralButton("Annulla") { _, _ ->
+                            // Respond to neutral button press
+                        }
+                        .setPositiveButton("Conferma") { _, _ ->
+                            bundle.putBoolean("new", newFriend)
+                            Navigation.findNavController(view = it)
+                                .navigate(R.id.friendProfileFragment, bundle)
+                        }
+                        .show()
+                }
+                else {
+                    Navigation.findNavController(view = it)
+                        .navigate(R.id.friendProfileFragment, bundle)
+                }
             }
         }
 

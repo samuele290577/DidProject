@@ -12,6 +12,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.ui.*
 import com.example.didproject.databinding.ActivityMainBinding
+import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
 
@@ -19,12 +20,14 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var profileViewModel : ProfileViewModel
+    private lateinit var plantViewModel : PlantCatalogueViewModel
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
+        plantViewModel = ViewModelProvider(this)[PlantCatalogueViewModel::class.java]
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

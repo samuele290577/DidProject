@@ -36,6 +36,7 @@ class AlreadyFriendListFragment : Fragment(R.layout.fragment_already_friend_list
 
         alreadyFriendRecyclerView.layoutManager = LinearLayoutManager(this.context)
         val userList = mutableListOf<User>()
+
         initialize(userList)
         alreadyFriendRecyclerView.adapter = FriendItemAdapter(userList,false)
     }

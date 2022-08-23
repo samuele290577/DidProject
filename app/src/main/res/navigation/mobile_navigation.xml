@@ -67,4 +67,9 @@
         android:id="@+id/friendProfileFragment"
         android:name="com.example.didproject.ui.friend.FriendProfileFragment"
         android:label="FriendProfileFragment" />
+    <fragment
+        android:id="@+id/personalPlantFragment"
+        android:name="com.example.didproject.ui.PersonalPlantFragment"
+        android:label="fragment_personal_plant"
+        tools:layout="@layout/fragment_personal_plant" />
 </navigation>
