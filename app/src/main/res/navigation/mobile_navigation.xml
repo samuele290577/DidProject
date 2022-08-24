@@ -77,4 +77,12 @@
         android:name="com.example.didproject.EditPersonalPlantFragment"
         android:label="fragment_edit_personal_plant"
         tools:layout="@layout/fragment_edit_personal_plant" />
+    <fragment
+        android:id="@+id/personalGardenListFragment"
+        android:name="com.example.didproject.PersonalGardenListFragment"
+        android:label="PersonalGardenListFragment" />
+    <fragment
+        android:id="@+id/nav_garden"
+        android:name="com.example.didproject.ui.PersonalGardenListFragment"
+        android:label="PersonalGardenListFragment" />
 </navigation>

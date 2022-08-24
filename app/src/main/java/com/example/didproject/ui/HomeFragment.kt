@@ -18,6 +18,7 @@ import com.example.didproject.databinding.FragmentHomeBinding
 import com.example.didproject.model.adapter.HomepageItemAdapter
 import com.example.didproject.model.adapter.PlantCategoryAdapter
 import com.example.didproject.model.data.User
+import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
 
 class HomeFragment : Fragment() {
@@ -25,6 +26,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var profileViewModel : ProfileViewModel
+    private lateinit var friendViewModel : FriendViewModel
 
 
     override fun onCreateView(
@@ -34,6 +36,8 @@ class HomeFragment : Fragment() {
     ): View {
 
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
+        friendViewModel = ViewModelProvider(requireActivity())[FriendViewModel::class.java]
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
@@ -49,25 +53,22 @@ class HomeFragment : Fragment() {
         profileViewModel.user.observe(viewLifecycleOwner){
             user=it
             greetings.text = "Ciao, "+user.nickname+"!"
-
             gardenList.adapter = HomepageItemAdapter(user.plants.map{it.nickname}, user.plants.map{it.plantName},true)
             friendList.adapter = HomepageItemAdapter(user.friends.map{it.nickname}, user.friends.map { it.id },false)
-
         }
 
         //TODO: aggiungere citazioni
         quote.text="Questa è una citazione di prova"
 
         gardenButton.setOnClickListener {
-            //TODO: aggiungere la navigation al giardino navController.navigate(R.id.addPlantToGardenFragment)
-        }
+            navController.navigate(R.id.nav_garden)
+         }
 
         friendButton.setOnClickListener {
             navController.navigate(R.id.nav_friends)
         }
 
         gardenList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
-
         friendList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
 
 

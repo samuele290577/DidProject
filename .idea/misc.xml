@@ -11,6 +11,7 @@
         <entry key="../DidProject/app/src/main/res/drawable/calendar_today-48px.xml" value="0.207" />
         <entry key="../DidProject/app/src/main/res/drawable/calendar_today.xml" value="0.1135" />
         <entry key="../DidProject/app/src/main/res/drawable/chevron_right-48px.xml" value="0.123" />
+        <entry key="../DidProject/app/src/main/res/drawable/chevron_right.xml" value="0.1075" />
         <entry key="../DidProject/app/src/main/res/drawable/ic_menu_camera.xml" value="0.1135" />
         <entry key="../DidProject/app/src/main/res/drawable/ic_outline_photo_camera_24.xml" value="0.1135" />
         <entry key="../DidProject/app/src/main/res/drawable/logout.xml" value="0.207" />
@@ -28,6 +29,7 @@
         <entry key="../DidProject/app/src/main/res/layout/fragment_friend_profile.xml" value="0.1" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_gallery.xml" value="0.1" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_home.xml" value="0.18771929824561404" />
+        <entry key="../DidProject/app/src/main/res/layout/fragment_personal_garden_list.xml" value="0.1" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_personal_plant.xml" value="0.335" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_plant_category_list.xml" value="0.19947916666666668" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_plant_list.xml" value="0.1" />

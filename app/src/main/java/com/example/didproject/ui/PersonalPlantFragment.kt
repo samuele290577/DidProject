@@ -101,12 +101,6 @@ class PersonalPlantFragment : Fragment() {
         care.text=plant.care
         humidity.text=plant.humidity.toString()
         sun.text=plant.sun.toString()
-
-
-
         return root
     }
-
-
-
 }
