@@ -6,7 +6,7 @@
     android:layout_margin="10dp">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/category_card"
+        android:id="@+id/homepage_card"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_margin="8dp"
@@ -26,7 +26,7 @@
 
             <!-- Media -->
             <ImageView
-                android:id="@+id/plant_category_image"
+                android:id="@+id/homepage_card_image"
                 android:layout_width="match_parent"
                 android:layout_height="128dp"
                 android:contentDescription="Image"
@@ -42,7 +42,7 @@
 
                 <!-- Title, secondary and supporting text -->
                 <TextView
-                    android:id="@+id/plant_category_name"
+                    android:id="@+id/homepage_card_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"

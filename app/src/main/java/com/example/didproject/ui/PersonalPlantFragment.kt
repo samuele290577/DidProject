@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentPersonalPlantBinding
 import com.example.didproject.model.data.User
+import com.example.didproject.model.data.UserPlant
 import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
@@ -52,9 +53,8 @@ class PersonalPlantFragment : Fragment() {
         var user = User()
 
         if(arguments?.getString("id").isNullOrEmpty()) {
-            profileViewModel.user.observe(viewLifecycleOwner) {
-                user = it
-            }
+                user = profileViewModel.user.value!!
+
             menuHost.addMenuProvider(object : MenuProvider {
                 override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                     menuInflater.inflate(R.menu.edit, menu)
@@ -64,8 +64,17 @@ class PersonalPlantFragment : Fragment() {
                     return when (menuItem.itemId) {
                         R.id.actionbar_edit -> {
                             val navController = findNavController()
-                            //TODO: change navigation
-                            //navController.navigate(R.id.editProfileFragment)
+                            val bundle = Bundle()
+                            var i=0
+                            bundle.putBoolean("edit",true)
+                            bundle.putString("name",arguments?.getString("plantName")!!)
+                            for(u:UserPlant  in user.plants) {
+                                if(u.plantName==arguments?.getString("plantName")!!)
+                                    break;
+                                i++
+                            }
+                            bundle.putInt("pos",i)
+                            navController.navigate(R.id.addPlantToGardenFragment,bundle)
                             return true
                         }
                         else -> false

@@ -72,4 +72,9 @@
         android:name="com.example.didproject.ui.PersonalPlantFragment"
         android:label="fragment_personal_plant"
         tools:layout="@layout/fragment_personal_plant" />
+    <fragment
+        android:id="@+id/editPersonalPlantFragment"
+        android:name="com.example.didproject.EditPersonalPlantFragment"
+        android:label="fragment_edit_personal_plant"
+        tools:layout="@layout/fragment_edit_personal_plant" />
 </navigation>

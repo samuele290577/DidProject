@@ -46,20 +46,33 @@ class AddPlantToGardenFragment : Fragment() {
 
         _binding = FragmentAddPlantToGardenBinding.inflate(inflater, container, false)
 
+        var plantToEdit : UserPlant
+
         val root: View = binding.root
         val dateButton = binding.DayButton
         val imageButton = binding.TakeImageButton
         val locationButton = binding.LocationButton
         val plantPersonalImage = binding.PlantPersonalImage
         val plantName = binding.PlantName
+        val deleteButton = binding.deletePlantButton
+        val nickname = binding.NicknamePlantEdit
 
         val date = Calendar.getInstance()
 
         val menuHost: MenuHost = requireActivity()
 
+        var pos=0
+        val edit=arguments?.getBoolean("edit")?:false
+
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
 
         plantName.text = arguments?.getString("name")
+        if(edit){
+            pos=arguments?.getInt("pos")!!
+            date.timeInMillis=profileViewModel.user.value?.plants?.get(pos)?.date!!
+            location=possibleLocation.indexOf(profileViewModel.user.value?.plants?.get(pos)?.location!!)
+            nickname.setText(profileViewModel.user.value?.plants?.get(pos)?.nickname!!)
+        }
 
         getPhotoImage = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
             if (isSuccess) {
@@ -87,7 +100,6 @@ class AddPlantToGardenFragment : Fragment() {
             datePickerDialog.show()
         }
 
-
         locationButton.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
                 .setIcon(R.drawable.balcony)
@@ -97,12 +109,15 @@ class AddPlantToGardenFragment : Fragment() {
                 }
                 .setNeutralButton("Annulla") { _, _ ->
                     // Respond to neutral button press
-                    location=-1
                 }
                 .setPositiveButton("Conferma") { _, _ ->
                     // Respond to positive button press
                 }
                 .show()
+        }
+
+        deleteButton.setOnClickListener {
+            savePersonalPlantData(edit,true,pos)
         }
 
         //save in db
@@ -114,7 +129,7 @@ class AddPlantToGardenFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.actionbar_check -> {
-                        savePersonalPlantData()
+                        savePersonalPlantData(edit)
                         val navController = findNavController()
                         navController.navigate(R.id.nav_home)
                         return true
@@ -129,17 +144,24 @@ class AddPlantToGardenFragment : Fragment() {
         return root
     }
 
-     fun savePersonalPlantData() {
-        val user = profileViewModel.user.value
-        val userPlant = UserPlant(arguments?.getString("name")!!,
-            dateInMillis,
-            binding.NicknamePlantEdit.text.toString(),
-            lastUri.toString(),
-            possibleLocation[location],
-            "ok")
+     fun savePersonalPlantData(edit: Boolean, delete:Boolean=false, pos:Int=0) {
+         val user = profileViewModel.user.value
 
-        user?.plants?.add(userPlant)
-        profileViewModel.updateProfile(user!!)
+         val userPlant = UserPlant(arguments?.getString("name")!!,
+             dateInMillis,
+             binding.NicknamePlantEdit.text.toString(),
+             lastUri.toString(),
+             possibleLocation[location],
+             "ok")
+         if(!edit)
+             user?.plants?.add(userPlant)
+         else
+             if(!delete)
+                user?.plants?.add(pos, userPlant)
+            else
+                user?.plants?.removeAt(pos)
+
+         profileViewModel.updateProfile(user!!)
     }
 
     private fun showMenu(view: View){
