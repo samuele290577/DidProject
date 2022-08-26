@@ -50,6 +50,7 @@ class ProfileViewModel : ViewModel() {
                 // Get Post object and use the values to update the UI
                 _user.value = dataSnapshot.getValue(User::class.java)?:user
                 downloadPhoto()
+                getFriendPhoto()
                 // ...
             }
 
@@ -76,6 +77,17 @@ class ProfileViewModel : ViewModel() {
 
     }
 
+    private fun getFriendPhoto(){
+        _user.value?.friends?.forEach {
+            val profileImagesRef: StorageReference = storageRef.child("profile/${it.id}")
+            profileImagesRef.downloadUrl.addOnSuccessListener { uri->
+                 it.imageUri = uri.toString()
+            }.addOnFailureListener { _ ->
+                 it.imageUri = ""
+            }
+        }
+    }
+
     private fun downloadPhoto() {
         val profileImagesRef: StorageReference = storageRef.child("profile/${_user.value?.id}")
             profileImagesRef.downloadUrl.addOnSuccessListener {
@@ -83,6 +95,10 @@ class ProfileViewModel : ViewModel() {
             }.addOnFailureListener{
                 _photo.value=Uri.parse("")
             }
+    }
+
+    fun findFriendById(id:String):User{
+        return _user.value?.friends?.find { it.id==id }!!
     }
 
 }

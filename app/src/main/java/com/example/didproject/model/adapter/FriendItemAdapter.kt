@@ -1,6 +1,7 @@
 package com.example.didproject.model.adapter
 
 import android.content.ContentProvider
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.model.data.User
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.squareup.picasso.Picasso
 
 
 class FriendItemAdapter(private var data:List<User>, private var newFriend:Boolean) : RecyclerView.Adapter<FriendItemAdapter.FriendItemViewHolder>() {
@@ -22,13 +24,13 @@ class FriendItemAdapter(private var data:List<User>, private var newFriend:Boole
         private val userName: TextView = v.findViewById(R.id.friend_card_name)
         private val userNickname: TextView = v.findViewById(R.id.friend_card_nickname)
         private val userNofPlants: TextView = v.findViewById(R.id.friend_profile_n_of_plants)
-//        private val userImage: ImageView = v.findViewById(R.id.friend_card_image)
+        private val userImage: ImageView = v.findViewById(R.id.friend_card_image)
 
         fun bind(user: User, newFriend: Boolean) {
             userName.text=user.name
             userNickname.text=user.nickname
             userNofPlants.text=user.plants.size.toString()
-
+            Picasso.get().load(Uri.parse(user.imageUri)).fit().centerCrop().into(userImage)
             userCard.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("id", user.id)

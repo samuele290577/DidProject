@@ -1,5 +1,6 @@
 package com.example.didproject.ui.friend
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuHost
@@ -16,13 +17,17 @@ import com.example.didproject.databinding.FragmentFriendProfileBinding
 import com.example.didproject.model.adapter.PersonalPlantItemAdapter
 import com.example.didproject.model.adapter.PlantCategoryAdapter
 import com.example.didproject.model.data.Plant
+import com.example.didproject.model.data.User
 import com.example.didproject.model.data.UserPlant
 import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.squareup.picasso.Picasso
 
 class FriendProfileFragment : Fragment() {
+
+
 
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var plantsViewModel: PlantCatalogueViewModel
@@ -51,14 +56,19 @@ class FriendProfileFragment : Fragment() {
         val nickname = binding.friendProfileNickname
         val nOfPlant = binding.friendProfileNOfPlants
         val garden = binding.friendGardenText
+        val image = binding.friendProfileImage
 
         val user = profileViewModel.user.value!!
 
-        val friend = friendViewModel.searchUserById(arguments?.getString("id")!!)
+        var friend = User()
 
         if(arguments?.getBoolean("new")!!) {
+            friend=friendViewModel.searchUserById(arguments?.getString("id")!!)
             user.friends.add(friend)
             profileViewModel.updateProfile(user)
+        }
+        else{
+            friend=profileViewModel.findFriendById(arguments?.getString("id")!!)
         }
 
         bio.text=friend.bio
@@ -66,6 +76,8 @@ class FriendProfileFragment : Fragment() {
         nickname.text=friend.nickname
         nOfPlant.text=friend.plants.size.toString()
         garden.text="Il giardino di ${friend.nickname}"
+        Picasso.get().load(Uri.parse(friend.imageUri)).fit().centerCrop().into(image)
+
 
         recyclerViewPersonalPlant.layoutManager = LinearLayoutManager(this.context)
         val plantList = mutableListOf<Plant>()

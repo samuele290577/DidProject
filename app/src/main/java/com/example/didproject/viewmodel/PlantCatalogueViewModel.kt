@@ -21,6 +21,8 @@ import com.google.firebase.ktx.Firebase
 
 class PlantCatalogueViewModel( ) : ViewModel() {
 
+    //TODO:add way to get and store images
+
     private val dr = Firebase.database.reference
     private lateinit var p :String
     private val _plantList = MutableLiveData<ArrayList<Plant>>()

@@ -13,6 +13,8 @@ import com.example.didproject.model.data.Plant
 
 class PlantItemAdapter(private var data:List<Plant>) : RecyclerView.Adapter<PlantItemAdapter.PlantItemViewHolder>() {
 
+    //TODO:add images and db images
+
     class PlantItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val plantCard = v.findViewById<CardView>(R.id.plant_card)
         private val plantName: TextView = v.findViewById(R.id.plant_card_name)

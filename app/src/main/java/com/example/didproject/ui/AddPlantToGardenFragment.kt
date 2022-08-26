@@ -26,6 +26,8 @@ import java.util.*
 
 class AddPlantToGardenFragment : Fragment() {
 
+    //TODO: add image management
+
     private var _binding: FragmentAddPlantToGardenBinding? = null
     private val binding get() = _binding!!
 

@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso
 
 class HomepageItemAdapter(private var data:List<String>, private var bundleData:List<String>, private var plants:Boolean) : RecyclerView.Adapter<HomepageItemAdapter.HomepageItemViewHolder>() {
 
+    //TODO add images in base of the type
+
     class HomepageItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val card = v.findViewById<CardView>(R.id.homepage_card)
         private val itemName: TextView = v.findViewById(R.id.homepage_card_name)

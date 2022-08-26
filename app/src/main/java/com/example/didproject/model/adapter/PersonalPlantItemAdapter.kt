@@ -15,6 +15,8 @@ import com.example.didproject.model.data.UserPlant
 
 class PersonalPlantItemAdapter(private var data:List<Plant>, private var auxData:List<UserPlant>, private var userId: String) : RecyclerView.Adapter<PersonalPlantItemAdapter.PersonalPlantItemViewHolder>() {
 
+    //TODO: add images (if not personal -> default)
+
     class PersonalPlantItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val plantCard = v.findViewById<CardView>(R.id.personal_plant_card)
         private val plantName: TextView = v.findViewById(R.id.personal_plant_card_name)

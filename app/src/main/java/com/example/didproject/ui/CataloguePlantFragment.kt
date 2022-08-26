@@ -14,6 +14,7 @@ import com.example.didproject.viewmodel.PlantCatalogueViewModel
 
 class CataloguePlantFragment : Fragment() {
 
+    //TODO: add image
 
     private var _binding: FragmentCataloguePlantBinding? = null
     private val binding get() = _binding!!

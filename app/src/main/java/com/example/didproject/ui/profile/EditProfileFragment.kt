@@ -34,11 +34,6 @@ class EditProfileFragment : Fragment() {
     private lateinit var uriTmp : Uri
 
 
-
-
-    /*TODO: caricare il file su storage con nome=id_profile, onCreate e onResume la aggiornano
-            togliere i valori di Uri che non servono da User, e qui, caricare la foto ugualmente nella pagina precedente
-    */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
