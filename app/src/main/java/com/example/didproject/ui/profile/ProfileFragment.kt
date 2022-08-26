@@ -42,8 +42,11 @@ class ProfileFragment : Fragment() {
                 name.text = it.name
                 nickname.text = it.nickname
                 bio.text = it.bio
-                Picasso.get().load(Uri.parse(it.imageUri)).fit().centerCrop().into(profilePicture)
             }
+        }
+
+        profileViewModel.photo.observe(viewLifecycleOwner){
+            Picasso.get().load(it).fit().centerCrop().into(profilePicture)
         }
         email.text = FirebaseAuth.getInstance().currentUser?.email?:"none"
 

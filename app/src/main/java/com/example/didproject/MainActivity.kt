@@ -3,6 +3,7 @@ package com.example.didproject
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -15,6 +16,7 @@ import com.example.didproject.databinding.ActivityMainBinding
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,12 +40,17 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = binding.navView
         val name = navView.getHeaderView(0).findViewById<TextView>(R.id.drawer_name)
         val email = navView.getHeaderView(0).findViewById<TextView>(R.id.drawer_email)
+        val image = navView.getHeaderView(0).findViewById<ImageView>(R.id.drawer_image)
         val navController = findNavController(R.id.nav_host_fragment_content_main)
 
         profileViewModel.user.observe(this){
             name.text=it.name
             email.text=FirebaseAuth.getInstance().currentUser?.email
         }
+        profileViewModel.photo.observe(this){
+            Picasso.get().load(it).fit().centerCrop().into(image)
+        }
+
 
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {

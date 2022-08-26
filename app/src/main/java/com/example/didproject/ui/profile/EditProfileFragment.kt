@@ -1,19 +1,21 @@
 package com.example.didproject.ui.profile
 
-import android.app.Activity
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
-import android.widget.*
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
-import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.didproject.BuildConfig
-import com.example.didproject.MainActivity
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentProfileEditBinding
 import com.example.didproject.model.data.User
@@ -34,8 +36,9 @@ class EditProfileFragment : Fragment() {
 
 
 
-
-        //Part where I populate the view
+    /*TODO: caricare il file su storage con nome=id_profile, onCreate e onResume la aggiornano
+            togliere i valori di Uri che non servono da User, e qui, caricare la foto ugualmente nella pagina precedente
+    */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,15 +59,18 @@ class EditProfileFragment : Fragment() {
                 name.text = it.name
                 nickname.text = it.nickname
                 bio.text = it.bio
-                lastUri = Uri.parse(it.imageUri)
-                Picasso.get().load(Uri.parse(it.imageUri)).fit().centerCrop().into(profilePicture)
-            }
+                          }
+        }
+
+        profileViewModel.photo.observe(viewLifecycleOwner){
+            lastUri = it
+            Picasso.get().load(it).fit().centerCrop().into(profilePicture)
         }
 
         getPhotoImage = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
             if (isSuccess) {
                 uriTmp.let { uri ->
-                    lastUri=uri
+                    profileViewModel.uploadPhoto(uri)
                     Picasso.get().load(uri).fit().centerCrop().into(profilePicture)
                 }
             }
@@ -73,11 +79,10 @@ class EditProfileFragment : Fragment() {
         getGalleryImage = registerForActivityResult(
             ActivityResultContracts.GetContent()){
             if(it!=null) {
-                lastUri = it
+                profileViewModel.uploadPhoto(it)
                 Picasso.get().load(it).fit().centerCrop().into(profilePicture)
             }
         }
-
         uriTmp=getTmpFileUri()
         editImageButton.setOnClickListener{ showMenu(editImageButton) }
         return root
@@ -92,8 +97,7 @@ class EditProfileFragment : Fragment() {
             profileViewModel.user.value?.id?:"prova",
             binding.nameField.text.toString(),
             binding.nicknameField.text.toString(),
-            binding.bioField.text.toString(),
-            lastUri.toString()
+            binding.bioField.text.toString()
             )
 
         profileViewModel.updateProfile(profile)
@@ -135,5 +139,4 @@ class EditProfileFragment : Fragment() {
 
         return FileProvider.getUriForFile(requireContext(), "${BuildConfig.APPLICATION_ID}.provider", tmpFile)
     }
-
 }

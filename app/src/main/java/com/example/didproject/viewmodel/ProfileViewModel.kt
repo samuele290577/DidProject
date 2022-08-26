@@ -1,35 +1,42 @@
 package com.example.didproject.viewmodel
 
-import android.app.Application
 import android.content.ContentValues
+import android.net.Uri
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.didproject.model.data.User
-import com.example.didproject.model.data.UserPlant
 import com.example.didproject.model.repository.UserRepository
+import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageException
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
+import com.google.firebase.storage.ktx.storageMetadata
 
 
-class ProfileViewModel( ) : ViewModel() {
+class ProfileViewModel : ViewModel() {
 
     private val dr = Firebase.database.reference
     private val ur = UserRepository()
+    private val _photo = MutableLiveData<Uri>()
     private val _user = MutableLiveData<User>()
-    private lateinit var listener :ValueEventListener
+    val photo: LiveData<Uri> = _photo
     val user: LiveData<User> = _user
+    private val storageRef: StorageReference = Firebase.storage.reference
+
 
     init {
         val id=FirebaseAuth.getInstance().currentUser?.email
         if(id!=null)
             readUser(id.replace(".",","))
+
     }
 
     fun updateProfile(user: User){
@@ -37,11 +44,12 @@ class ProfileViewModel( ) : ViewModel() {
     }
 
     private fun readUser(id: String){
-        var user = User(FirebaseAuth.getInstance().currentUser?.email!!.replace(".",","))
+        val user = User(FirebaseAuth.getInstance().currentUser?.email!!.replace(".",","))
         val userEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
                 _user.value = dataSnapshot.getValue(User::class.java)?:user
+                downloadPhoto()
                 // ...
             }
 
@@ -57,5 +65,24 @@ class ProfileViewModel( ) : ViewModel() {
         _user.value?.plants?.removeAt(pos)
     }
 
+    fun uploadPhoto(uri: Uri){
+        val profileImagesRef: StorageReference = storageRef.child("profile/${_user.value?.id}")
+        val metadata = storageMetadata {
+            contentType = "image/jpeg"
+        }
+        profileImagesRef.putFile(uri, metadata).addOnSuccessListener{
+            downloadPhoto()
+        }
+
+    }
+
+    private fun downloadPhoto() {
+        val profileImagesRef: StorageReference = storageRef.child("profile/${_user.value?.id}")
+            profileImagesRef.downloadUrl.addOnSuccessListener {
+                _photo.value = it
+            }.addOnFailureListener{
+                _photo.value=Uri.parse("")
+            }
+    }
 
 }
