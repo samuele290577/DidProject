@@ -19,7 +19,6 @@ import com.google.firebase.storage.ktx.storage
 
 class FriendViewModel : ViewModel() {
 
-    //TODO: add way to get and store image
 
     private val dr = Firebase.database.reference
     private val storageRef: StorageReference = Firebase.storage.reference
@@ -48,7 +47,7 @@ class FriendViewModel : ViewModel() {
                 dataSnapshot.children.forEach {
                     val userTmp=it.getValue(User::class.java)!!
                     if(userTmp.id!= userId)
-                    userListTmp.add(userTmp)
+                        userListTmp.add(userTmp)
                 }
                 _users.value=userListTmp
             }

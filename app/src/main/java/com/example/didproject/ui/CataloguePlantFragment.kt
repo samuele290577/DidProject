@@ -1,8 +1,10 @@
 package com.example.didproject.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.Button
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
@@ -11,10 +13,9 @@ import com.example.didproject.R
 import com.example.didproject.databinding.FragmentCataloguePlantBinding
 import com.example.didproject.model.repository.PlantRepository
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
+import com.squareup.picasso.Picasso
 
 class CataloguePlantFragment : Fragment() {
-
-    //TODO: add image
 
     private var _binding: FragmentCataloguePlantBinding? = null
     private val binding get() = _binding!!
@@ -33,6 +34,7 @@ class CataloguePlantFragment : Fragment() {
         val care : TextView = binding.plantCareCatalogue
         val tips : TextView = binding.plantTipCatalogue
         val button : Button = binding.plantButton
+        val image : ImageView = binding.plantCatalogueImage
 
 
 
@@ -42,6 +44,8 @@ class CataloguePlantFragment : Fragment() {
         info.text=plant.info
         tips.text=plant.tips
         care.text=plant.care
+        Picasso.get().load(Uri.parse(plant.photo)).fit().centerCrop().into(image)
+
 
         button.setOnClickListener{
             val bundle = Bundle()

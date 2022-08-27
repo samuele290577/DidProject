@@ -3,7 +3,7 @@ package com.example.didproject.model.data
 data class Plant(
     val name: String="",
     val scName: String="",
-    val photo: String="",
+    var photo: String="",
     val info: String="",
     val tips: String="",
     val care: String="",

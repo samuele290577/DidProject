@@ -19,7 +19,6 @@ class AlreadyFriendListFragment : Fragment(R.layout.fragment_already_friend_list
     private lateinit var friendViewModel: FriendViewModel
     private lateinit var alreadyFriendRecyclerView: RecyclerView
 
-    //TODO:correggere problema foto
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

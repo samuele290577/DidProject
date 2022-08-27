@@ -1,5 +1,6 @@
 package com.example.didproject.model.adapter
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,9 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.model.data.Plant
+import com.squareup.picasso.Picasso
 
 class PlantItemAdapter(private var data:List<Plant>) : RecyclerView.Adapter<PlantItemAdapter.PlantItemViewHolder>() {
-
-    //TODO:add images and db images
 
     class PlantItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val plantCard = v.findViewById<CardView>(R.id.plant_card)
@@ -30,6 +30,8 @@ class PlantItemAdapter(private var data:List<Plant>) : RecyclerView.Adapter<Plan
             plantDifficulty.text=plant.difficulty.toString()
             plantSun.text=plant.sun.toString()
             plantHumidity.text=plant.humidity.toString()
+            Picasso.get().load(Uri.parse(plant.photo)).fit().centerCrop().into(plantImage)
+
 
             plantCard.setOnClickListener {
                 val bundle = Bundle()

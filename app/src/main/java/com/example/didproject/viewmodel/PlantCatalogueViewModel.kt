@@ -17,29 +17,29 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 
 
 class PlantCatalogueViewModel( ) : ViewModel() {
 
-    //TODO:add way to get and store images
-
     private val dr = Firebase.database.reference
-    private lateinit var p :String
+    private val storageRef: StorageReference = Firebase.storage.reference
     private val _plantList = MutableLiveData<ArrayList<Plant>>()
     val plantList: LiveData<ArrayList<Plant>> = _plantList
-    private val _plantNamesList = MutableLiveData<ArrayList<String>>()
-    val plantNamesList: LiveData<ArrayList<String>> = _plantNamesList
 
     init {
             readList()
     }
 
     fun getByInputName(name: String):List<Plant>{
-        return plantList.value?.filter{ it.name.contains(name)}!!
+        val list = plantList.value?.filter{ it.name.contains(name)}!!
+        return list
     }
 
     fun getByCategory(category: String):List<Plant>{
-        return plantList.value?.filter { it.category==category }?.toList()!!
+        val list=plantList.value?.filter { it.category==category }?.toList()!!
+        return list
     }
 
     fun getByName(name:String):Plant{
@@ -53,11 +53,11 @@ class PlantCatalogueViewModel( ) : ViewModel() {
                 val plantNamesListTmp = arrayListOf<String>()
                 // Get Post object and use the values to update the UI
                 dataSnapshot.children.forEach { a->
-                    plantListTmp.add(a.getValue(Plant::class.java)!!);
-                    plantNamesListTmp.add(a.key!!)
+                    val plantTmp=a.getValue(Plant::class.java)!!
+                    plantListTmp.add(plantTmp);
                 }
+                downloadPlantPhoto(plantListTmp)
                 _plantList.value=plantListTmp
-                _plantNamesList.value=plantNamesListTmp
                 // ...
             }
 
@@ -67,6 +67,17 @@ class PlantCatalogueViewModel( ) : ViewModel() {
             }
         }
         dr.child("plants").addListenerForSingleValueEvent(userEventListener)
+    }
+
+    private fun downloadPlantPhoto(list:List<Plant>){
+        list.forEach {
+            if(it.photo=="") {
+                val plantImagesRef: StorageReference = storageRef.child("catalogue/${it.name}")
+                plantImagesRef.downloadUrl.addOnSuccessListener { res ->
+                    it.photo = res.toString()
+                }
+            }
+        }
     }
 
 }

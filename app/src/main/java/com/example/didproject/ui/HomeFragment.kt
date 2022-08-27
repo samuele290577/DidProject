@@ -1,5 +1,6 @@
 package com.example.didproject.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,11 +51,11 @@ class HomeFragment : Fragment() {
         var user = User()
         val navController = findNavController()
 
-        profileViewModel.user.observe(viewLifecycleOwner){
-            user=it
+        profileViewModel.user.observe(viewLifecycleOwner){ userValue ->
+            user=userValue
             greetings.text = "Ciao, "+user.nickname+"!"
-            gardenList.adapter = HomepageItemAdapter(user.plants.map{it.nickname}, user.plants.map{it.plantName},true)
-            friendList.adapter = HomepageItemAdapter(user.friends.map{it.nickname}, user.friends.map { it.id },false)
+            gardenList.adapter = HomepageItemAdapter(userValue.plants.map{it.nickname}, userValue.plants.map{ Uri.parse("")}, userValue.plants.map{it.plantName},true)
+            friendList.adapter = HomepageItemAdapter(userValue.friends.map{it.nickname}, userValue.friends.map{ Uri.parse(it.imageUri)},user.friends.map { it.id },false)
         }
 
         //TODO: aggiungere citazioni

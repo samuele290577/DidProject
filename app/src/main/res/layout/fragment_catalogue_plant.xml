@@ -15,6 +15,19 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintdown"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/plant_catalogue_image"
+            app:strokeWidth="3dp"
+            app:strokeColor="@color/primary_light"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/round_square"
+            tools:src="@tools:sample/avatars" />
+
         <TextView
             android:id="@+id/plant_name_catalogue"
             android:layout_width="wrap_content"
@@ -24,7 +37,7 @@
             android:text="TextView"
             app:layout_constraintBottom_toTopOf="@+id/plant_scname_catalogue"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/plant_catalogue_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -36,7 +49,7 @@
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/plant_catalogue_image"
             app:layout_constraintTop_toBottomOf="@+id/plant_name_catalogue" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
