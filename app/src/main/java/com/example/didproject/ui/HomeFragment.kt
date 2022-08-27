@@ -54,7 +54,7 @@ class HomeFragment : Fragment() {
         profileViewModel.user.observe(viewLifecycleOwner){ userValue ->
             user=userValue
             greetings.text = "Ciao, "+user.nickname+"!"
-            gardenList.adapter = HomepageItemAdapter(userValue.plants.map{it.nickname}, userValue.plants.map{ Uri.parse("")}, userValue.plants.map{it.plantName},true)
+            gardenList.adapter = HomepageItemAdapter(userValue.plants.map{it.nickname}, userValue.plants.map{ Uri.parse(it.customPhoto)}, userValue.plants.map{it.plantName},true)
             friendList.adapter = HomepageItemAdapter(userValue.friends.map{it.nickname}, userValue.friends.map{ Uri.parse(it.imageUri)},user.friends.map { it.id },false)
         }
 

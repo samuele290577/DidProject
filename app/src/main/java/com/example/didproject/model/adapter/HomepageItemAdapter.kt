@@ -26,6 +26,8 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
         fun bind(name: String, imageData:Uri, bundleData:String, plants:Boolean) {
             itemName.text = name
 
+            Picasso.get().load(imageData).fit().centerCrop().into(itemImage)
+
             card.setOnClickListener {
                 val bundle = Bundle()
                 if (plants) {
@@ -35,7 +37,6 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
                         .navigate(R.id.personalPlantFragment, bundle)
                 }
                 else{
-                    Picasso.get().load(imageData).fit().centerCrop().into(itemImage)
                     bundle.putString("id", bundleData)
                     Navigation.findNavController(view = it)
                         .navigate(R.id.friendProfileFragment, bundle)

@@ -1,5 +1,6 @@
 package com.example.didproject.model.adapter
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,10 @@ import com.example.didproject.R
 import com.example.didproject.model.data.Plant
 import com.example.didproject.model.data.User
 import com.example.didproject.model.data.UserPlant
+import com.squareup.picasso.Picasso
 
 class PersonalPlantItemAdapter(private var data:List<Plant>, private var auxData:List<UserPlant>, private var userId: String) : RecyclerView.Adapter<PersonalPlantItemAdapter.PersonalPlantItemViewHolder>() {
 
-    //TODO: add images (if not personal -> default)
 
     class PersonalPlantItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val plantCard = v.findViewById<CardView>(R.id.personal_plant_card)
@@ -32,6 +33,8 @@ class PersonalPlantItemAdapter(private var data:List<Plant>, private var auxData
             plantDifficulty.text=plant.difficulty.toString()
             plantSun.text=plant.sun.toString()
             plantHumidity.text=plant.humidity.toString()
+            Picasso.get().load(Uri.parse(userPlant.customPhoto)).fit().centerCrop().into(plantImage)
+
 
             plantCard.setOnClickListener {
                 val bundle = Bundle()

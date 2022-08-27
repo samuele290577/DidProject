@@ -51,6 +51,7 @@ class ProfileViewModel : ViewModel() {
                 _user.value = dataSnapshot.getValue(User::class.java)?:user
                 downloadPhoto()
                 getFriendPhoto()
+                getPersonalPlantsPhoto()
                 // ...
             }
 
@@ -79,11 +80,28 @@ class ProfileViewModel : ViewModel() {
 
     private fun getFriendPhoto(){
         _user.value?.friends?.forEach {
-            val profileImagesRef: StorageReference = storageRef.child("profile/${it.id}")
-            profileImagesRef.downloadUrl.addOnSuccessListener { uri->
+            val friendImagesRef: StorageReference = storageRef.child("profile/${it.id}")
+            friendImagesRef.downloadUrl.addOnSuccessListener { uri->
                  it.imageUri = uri.toString()
+                _user.value=_user.value
             }.addOnFailureListener { _ ->
                  it.imageUri = ""
+            }
+        }
+    }
+
+    private fun getPersonalPlantsPhoto(){
+        _user.value?.plants?.forEach {
+            var plantsImagesRef: StorageReference
+            if(it.customPhoto!="")
+                plantsImagesRef= storageRef.child("${_user.value?.id}/${it.nickname}")
+            else
+                plantsImagesRef =storageRef.child("catalogue/${it.plantName}")
+            plantsImagesRef.downloadUrl.addOnSuccessListener { uri->
+                it.customPhoto = uri.toString()
+                _user.value=_user.value
+            }.addOnFailureListener { _ ->
+                it.customPhoto = ""
             }
         }
     }
