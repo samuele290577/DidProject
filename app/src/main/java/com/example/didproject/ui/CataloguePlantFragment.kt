@@ -29,25 +29,43 @@ class CataloguePlantFragment : Fragment() {
         plantCatalogueViewModel = ViewModelProvider(requireActivity())[PlantCatalogueViewModel::class.java]
         _binding = FragmentCataloguePlantBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val name : TextView = binding.plantNameCatalogueval button : Button = binding.plantButton
+        val name : TextView = binding.plantNameCatalogue
+        val button : Button = binding.plantButton
         val image : ImageView = binding.plantCatalogueImage
         val humidity : TextView = binding.plantCatalogueHumidity
         val sun : TextView = binding.plantCatalogueSun
         val difficulty : TextView = binding.plantCatalogueDifficulty
 
+        val labelInfo : TextView = binding.labelInfo
+        val labelCura : TextView = binding.labelCura
+        val labelTips : TextView = binding.labelConsigli
+        val tipText : TextView = binding.tipsPlaceholder
+
 
         val plant = plantCatalogueViewModel.getByName(arguments?.getString("name")!!)
         Log.d("plant",plant.toString());
+
+        tipText.text = plant.info
         name.text=plant.name
         scName.text=plant.scName
-        //info.text=plant.info
-        //tips.text=plant.tips
-        //care.text=plant.care
         humidity.text = plant.humidity.toString()
         difficulty.text = plant.difficulty.toString()
         sun.text = plant.sun.toString()
         Picasso.get().load(Uri.parse(plant.photo)).fit().centerCrop().into(image)
 
+
+        labelInfo.setOnClickListener {
+            Log.d("clicked", "clicked");
+            tipText.text = plant.info
+        }
+        labelCura.setOnClickListener {
+            Log.d("clicked", "clicked");
+            tipText.text = plant.care
+        }
+        labelTips.setOnClickListener {
+            Log.d("clicked", "clicked");
+            tipText.text = plant.tips
+        }
 
         button.setOnClickListener{
             val bundle = Bundle()
