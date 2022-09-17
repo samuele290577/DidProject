@@ -2,6 +2,7 @@ package com.example.didproject.ui
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Button
 import android.widget.ImageView
@@ -28,22 +29,23 @@ class CataloguePlantFragment : Fragment() {
         plantCatalogueViewModel = ViewModelProvider(requireActivity())[PlantCatalogueViewModel::class.java]
         _binding = FragmentCataloguePlantBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val name : TextView = binding.plantNameCatalogue
-        val scName : TextView = binding.plantScnameCatalogue
-        val info : TextView = binding.plantInfoCatalogue
-        val care : TextView = binding.plantCareCatalogue
-        val tips : TextView = binding.plantTipCatalogue
-        val button : Button = binding.plantButton
+        val name : TextView = binding.plantNameCatalogueval button : Button = binding.plantButton
         val image : ImageView = binding.plantCatalogueImage
-
+        val humidity : TextView = binding.plantCatalogueHumidity
+        val sun : TextView = binding.plantCatalogueSun
+        val difficulty : TextView = binding.plantCatalogueDifficulty
 
 
         val plant = plantCatalogueViewModel.getByName(arguments?.getString("name")!!)
+        Log.d("plant",plant.toString());
         name.text=plant.name
         scName.text=plant.scName
-        info.text=plant.info
-        tips.text=plant.tips
-        care.text=plant.care
+        //info.text=plant.info
+        //tips.text=plant.tips
+        //care.text=plant.care
+        humidity.text = plant.humidity.toString()
+        difficulty.text = plant.difficulty.toString()
+        sun.text = plant.sun.toString()
         Picasso.get().load(Uri.parse(plant.photo)).fit().centerCrop().into(image)
 
 
@@ -57,6 +59,11 @@ class CataloguePlantFragment : Fragment() {
 
         return root
     }
+        val scName : TextView = binding.plantScnameCatalogue
+        //val info : TextView = binding.plantInfoCatalogue
+        //val care : TextView = binding.plantCareCatalogue
+        //val tips : TextView = binding.plantTipCatalogue
+
 
 
 
