@@ -1,5 +1,6 @@
 package com.example.didproject.ui
 
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -35,6 +36,7 @@ class CataloguePlantFragment : Fragment() {
         val humidity : TextView = binding.plantCatalogueHumidity
         val sun : TextView = binding.plantCatalogueSun
         val difficulty : TextView = binding.plantCatalogueDifficulty
+        val scName : TextView = binding.plantScnameCatalogue
 
         val labelInfo : TextView = binding.labelInfo
         val labelCura : TextView = binding.labelCura
@@ -57,14 +59,24 @@ class CataloguePlantFragment : Fragment() {
         labelInfo.setOnClickListener {
             Log.d("clicked", "clicked");
             tipText.text = plant.info
+            /**labelCura.setTextColor(Color.WHITE)
+            labelInfo.setTextColor(Color.GREEN)
+            labelTips.setTextColor(Color.WHITE)**/
         }
         labelCura.setOnClickListener {
             Log.d("clicked", "clicked");
             tipText.text = plant.care
+           /** labelCura.setTextColor(Color.GREEN)
+            labelInfo.setTextColor(Color.WHITE)
+            labelTips.setTextColor(Color.WHITE)**/
+
         }
         labelTips.setOnClickListener {
             Log.d("clicked", "clicked");
             tipText.text = plant.tips
+           // labelCura.setTextColor(Color.WHITE)
+            // labelInfo.setTextColor(Color.WHITE)
+        // labelTips.setTextColor(Color.GREEN)
         }
 
         button.setOnClickListener{
@@ -77,7 +89,7 @@ class CataloguePlantFragment : Fragment() {
 
         return root
     }
-        val scName : TextView = binding.plantScnameCatalogue
+
         //val info : TextView = binding.plantInfoCatalogue
         //val care : TextView = binding.plantCareCatalogue
         //val tips : TextView = binding.plantTipCatalogue
