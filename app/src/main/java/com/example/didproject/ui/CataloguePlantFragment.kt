@@ -59,24 +59,24 @@ class CataloguePlantFragment : Fragment() {
         labelInfo.setOnClickListener {
             Log.d("clicked", "clicked");
             tipText.text = plant.info
-            /**labelCura.setTextColor(Color.WHITE)
+            labelCura.setTextColor(Color.WHITE)
             labelInfo.setTextColor(Color.GREEN)
-            labelTips.setTextColor(Color.WHITE)**/
+            labelTips.setTextColor(Color.WHITE)
         }
         labelCura.setOnClickListener {
             Log.d("clicked", "clicked");
             tipText.text = plant.care
-           /** labelCura.setTextColor(Color.GREEN)
+           labelCura.setTextColor(Color.GREEN)
             labelInfo.setTextColor(Color.WHITE)
-            labelTips.setTextColor(Color.WHITE)**/
+            labelTips.setTextColor(Color.WHITE)
 
         }
         labelTips.setOnClickListener {
             Log.d("clicked", "clicked");
             tipText.text = plant.tips
-           // labelCura.setTextColor(Color.WHITE)
-            // labelInfo.setTextColor(Color.WHITE)
-        // labelTips.setTextColor(Color.GREEN)
+            labelCura.setTextColor(Color.WHITE)
+            labelInfo.setTextColor(Color.WHITE)
+            labelTips.setTextColor(Color.GREEN)
         }
 
         button.setOnClickListener{

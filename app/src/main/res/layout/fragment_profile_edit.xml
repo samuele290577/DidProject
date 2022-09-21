@@ -38,6 +38,7 @@
         style="@style/button_accent"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/rounded_corner_full"
         android:src="@drawable/ic_outline_photo_camera_24"
         app:layout_constraintBottom_toBottomOf="@+id/profilePicture"
@@ -48,104 +49,114 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePicture"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/profilePicture">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_medium"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/primary_light"
-            android:text="Nome" />
+            android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-
-                android:id="@+id/name_field"
-                style="@style/body_main_color"
+            <TextView
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto_medium"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="@string/lbl_simona_marino" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="Nome"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/primary_light" />
 
-        <TextView
-            android:id="@+id/nickname"
-            style="@style/title_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ellipsize="end"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:singleLine="true"
-            android:text="@string/lbl_nickname" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nickname_field"
-                style="@style/body_main_color"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="start"
-                android:paddingStart="32dp"
-                android:paddingEnd="32dp"
-                android:text="@string/lbl_simonetta98" />
-        </com.google.android.material.textfield.TextInputLayout>
+                app:startIconDrawable="@drawable/ic_profile"
+                app:boxBackgroundColor="@color/white">
 
-        <TextView
-            android:id="@+id/bio"
-            style="@style/title_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ellipsize="end"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp"
-            android:singleLine="true"
-            android:text="@string/lbl_bio" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_field"
+                    style="@style/body_main_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/lbl_simona_marino" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/bio_field"
-                style="@style/body_main_color"
+            <TextView
+                android:id="@+id/nickname"
+                style="@style/title_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:gravity="start"
+                android:layout_marginTop="16dp"
+                android:ellipsize="end"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="@string/msg_ciao_sono_simon" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                android:singleLine="true"
+                android:text="@string/lbl_nickname" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/icon_sun">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nickname_field"
+                    style="@style/body_main_color"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/lbl_simonetta98" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/bio"
+                style="@style/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ellipsize="end"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:singleLine="true"
+                android:text="@string/lbl_bio" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/icon_bio_prova"
+                app:boxBackgroundColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/bio_field"
+                    style="@style/body_main_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp"
+                    android:paddingTop="10dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="@string/msg_ciao_sono_simon" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
     </ScrollView>
 
 
@@ -154,7 +165,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".85" />
+        app:layout_constraintGuide_begin="731dp"
+        app:layout_constraintGuide_end="109dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
