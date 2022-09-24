@@ -3,6 +3,7 @@ package com.example.didproject.ui
 import android.app.DatePickerDialog
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
 import androidx.activity.result.ActivityResultLauncher
@@ -60,6 +61,8 @@ class AddPlantToGardenFragment : Fragment() {
         val deleteButton = binding.deletePlantButton
         val nickname = binding.NicknamePlantEdit
 
+        val locationPlaceHolder = binding.plantLocation
+
         val date = Calendar.getInstance()
         val navController = findNavController()
         val menuHost: MenuHost = requireActivity()
@@ -104,13 +107,17 @@ class AddPlantToGardenFragment : Fragment() {
             }, date.get(Calendar.YEAR),date.get(Calendar.MONTH),date.get(Calendar.DAY_OF_MONTH))
             datePickerDialog.show()
         }
+
+
         var locationTmp=location
+        Log.d("Sam location", "locationTmp $locationTmp")
         locationButton.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
                 .setIcon(R.drawable.balcony)
                 .setTitle("Posizione")
                 .setSingleChoiceItems(possibleLocation,location) { _, which ->
                     locationTmp = which
+                    Log.d("Sam location", "which $which")
                 }
                 .setNeutralButton("Annulla") { _, _ ->
                     // Respond to neutral button press
@@ -118,6 +125,14 @@ class AddPlantToGardenFragment : Fragment() {
                 .setPositiveButton("Conferma") { _, _ ->
                     // Respond to positive button press
                     location=locationTmp
+                    when (location){
+                        0 -> locationPlaceHolder.text="Balcone"
+                        1 -> locationPlaceHolder.text="Giardino"
+                        2 -> locationPlaceHolder.text="Interno"
+                        else -> {
+                            print("no location found error")
+                        }
+                    }
                 }
                 .show()
         }
