@@ -150,7 +150,7 @@ class AddPlantToGardenFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.actionbar_check -> {
-                        savePersonalPlantData(edit)
+                        savePersonalPlantData(edit,false,pos)
 
                         navController.navigate(R.id.nav_home)
                         return true
@@ -178,8 +178,10 @@ class AddPlantToGardenFragment : Fragment() {
          if(!edit)
              user?.plants?.add(userPlant)
          else
-             if(!delete)
-                user?.plants?.add(pos, userPlant)
+             if(!delete) {
+                 user?.plants?.removeAt(pos)
+                 user?.plants?.add(pos,userPlant)
+             }
             else {
                  MaterialAlertDialogBuilder(requireContext())
                      .setIcon(R.drawable.delete)
@@ -192,6 +194,7 @@ class AddPlantToGardenFragment : Fragment() {
                      .setPositiveButton("Conferma") { _, _ ->
 
                          user?.plants?.removeAt(pos)
+                         profileViewModel.updateProfile(user!!)
                          findNavController().navigate(R.id.nav_garden)
                      }
                      .show()
