@@ -6,7 +6,7 @@ data class UserPlant(
     var nickname: String = "",
     var customPhoto: String = "",
     var location: String = "",
-    var status: String = "",
+    var status: Int = 100,
 ) {
     fun toMap(): Map<String, Any?> {
         return mapOf(
