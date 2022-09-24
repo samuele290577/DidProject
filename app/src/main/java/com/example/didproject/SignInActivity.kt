@@ -18,7 +18,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 
 class SignInActivity : AppCompatActivity() {
-    lateinit var mFirebaseAuth: FirebaseAuth
+    private lateinit var mFirebaseAuth: FirebaseAuth
     lateinit var button:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,6 @@ class SignInActivity : AppCompatActivity() {
         if(requestCode==1){
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-
                 firebaseAuthWithGoogle(task.getResult(ApiException::class.java))
             }catch (e: ApiException){
                 Log.w(TAG, "Google sign in failed", e)
@@ -62,7 +61,6 @@ class SignInActivity : AppCompatActivity() {
         mFirebaseAuth.signInWithCredential(credential)
             .addOnSuccessListener(this) {
                 startActivity(Intent(this@SignInActivity, MainActivity::class.java),ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
-
             }
             .addOnFailureListener(
                 this
@@ -75,6 +73,5 @@ class SignInActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
     }
 }

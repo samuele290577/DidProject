@@ -174,7 +174,7 @@ class AddPlantToGardenFragment : Fragment() {
              binding.NicknamePlantEdit.text.toString(),
              lastUri.toString(),
              possibleLocation[location],
-             "ok")
+             100)
          if(!edit)
              user?.plants?.add(userPlant)
          else
