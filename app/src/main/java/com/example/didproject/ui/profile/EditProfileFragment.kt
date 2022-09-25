@@ -92,7 +92,11 @@ class EditProfileFragment : Fragment() {
             profileViewModel.user.value?.id?:"prova",
             binding.nameField.text.toString(),
             binding.nicknameField.text.toString(),
-            binding.bioField.text.toString()
+            binding.bioField.text.toString(),
+            profileViewModel.user.value?.imageUri?:"",
+            profileViewModel.user.value?.plants?:arrayListOf(),
+            profileViewModel.user.value?.friends?:arrayListOf(),
+            profileViewModel.user.value?.arduino?:mapOf()
             )
 
         profileViewModel.updateProfile(profile)

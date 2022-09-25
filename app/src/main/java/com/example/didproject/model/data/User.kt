@@ -10,7 +10,7 @@ data class User(
     var imageUri : String = "",
     val plants: ArrayList<UserPlant> = arrayListOf(),
     val friends: ArrayList<User> = arrayListOf(),
-    val arduino: ArrayList<Arduino> = arrayListOf(),
+    val arduino: Map<String, Arduino> = mapOf(),
 ){
     fun toMap(): Map<String, Any?> {
         return mapOf(

@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import android.widget.PopupMenu
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -41,6 +42,8 @@ class AddPlantToGardenFragment : Fragment() {
     private val possibleLocation : Array<String> = arrayOf("Balcone","Giardino","Interno")
     private var location = -1
     private var dateInMillis : Long = 0
+    private var arduinoSelected = -1
+    private lateinit var possibleArduino : Array<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,6 +63,7 @@ class AddPlantToGardenFragment : Fragment() {
         val plantName = binding.PlantName
         val deleteButton = binding.deletePlantButton
         val nickname = binding.NicknamePlantEdit
+        val arduino : Button = binding.arduinoButton
 
         val locationPlaceHolder = binding.plantLocation
 
@@ -71,6 +75,7 @@ class AddPlantToGardenFragment : Fragment() {
         val edit=arguments?.getBoolean("edit")?:false
 
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
+        possibleArduino=profileViewModel.getAvailableArduinos()
 
         plantName.text = arguments?.getString("name")
         if(edit){
@@ -137,6 +142,24 @@ class AddPlantToGardenFragment : Fragment() {
                 .show()
         }
 
+        var arduinoTmp=arduinoSelected
+        arduino.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setIcon(R.drawable.icon_arduino)
+                .setTitle("Collega ad un arduino")
+                .setSingleChoiceItems(possibleArduino,arduinoSelected) { _, which ->
+                    arduinoTmp = which
+                }
+                .setNeutralButton("Annulla") { _, _ ->
+                    // Respond to neutral button press
+                }
+                .setPositiveButton("Conferma") { _, _ ->
+                    // Respond to positive button press
+                    arduinoSelected=arduinoTmp
+                }
+                .show()
+        }
+
         deleteButton.setOnClickListener {
             savePersonalPlantData(edit,true,pos)
         }
@@ -175,12 +198,21 @@ class AddPlantToGardenFragment : Fragment() {
              lastUri.toString(),
              possibleLocation[location],
              100)
-         if(!edit)
+         if(!edit) {
+
              user?.plants?.add(userPlant)
+             if(arduinoSelected!=-1)
+                 if(user?.arduino != null)
+                 user.arduino[possibleArduino[arduinoSelected]]?.plantIndex= user.plants.size+1
+         }
          else
              if(!delete) {
                  user?.plants?.removeAt(pos)
                  user?.plants?.add(pos,userPlant)
+                 if(arduinoSelected!=-1)
+                     if(user?.arduino != null)
+                         user.arduino[possibleArduino[arduinoSelected]]?.plantIndex= pos+1
+
              }
             else {
                  MaterialAlertDialogBuilder(requireContext())

@@ -119,4 +119,8 @@ class ProfileViewModel : ViewModel() {
         return _user.value?.friends?.find { it.id==id }!!
     }
 
+    fun getAvailableArduinos() : Array<String> {
+        return _user.value?.arduino?.filter { a->a.value.plantIndex<=0 }?.keys?.toTypedArray()?: arrayOf()
+    }
+
 }

@@ -3,6 +3,7 @@ package com.example.didproject.ui.profile
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import android.widget.TextView
 import androidx.core.view.MenuHost
@@ -35,6 +36,7 @@ class ProfileFragment : Fragment() {
         val nickname : TextView = binding.nicknameField
         val email : TextView = binding.emailField
         val bio : TextView = binding.bioField
+        val button: Button = binding.goToGardenFromProfileButton
         val profilePicture = binding.profilePicture
 
         profileViewModel.user.observe(viewLifecycleOwner){
@@ -43,6 +45,12 @@ class ProfileFragment : Fragment() {
                 nickname.text = it.nickname
                 bio.text = it.bio
             }
+        }
+
+        button.setOnClickListener {
+            val navController = findNavController()
+            navController.popBackStack()
+            navController.navigate(R.id.nav_garden)
         }
 
         profileViewModel.photo.observe(viewLifecycleOwner){
