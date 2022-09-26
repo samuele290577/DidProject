@@ -31,7 +31,7 @@ class FriendViewModel : ViewModel() {
     }
 
     fun searchUser(name: String): List<User>{
-        val userList=_users.value?.filter { it.name.contains(name) || it.nickname.contains(name) } as List<User>
+        val userList=_users.value?.filter { it.name.lowercase().contains(name.lowercase()) || it.nickname.lowercase().contains(name.lowercase()) } as List<User>
         downloadPhoto(userList)
         return userList
     }

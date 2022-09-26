@@ -18,6 +18,7 @@ import com.example.didproject.viewmodel.ProfileViewModel
 
 
 class PersonalGardenListFragment : Fragment() {
+    //TODO: aggiungere le info dello status nelle card
     private var _binding: FragmentPersonalGardenListBinding? = null
     private val binding get() = _binding!!
     private lateinit var catalogueViewModel: PlantCatalogueViewModel

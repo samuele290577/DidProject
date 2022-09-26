@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.model.data.Plant
-import com.example.didproject.model.data.User
 import com.example.didproject.model.data.UserPlant
 import com.squareup.picasso.Picasso
 

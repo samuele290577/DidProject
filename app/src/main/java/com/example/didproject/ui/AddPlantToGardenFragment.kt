@@ -51,6 +51,9 @@ class AddPlantToGardenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        //TODO: problems with what the text is showing vs what it is supposed to show
+        //TODO: photo
+
         _binding = FragmentAddPlantToGardenBinding.inflate(inflater, container, false)
 
         var plantToEdit : UserPlant

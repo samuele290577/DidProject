@@ -18,6 +18,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 
 class SignInActivity : AppCompatActivity() {
+    //TODO: low priority: update deprecated methods
     private lateinit var mFirebaseAuth: FirebaseAuth
     lateinit var button:Button
     override fun onCreate(savedInstanceState: Bundle?) {

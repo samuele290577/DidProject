@@ -43,7 +43,7 @@ class FriendProfileFragment : Fragment() {
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
         friendViewModel = ViewModelProvider(requireActivity())[FriendViewModel::class.java]
         plantsViewModel = ViewModelProvider(requireActivity())[PlantCatalogueViewModel::class.java]
-
+        //TODO: photo problem and connection to a garden page???
 
         val menuHost: MenuHost = requireActivity()
 

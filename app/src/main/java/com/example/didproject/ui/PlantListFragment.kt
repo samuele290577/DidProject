@@ -17,7 +17,7 @@ import com.example.didproject.viewmodel.PlantCatalogueViewModel
 class PlantListFragment : Fragment(R.layout.fragment_plant_list) {
     private lateinit var plantCatalogueViewModel: PlantCatalogueViewModel
     private lateinit var recyclerView: RecyclerView
-
+    //TODO: low priority, search by scientific name
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

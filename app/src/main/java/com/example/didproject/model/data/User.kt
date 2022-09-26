@@ -8,8 +8,10 @@ data class User(
     var nickname: String = "",
     var bio: String = "",
     var imageUri : String = "",
+    //TODO: setup another way to save photos in usere, userplant
     val plants: ArrayList<UserPlant> = arrayListOf(),
     val friends: ArrayList<User> = arrayListOf(),
+    //TODO: is it convenient to save friends as user or it will be better as list of string?
     val arduino: Map<String, Arduino> = mapOf(),
 ){
     fun toMap(): Map<String, Any?> {

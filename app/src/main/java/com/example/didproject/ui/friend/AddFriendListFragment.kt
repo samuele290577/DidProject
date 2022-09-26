@@ -24,6 +24,7 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
     private lateinit var friendViewModel: FriendViewModel
     private lateinit var addFriendRecyclerView: RecyclerView
 
+    //TODO: check if already friend + lowercase
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -66,6 +67,6 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
     }
 
     private fun updateSearchRecycleView(name:String,friendList:ArrayList<User>): List<User> {
-        return friendViewModel.searchUser(name).subtract(friendList.toSet()).toList()
+        return friendViewModel.searchUser(name).filter { a-> !friendList.map { it.id }.contains(a.id) }
     }
 }

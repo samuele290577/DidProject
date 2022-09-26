@@ -14,6 +14,7 @@ import com.google.firebase.ktx.Firebase
 import kotlin.collections.ArrayList
 
 class PlantRepository () {
+    //TODO: change repository classes: they are not useful in this form
     private val dr = Firebase.database.reference
     private var plantList = arrayListOf<Plant>()
 
