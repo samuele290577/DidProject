@@ -28,7 +28,6 @@ class PlantCategoryList : Fragment(R.layout.fragment_plant_category_list) {
     private lateinit var plantCatalogueViewModel: PlantCatalogueViewModel
     private lateinit var recyclerViewCatalogue: RecyclerView
     private lateinit var recyclerViewPlant: RecyclerView
-    private var category: String = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

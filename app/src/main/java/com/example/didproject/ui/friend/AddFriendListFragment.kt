@@ -24,7 +24,6 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
     private lateinit var friendViewModel: FriendViewModel
     private lateinit var addFriendRecyclerView: RecyclerView
 
-    //TODO: check if already friend + lowercase
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
