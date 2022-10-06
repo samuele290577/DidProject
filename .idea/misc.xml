@@ -65,10 +65,16 @@
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/icon_bio_prova.xml" value="0.2855" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/icon_sun.xml" value="0.2855" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/font/roboto_medium.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/activity_sign_in.xml" value="0.3255208333333333" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_add_friend_list.xml" value="0.3255208333333333" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_add_plant_to_garden.xml" value="0.12" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_already_friend_list.xml" value="0.3255208333333333" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_catalogue_plant.xml" value="0.4" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_friend_profile.xml" value="0.4" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_personal_garden_list.xml" value="0.3255208333333333" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_personal_plant.xml" value="0.3255208333333333" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_plant_category_list.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_plant_list.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_profile_edit.xml" value="0.4" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/plant_category_list_item.xml" value="0.25226449275362317" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/plant_list_item.xml" value="0.22826086956521738" />

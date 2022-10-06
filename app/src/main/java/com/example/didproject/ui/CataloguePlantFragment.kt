@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentCataloguePlantBinding
-import com.example.didproject.model.repository.PlantRepository
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.squareup.picasso.Picasso
 
