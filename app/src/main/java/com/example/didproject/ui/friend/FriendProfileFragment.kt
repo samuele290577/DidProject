@@ -16,6 +16,7 @@ import com.example.didproject.R
 import com.example.didproject.databinding.FragmentFriendProfileBinding
 import com.example.didproject.model.adapter.PersonalPlantItemAdapter
 import com.example.didproject.model.adapter.PlantCategoryAdapter
+import com.example.didproject.model.data.Neighbour
 import com.example.didproject.model.data.Plant
 import com.example.didproject.model.data.User
 import com.example.didproject.model.data.UserPlant
@@ -60,24 +61,23 @@ class FriendProfileFragment : Fragment() {
 
         val user = profileViewModel.user.value!!
 
-        var friend = User()
+        var friend = Neighbour()
 
-        if(arguments?.getBoolean("new")!!) {
-            friend=friendViewModel.searchUserById(arguments?.getString("id")!!)
-            user.friends.add(friend)
-            profileViewModel.updateProfile(user)
+
+        friend=friendViewModel.searchUserById(arguments?.getString("id")!!).toNeighbour()
+        user.friends[friend.id] = friend
+        profileViewModel.updateProfile(user,2)
+
+        profileViewModel.user.observe(viewLifecycleOwner) {
+            bio.text = it.friends[friend.id]?.bio
+            name.text = it.friends[friend.id]?.name
+            nickname.text = it.friends[friend.id]?.nickname
+            nOfPlant.text = it.friends[friend.id]?.plants?.size.toString()
+            garden.text = "Il giardino di ${it.friends[friend.id]?.nickname}"
+            Picasso.get().load(
+                Uri.parse(it.friends[friend.id]?.imageUri?:""))
+                .fit().centerCrop().into(image)
         }
-        else{
-            friend=profileViewModel.findFriendById(arguments?.getString("id")!!)
-        }
-
-        bio.text=friend.bio
-        name.text=friend.name
-        nickname.text=friend.nickname
-        nOfPlant.text=friend.plants.size.toString()
-        garden.text="Il giardino di ${friend.nickname}"
-        Picasso.get().load(Uri.parse(friend.imageUri)).fit().centerCrop().into(image)
-
 
         recyclerViewPersonalPlant.layoutManager = LinearLayoutManager(this.context)
         val plantList = mutableListOf<Plant>()
@@ -93,19 +93,16 @@ class FriendProfileFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.actionbar_delete -> {
-                        user.friends.remove(friend)
-                        profileViewModel.updateProfile(user)
                         MaterialAlertDialogBuilder(requireContext())
                             .setIcon(R.drawable.delete)
                             .setTitle("Elimina")
                             .setMessage("Vuoi eliminare ${friend.nickname} dai tuoi vicini?")
                             .setNeutralButton("Annulla") { _, _ ->
                                 // Respond to neutral button press
-                                user.friends.add(friend)
-                                profileViewModel.updateProfile(user)
                             }
                             .setPositiveButton("Conferma") { _, _ ->
-
+                                user.friends.remove(friend.id)
+                                profileViewModel.updateProfile(user,3)
                                 val navController = findNavController()
                                 navController.navigate(R.id.nav_friends)
                             }

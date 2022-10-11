@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.didproject.model.data.Neighbour
 import com.example.didproject.model.data.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -35,8 +36,14 @@ class ProfileViewModel : ViewModel() {
 
     }
 
-    fun updateProfile(user: User){
+    fun updateProfile(user: User, state:Int){
         writeUser(user)
+        when(state){
+            0->downloadPhoto()
+            1->getPersonalPlantsPhoto()
+            2->if(!_user.value?.friends.isNullOrEmpty())
+                downloadFriendPhoto()
+        }
     }
 
     private fun writeUser(user: User){
@@ -50,7 +57,8 @@ class ProfileViewModel : ViewModel() {
                 // Get Post object and use the values to update the UI
                 _user.value = dataSnapshot.getValue(User::class.java)?:user
                 downloadPhoto()
-                getFriendPhoto()
+                if(!_user.value?.friends.isNullOrEmpty())
+                    downloadFriendPhoto()
                 getPersonalPlantsPhoto()
                 // ...
             }
@@ -74,14 +82,14 @@ class ProfileViewModel : ViewModel() {
 
     }
 
-    private fun getFriendPhoto(){
-        _user.value?.friends?.forEach {
+    private fun downloadFriendPhoto(){
+        _user.value?.friends?.values?.forEach {
             val friendImagesRef: StorageReference = storageRef.child("profile/${it.id}")
             friendImagesRef.downloadUrl.addOnSuccessListener { uri->
                  it.imageUri = uri.toString()
                 _user.value=_user.value
             }.addOnFailureListener { _ ->
-                 it.imageUri = ""
+                _user.value=_user.value
             }
         }
     }
@@ -109,10 +117,6 @@ class ProfileViewModel : ViewModel() {
             }.addOnFailureListener{
                 _photo.value=Uri.parse("")
             }
-    }
-
-    fun findFriendById(id:String):User{
-        return _user.value?.friends?.find { it.id==id }!!
     }
 
     fun getAvailableArduinos() : Array<String> {

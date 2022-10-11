@@ -93,13 +93,13 @@ class EditProfileFragment : Fragment() {
             binding.nameField.text.toString(),
             binding.nicknameField.text.toString(),
             binding.bioField.text.toString(),
-            profileViewModel.user.value?.imageUri?:"",
             profileViewModel.user.value?.plants?:arrayListOf(),
-            profileViewModel.user.value?.friends?:arrayListOf(),
+            profileViewModel.user.value?.imageUri?:"",
+            profileViewModel.user.value?.friends?: mutableMapOf(),
             profileViewModel.user.value?.arduino?:mapOf()
             )
 
-        profileViewModel.updateProfile(profile)
+        profileViewModel.updateProfile(profile,0)
 
         super.onDestroyView()
     }

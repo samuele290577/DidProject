@@ -229,13 +229,13 @@ class AddPlantToGardenFragment : Fragment() {
                      .setPositiveButton("Conferma") { _, _ ->
 
                          user?.plants?.removeAt(pos)
-                         profileViewModel.updateProfile(user!!)
+                         profileViewModel.updateProfile(user!!,1)
                          findNavController().navigate(R.id.nav_garden)
                      }
                      .show()
 
              }
-         profileViewModel.updateProfile(user!!)
+         profileViewModel.updateProfile(user!!,1)
     }
 
     private fun showMenu(view: View){

@@ -44,7 +44,7 @@ class AlreadyFriendListFragment : Fragment(R.layout.fragment_already_friend_list
 
 
     private fun initialize(list:MutableList<User>) {
-        profileViewModel.user.value?.friends?.forEach { list.add(it) }
+        profileViewModel.user.value?.friends?.values?.forEach { list.add(it.toUser()) }
     }
 
 }

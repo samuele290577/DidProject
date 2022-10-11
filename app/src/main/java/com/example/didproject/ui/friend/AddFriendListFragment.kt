@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.model.adapter.FriendItemAdapter
+import com.example.didproject.model.data.Neighbour
 import com.example.didproject.model.data.User
 import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
@@ -49,7 +50,9 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
                     }
                     override fun onQueryTextChange(newText: String): Boolean {
                         if(newText.isNotEmpty()) {
-                            addFriendRecyclerView.adapter = FriendItemAdapter(updateSearchRecycleView(newText,friendList!!),true)
+                            addFriendRecyclerView.adapter = FriendItemAdapter(updateSearchRecycleView(newText,
+                                friendList?.values?.toList()!!
+                            ),true)
                         }
                         return false
                     }
@@ -65,7 +68,7 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
         addFriendRecyclerView.adapter = FriendItemAdapter(userList,false)
     }
 
-    private fun updateSearchRecycleView(name:String,friendList:ArrayList<User>): List<User> {
+    private fun updateSearchRecycleView(name:String,friendList:List<Neighbour>): List<User> {
         return friendViewModel.searchUser(name).filter { a-> !friendList.map { it.id }.contains(a.id) }
     }
 }

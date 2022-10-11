@@ -31,6 +31,7 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
 
             card.setOnClickListener {
                 val bundle = Bundle()
+                Navigation.findNavController(view = it).popBackStack()
                 if (plants) {
                     bundle.putString("plantName", bundleData)
 
