@@ -9,7 +9,6 @@ data class User(
     val plants: ArrayList<UserPlant> = arrayListOf(),
     var imageUri : String = "",
     val friends: MutableMap<String, Neighbour> = mutableMapOf(),
-    //TODO: is it convenient to save friends as user or it will be better as list of string?
     val arduino: Map<String, Arduino> = mapOf(),
 ){
     fun toMap(): Map<String, Any?> {

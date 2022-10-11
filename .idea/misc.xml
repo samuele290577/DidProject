@@ -22,7 +22,7 @@
         <entry key="../DidProject/app/src/main/res/layout/activity_main.xml" value="0.11197916666666667" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_add_friend_list.xml" value="0.1" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_add_plant_to_garden.xml" value="0.1" />
-        <entry key="../DidProject/app/src/main/res/layout/fragment_already_friend_list.xml" value="0.1" />
+        <entry key="../DidProject/app/src/main/res/layout/fragment_already_friend_list.xml" value="0.165" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_catalogue_plant.xml" value="0.25" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_edit_personal_plant.xml" value="0.1" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_friend_list.xml" value="0.1" />

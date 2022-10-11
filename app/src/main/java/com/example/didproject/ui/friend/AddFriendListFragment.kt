@@ -37,6 +37,7 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
         val friendList=profileViewModel.user.value?.friends
 
 
+
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.search_menu, menu)
@@ -65,8 +66,9 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
 
         addFriendRecyclerView.layoutManager = LinearLayoutManager(this.context)
         val userList = mutableListOf<User>()
-        addFriendRecyclerView.adapter = FriendItemAdapter(userList,false)
-    }
+        addFriendRecyclerView.adapter = FriendItemAdapter(updateSearchRecycleView("",
+            friendList?.values?.toList()!!
+        ),true)    }
 
     private fun updateSearchRecycleView(name:String,friendList:List<Neighbour>): List<User> {
         return friendViewModel.searchUser(name).filter { a-> !friendList.map { it.id }.contains(a.id) }
