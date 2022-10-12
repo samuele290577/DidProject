@@ -16,7 +16,7 @@ import com.example.didproject.R
 import com.example.didproject.model.getImageResourceId
 import com.squareup.picasso.Picasso
 
-class HomepageItemAdapter(private var data:List<String>, private var imageData: List<Uri>, private var bundleData:List<String>, private var plants:Boolean, private val status:Int=100) : RecyclerView.Adapter<HomepageItemAdapter.HomepageItemViewHolder>() {
+class HomepageItemAdapter(private var data:List<String>, private var imageData: List<Uri>, private var bundleData:List<String>, private var plants:Boolean, private val status:List<Int> = listOf()) : RecyclerView.Adapter<HomepageItemAdapter.HomepageItemViewHolder>() {
 
 
     class HomepageItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -68,7 +68,11 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
         }
 
         override fun onBindViewHolder(holder: HomepageItemViewHolder, position: Int) {
-            holder.bind(data[position], imageData[position], bundleData[position], plants, status)
+            if(plants)
+                holder.bind(data[position], imageData[position], bundleData[position], plants, status[position])
+            else
+                holder.bind(data[position], imageData[position], bundleData[position], plants, 100)
+
         }
 
         override fun getItemCount() = data.size

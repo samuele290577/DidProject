@@ -55,8 +55,8 @@ class HomeFragment : Fragment() {
         profileViewModel.user.observe(viewLifecycleOwner){ userValue ->
             user=userValue
             greetings.text = "Ciao, "+user.nickname+"!"
-            gardenList.adapter = HomepageItemAdapter(userValue.plants.map{it.nickname}, userValue.plants.map{ Uri.parse(it.customPhoto)}, userValue.plants.map{it.plantName},true)
-            friendList.adapter = HomepageItemAdapter(userValue.friends.values.map{it.nickname}, userValue.friends.values.map{ Uri.parse(it.imageUri) },user.friends.values.map { it.id },false)
+            gardenList.adapter = HomepageItemAdapter(userValue.plants.map{it.nickname}, userValue.plants.map{ Uri.parse(it.customPhoto)}, userValue.plants.map{it.plantName},true, userValue.plants.map { it.status })
+            friendList.adapter = HomepageItemAdapter(userValue.friends.values.map{it.nickname}, userValue.friends.values.map{ Uri.parse(it.imageUri) },userValue.friends.values.map { it.id },false)
         }
 
         //TODO: aggiungere citazioni
