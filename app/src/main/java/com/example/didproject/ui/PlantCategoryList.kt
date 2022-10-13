@@ -50,7 +50,7 @@ class PlantCategoryList : Fragment(R.layout.fragment_plant_category_list) {
                 menuInflater.inflate(R.menu.search_menu, menu)
 
                 val sv = menu.findItem(R.id.action_search).actionView as SearchView
-                sv.queryHint="Search by name"
+                sv.queryHint="Cerca una pianta"
                 sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String): Boolean {
                         return false
@@ -61,7 +61,7 @@ class PlantCategoryList : Fragment(R.layout.fragment_plant_category_list) {
                         }
                         else
                             recyclerViewCatalogue.alpha=1f
-                        if(newText.length>=3) {
+                        if(newText.length>=2) {
                             //if category show, hide
                             if(recyclerViewCatalogue.isVisible) {
                                 recyclerViewCatalogue.visibility = View.GONE

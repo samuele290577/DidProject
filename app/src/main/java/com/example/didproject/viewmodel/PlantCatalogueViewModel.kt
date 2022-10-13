@@ -16,7 +16,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 
 
-class PlantCatalogueViewModel( ) : ViewModel() {
+class PlantCatalogueViewModel : ViewModel() {
 
     private val dr = Firebase.database.reference
     private val storageRef: StorageReference = Firebase.storage.reference
@@ -29,14 +29,14 @@ class PlantCatalogueViewModel( ) : ViewModel() {
             readList()
     }
 
-    fun getByInputName(name: String):List<Plant>{
-        val list = plantList.value?.filter{ it.name.contains(name)}!!
-        return list
+    fun getByInputName(name: String): List<Plant> {
+        return plantList.value?.filter {
+            it.name.lowercase().contains(name.lowercase()) ||
+                    it.scName.lowercase().contains(name.lowercase()) }!!
     }
 
-    fun getByCategory(category: String):List<Plant>{
-        val list=plantList.value?.filter { it.category==category }?.toList()!!
-        return list
+    fun getByCategory(category: String): List<Plant> {
+        return plantList.value?.filter { it.category == category }?.toList()!!
     }
 
     fun getByName(name:String):Plant{
@@ -47,11 +47,10 @@ class PlantCatalogueViewModel( ) : ViewModel() {
         val userEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val plantListTmp = arrayListOf<Plant>()
-                val plantNamesListTmp = arrayListOf<String>()
                 // Get Post object and use the values to update the UI
                 dataSnapshot.children.forEach { a->
                     val plantTmp=a.getValue(Plant::class.java)!!
-                    plantListTmp.add(plantTmp);
+                    plantListTmp.add(plantTmp)
                 }
                 downloadPlantPhoto(plantListTmp)
                 _plantList.value=plantListTmp
