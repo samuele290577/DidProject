@@ -27,6 +27,8 @@ class ProfileViewModel : ViewModel() {
     val photo: LiveData<Uri> = _photo
     val user: LiveData<User> = _user
     private val storageRef: StorageReference = Firebase.storage.reference
+    private val _personalNeighbourPlantPhoto = MutableLiveData<List<Uri>>()
+    val personalNeighbourPlantPhoto: LiveData<List<Uri>> = _personalNeighbourPlantPhoto
 
 
     init {
@@ -121,6 +123,20 @@ class ProfileViewModel : ViewModel() {
 
     fun getAvailableArduinos() : Array<String> {
         return _user.value?.arduino?.filter { a->a.value.plantIndex<=0 }?.keys?.toTypedArray()?: arrayOf()
+    }
+
+    fun downloadPersonalPlantNeighbour(id: String){
+        val neighbour = user.value?.friends!![id]
+        val plantPhotoList : MutableList<Uri> = mutableListOf()
+        neighbour?.plants?.forEachIndexed { i, _ ->
+            val profileImagesRef: StorageReference = storageRef.child("profile/${_user.value?.id}/${i}")
+            profileImagesRef.downloadUrl.addOnSuccessListener {
+                plantPhotoList[i]=it
+                _personalNeighbourPlantPhoto.value = plantPhotoList
+            }.addOnFailureListener{
+                _photo.value=Uri.parse("")
+            }
+        }
     }
 
 }

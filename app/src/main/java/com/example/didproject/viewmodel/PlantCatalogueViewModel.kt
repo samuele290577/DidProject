@@ -1,6 +1,7 @@
 package com.example.didproject.viewmodel
 
 import android.content.ContentValues
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,6 +22,8 @@ class PlantCatalogueViewModel( ) : ViewModel() {
     private val storageRef: StorageReference = Firebase.storage.reference
     private val _plantList = MutableLiveData<ArrayList<Plant>>()
     val plantList: LiveData<ArrayList<Plant>> = _plantList
+    private val _photoList = MutableLiveData<Map<String, Uri>>()
+    val photoList: LiveData<Map<String, Uri>> = _photoList
 
     init {
             readList()
@@ -63,15 +66,14 @@ class PlantCatalogueViewModel( ) : ViewModel() {
         dr.child("plants").addListenerForSingleValueEvent(userEventListener)
     }
 
-    private fun downloadPlantPhoto(list:List<Plant>){
+    private fun downloadPlantPhoto(list:List<Plant>) {
+        val map : MutableMap<String,Uri> = mutableMapOf()
         list.forEach {
-            if(it.photo=="") {
-                val plantImagesRef: StorageReference = storageRef.child("catalogue/${it.name}")
-                plantImagesRef.downloadUrl.addOnSuccessListener { res ->
-                    it.photo = res.toString()
-                }
+            val plantImagesRef: StorageReference = storageRef.child("catalogue/${it.name}")
+            plantImagesRef.downloadUrl.addOnSuccessListener { res ->
+                map[it.name]=res
+                _photoList.value=map
             }
         }
     }
-
 }

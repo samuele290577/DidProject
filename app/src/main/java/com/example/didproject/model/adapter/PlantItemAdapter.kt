@@ -13,7 +13,7 @@ import com.example.didproject.R
 import com.example.didproject.model.data.Plant
 import com.squareup.picasso.Picasso
 
-class PlantItemAdapter(private var data:List<Plant>) : RecyclerView.Adapter<PlantItemAdapter.PlantItemViewHolder>() {
+class PlantItemAdapter(private var data:List<Plant>, private var photoMap :Map<String,Uri>) : RecyclerView.Adapter<PlantItemAdapter.PlantItemViewHolder>() {
 
     class PlantItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val plantCard = v.findViewById<CardView>(R.id.plant_card)
@@ -24,13 +24,13 @@ class PlantItemAdapter(private var data:List<Plant>) : RecyclerView.Adapter<Plan
         private val plantSun: TextView = v.findViewById(R.id.plant_card_sun)
         private val plantImage: ImageView = v.findViewById(R.id.plant_card_image)
 
-        fun bind(plant: Plant) {
+        fun bind(plant: Plant, photo:Uri) {
             plantName.text=plant.name
             plantScientificName.text=plant.scName
             plantDifficulty.text=plant.difficulty.toString()
             plantSun.text=plant.sun.toString()
             plantHumidity.text=plant.humidity.toString()
-            Picasso.get().load(Uri.parse(plant.photo)).fit().centerCrop().into(plantImage)
+            Picasso.get().load(photo).fit().centerCrop().into(plantImage)
 
 
             plantCard.setOnClickListener {
@@ -54,7 +54,7 @@ class PlantItemAdapter(private var data:List<Plant>) : RecyclerView.Adapter<Plan
         }
 
         override fun onBindViewHolder(holder: PlantItemViewHolder, position: Int) {
-            holder.bind(data[position])
+            holder.bind(data[position], photoMap[data[position].name]?:Uri.parse(""))
         }
 
         override fun getItemCount() = data.size

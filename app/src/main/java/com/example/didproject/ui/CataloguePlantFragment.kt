@@ -52,7 +52,10 @@ class CataloguePlantFragment : Fragment() {
         humidity.text = plant.humidity.toString()
         difficulty.text = plant.difficulty.toString()
         sun.text = plant.sun.toString()
-        Picasso.get().load(Uri.parse(plant.photo)).fit().centerCrop().into(image)
+        plantCatalogueViewModel.photoList.observe(viewLifecycleOwner){
+            if(it.containsKey(plant.name))
+                Picasso.get().load(it[plant.name]).fit().centerCrop().into(image)
+        }
 
 
         labelInfo.setOnClickListener {

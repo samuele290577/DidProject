@@ -26,9 +26,9 @@ class PlantListFragment : Fragment(R.layout.fragment_plant_list) {
 
         // configuring recyclerview
         recyclerView.layoutManager = LinearLayoutManager(this.context)
-        var plantList = mutableListOf<Plant>()
+        val plantList = mutableListOf<Plant>()
         initialize(plantList, arguments?.getString(arguments?.getString("key"))!!)
-        recyclerView.adapter = PlantItemAdapter(plantList)
+        recyclerView.adapter = PlantItemAdapter(plantList,plantCatalogueViewModel.photoList.value!!)
 
 
     }

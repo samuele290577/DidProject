@@ -68,7 +68,7 @@ class PlantCategoryList : Fragment(R.layout.fragment_plant_category_list) {
                                 recyclerViewPlant.visibility = View.VISIBLE
                             }
                             //display
-                            recyclerViewPlant.adapter = PlantItemAdapter(updateSearchRecycleView(newText))
+                            recyclerViewPlant.adapter = PlantItemAdapter(updateSearchRecycleView(newText),plantCatalogueViewModel.photoList.value!!)
                         }
                         else{
                             if(!recyclerViewCatalogue.isVisible) {
