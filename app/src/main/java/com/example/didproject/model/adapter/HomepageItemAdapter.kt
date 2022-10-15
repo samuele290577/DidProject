@@ -38,18 +38,17 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
             Picasso.get().load(imageData).fit().centerCrop().into(itemImage)
 
             card.setOnClickListener {
+                val navController = Navigation.findNavController(view = it)
                 val bundle = Bundle()
-                Navigation.findNavController(view = it).popBackStack()
                 if (plants) {
                     bundle.putString("plantName", bundleData)
 
-                    Navigation.findNavController(view = it)
-                        .navigate(R.id.personalPlantFragment, bundle)
+                        navController.navigate(R.id.personalPlantFragment, bundle)
+                    Navigation
                 }
                 else{
                     bundle.putString("id", bundleData)
-                    Navigation.findNavController(view = it)
-                        .navigate(R.id.friendProfileFragment, bundle)
+                    navController.navigate(R.id.friendProfileFragment, bundle)
                 }
             }
         }

@@ -25,7 +25,6 @@ class PersonalPlantFragment : Fragment() {
     private lateinit var friendViewModel: FriendViewModel
     private lateinit var catalogueViewModel: PlantCatalogueViewModel
 
-    //TODO: problema backstack
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
