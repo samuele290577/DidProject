@@ -24,11 +24,11 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var friendViewModel: FriendViewModel
     private lateinit var addFriendRecyclerView: RecyclerView
-    //TODO: non carica subito le immagini
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val menuHost: MenuHost = requireActivity()
+        var search=false
 
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
         friendViewModel = ViewModelProvider(requireActivity())[FriendViewModel::class.java]
@@ -37,6 +37,7 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
         val friendList=profileViewModel.user.value?.friends
 
 
+        addFriendRecyclerView.layoutManager = LinearLayoutManager(this.context)
 
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -50,11 +51,13 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
                         return false
                     }
                     override fun onQueryTextChange(newText: String): Boolean {
-                        if(newText.isNotEmpty()) {
-                            addFriendRecyclerView.adapter = FriendItemAdapter(updateSearchRecycleView(newText,
-                                friendList?.values?.toList()!!
-                            ),true)
-                        }
+                            search=true
+                                   addFriendRecyclerView.adapter = FriendItemAdapter(
+                                        updateSearchRecycleView(
+                                            newText,
+                                            friendList?.values?.toList()!!
+                                        ), friendViewModel.neighboursPhoto.value?: mapOf(), true
+                                    )
                         return false
                     }
                 })
@@ -64,10 +67,15 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        addFriendRecyclerView.layoutManager = LinearLayoutManager(this.context)
-        addFriendRecyclerView.adapter = FriendItemAdapter(updateSearchRecycleView("",
-            friendList?.values?.toList()!!
-        ),true)    }
+        addFriendRecyclerView.adapter = FriendItemAdapter(updateSearchRecycleView("",friendList?.values?.toList()!!),
+            mapOf(),true )
+
+        friendViewModel.neighboursPhoto.observe(viewLifecycleOwner){
+            if(!search && it!=null)
+                addFriendRecyclerView.adapter = FriendItemAdapter(updateSearchRecycleView("",friendList.values.toList()),it,true )
+        }
+
+ }
 
     private fun updateSearchRecycleView(name:String,friendList:List<Neighbour>): List<User> {
         return friendViewModel.searchUser(name).filter { a-> !friendList.map { it.id }.contains(a.id) }

@@ -34,6 +34,7 @@ class PersonalPlantFragment : Fragment() {
         catalogueViewModel = ViewModelProvider(requireActivity())[PlantCatalogueViewModel::class.java]
         _binding = FragmentPersonalPlantBinding.inflate(inflater, container, false)
 
+        //TODO: add image
         val menuHost: MenuHost = requireActivity()
         val root: View = binding.root
 
@@ -49,7 +50,7 @@ class PersonalPlantFragment : Fragment() {
         val date : TextView = binding.plantDatePersonal
         val location : TextView = binding.plantLocationPersonal
 
-        var user = User()
+        var user : User
 
         if(arguments?.getString("id").isNullOrEmpty()) {
                 user = profileViewModel.user.value!!
@@ -64,7 +65,6 @@ class PersonalPlantFragment : Fragment() {
                         R.id.actionbar_edit -> {
                             val navController = findNavController()
                             val bundle = Bundle()
-                            var i=0
                             bundle.putBoolean("edit",true)
                             bundle.putString("name",arguments?.getString("plantName")!!)
                             val key = user.plants.filter {

@@ -1,6 +1,5 @@
 package com.example.didproject.ui
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentHomeBinding
 import com.example.didproject.model.adapter.HomepageItemAdapter
-import com.example.didproject.model.data.User
 import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
 
@@ -33,7 +31,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         //TODO:problem with adding plant sometimes (list of images)
-        //TODO:problem update plant images
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
         friendViewModel = ViewModelProvider(requireActivity())[FriendViewModel::class.java]
 
@@ -46,14 +43,14 @@ class HomeFragment : Fragment() {
         val friendButton : Button = binding.homepageFriends
         val gardenList : RecyclerView = binding.recyclerViewHomepagePlantList
         val friendList : RecyclerView = binding.recyclerViewHomepageFriendList
-        var user = User()
+
         val navController = findNavController()
 
 
-        profileViewModel.user.observe(viewLifecycleOwner){ userValue ->
-            user=userValue
-            greetings.text = "Ciao, "+user.nickname+"!"
-            friendList.adapter = HomepageItemAdapter(userValue.friends.values.map{it.nickname}, userValue.friends.values.map{ Uri.parse(it.imageUri) },userValue.friends.values.map { it.id },false)
+        profileViewModel.neighboursPhoto.observe(viewLifecycleOwner){
+            val userValue=profileViewModel.user.value!!
+            greetings.text = "Ciao, "+userValue.nickname+"!"
+            friendList.adapter = HomepageItemAdapter(userValue.friends.values.map{it.nickname}, it.values.toList(),userValue.friends.values.map { it.id },false)
             friendList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
         }
 

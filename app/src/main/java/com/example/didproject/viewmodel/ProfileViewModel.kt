@@ -28,6 +28,8 @@ class ProfileViewModel : ViewModel() {
     private val storageRef: StorageReference = Firebase.storage.reference
     private val _personalNeighbourPlantPhoto = MutableLiveData<HashMap<String,Uri>>()
     val personalNeighbourPlantPhoto: LiveData<HashMap<String,Uri>> = _personalNeighbourPlantPhoto
+    private val _neighboursPhoto = MutableLiveData<Map<String,Uri>>()
+    val neighboursPhoto: LiveData<Map<String,Uri>> = _neighboursPhoto
     private val _personalPlantPhoto = MutableLiveData<HashMap<String,Uri>>()
     val personalPlantPhoto: LiveData<HashMap<String,Uri>> = _personalPlantPhoto
 
@@ -83,19 +85,24 @@ class ProfileViewModel : ViewModel() {
             contentType = "image/jpeg"
         }
         profileImagesRef.putFile(uri, metadata).addOnSuccessListener{
-            downloadPhoto()
+            if (userFlag) downloadPhoto()
+            else downloadPersonalPlant()
         }
 
     }
 
     private fun downloadFriendPhoto(){
+        val map : MutableMap<String, Uri> = mutableMapOf()
         _user.value?.friends?.values?.forEach {
             val friendImagesRef: StorageReference = storageRef.child("profile/${it.id}")
             friendImagesRef.downloadUrl.addOnSuccessListener { uri->
-                 it.imageUri = uri.toString()
-                _user.value=_user.value
-            }.addOnFailureListener {
-                _user.value=_user.value
+                 map[it.id]=uri
+                 if(map.size==_user.value?.friends?.size)
+                     _neighboursPhoto.value=map
+            }.addOnFailureListener { _ ->
+                map[it.id]=Uri.parse("")
+                if(map.size==_user.value?.friends?.size)
+                    _neighboursPhoto.value=map
             }
         }
     }

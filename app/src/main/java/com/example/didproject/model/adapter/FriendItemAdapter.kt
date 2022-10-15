@@ -16,7 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 
 
-class FriendItemAdapter(private var data:List<User>, private var newFriend:Boolean) : RecyclerView.Adapter<FriendItemAdapter.FriendItemViewHolder>() {
+class FriendItemAdapter(private var data:List<User>, private var images:Map<String,Uri>, private var newFriend:Boolean) : RecyclerView.Adapter<FriendItemAdapter.FriendItemViewHolder>() {
 
     class FriendItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val userCard = v.findViewById<CardView>(R.id.friend_card)
@@ -25,11 +25,11 @@ class FriendItemAdapter(private var data:List<User>, private var newFriend:Boole
         private val userNofPlants: TextView = v.findViewById(R.id.friend_profile_n_of_plants)
         private val userImage: ImageView = v.findViewById(R.id.friend_card_image)
 
-        fun bind(user: User, newFriend: Boolean) {
+        fun bind(user: User, uri:Uri, newFriend: Boolean) {
             userName.text=user.name
             userNickname.text=user.nickname
             userNofPlants.text=user.plants.size.toString()
-            Picasso.get().load(Uri.parse(user.imageUri)).fit().centerCrop().into(userImage)
+            Picasso.get().load(uri).fit().centerCrop().into(userImage)
             userCard.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("id", user.id)
@@ -67,7 +67,7 @@ class FriendItemAdapter(private var data:List<User>, private var newFriend:Boole
         }
 
         override fun onBindViewHolder(holder: FriendItemViewHolder, position: Int) {
-            holder.bind(data[position], newFriend)
+            holder.bind(data[position], images[data[position].id]?: Uri.parse(""), newFriend)
         }
 
         override fun getItemCount() = data.size

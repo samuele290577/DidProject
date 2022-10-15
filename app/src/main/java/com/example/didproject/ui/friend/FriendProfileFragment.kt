@@ -1,6 +1,5 @@
 package com.example.didproject.ui.friend
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuHost
@@ -36,7 +35,6 @@ class FriendProfileFragment : Fragment() {
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
         friendViewModel = ViewModelProvider(requireActivity())[FriendViewModel::class.java]
         plantsViewModel = ViewModelProvider(requireActivity())[PlantCatalogueViewModel::class.java]
-        //TODO: photo problem and connection to a garden page???
 
         val menuHost: MenuHost = requireActivity()
 
@@ -68,8 +66,12 @@ class FriendProfileFragment : Fragment() {
             nickname.text = it.friends[friend.id]?.nickname
             nOfPlant.text = it.friends[friend.id]?.plants?.size.toString()
             garden.text = "Il giardino di ${it.friends[friend.id]?.nickname}"
+        }
+
+        profileViewModel.neighboursPhoto.observe(viewLifecycleOwner){
+            if(it.containsKey(friend.id))
             Picasso.get().load(
-                Uri.parse(it.friends[friend.id]?.imageUri?:""))
+                it[friend.id])
                 .fit().centerCrop().into(image)
         }
 

@@ -39,13 +39,16 @@ class AlreadyFriendListFragment : Fragment(R.layout.fragment_already_friend_list
 
         alreadyFriendRecyclerView.layoutManager = LinearLayoutManager(this.context)
         val userList = mutableListOf<User>()
-        if(profileViewModel.user.value?.friends.isNullOrEmpty())
-            noNeighbours.visibility=View.VISIBLE
+        if (profileViewModel.user.value?.friends.isNullOrEmpty())
+            noNeighbours.visibility = View.VISIBLE
 
         initialize(userList)
-        alreadyFriendRecyclerView.adapter = FriendItemAdapter(userList,false)
+        profileViewModel.neighboursPhoto.observe(viewLifecycleOwner) {
+            if(it!=null)
+                alreadyFriendRecyclerView.adapter =
+                    FriendItemAdapter(userList, it, false)
+        }
     }
-
 
     private fun initialize(list:MutableList<User>) {
         profileViewModel.user.value?.friends?.values?.forEach { list.add(it.toUser()) }

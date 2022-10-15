@@ -25,6 +25,9 @@ class FriendViewModel : ViewModel() {
     private val _users = MutableLiveData<ArrayList<User>>()
     private val userId = FirebaseAuth.getInstance().currentUser?.email?.replace(".",",")
     val users: LiveData<ArrayList<User>> = _users
+    private val _neighboursPhoto = MutableLiveData<Map<String,Uri>>()
+    val neighboursPhoto: LiveData<Map<String,Uri>> = _neighboursPhoto
+
 
     init {
         readAllUsers()
@@ -60,12 +63,19 @@ class FriendViewModel : ViewModel() {
     }
 
     private fun downloadPhoto(list:List<User>)   {
+        val map = mutableMapOf<String,Uri>()
         list.forEach {
-            val profileImagesRef: StorageReference = storageRef.child("profile/${it.id}")
-            profileImagesRef.downloadUrl.addOnSuccessListener { res ->
-                it.imageUri=res.toString()
-            }.addOnFailureListener { _ ->
-                it.imageUri = ""
+            if(neighboursPhoto.value?.containsKey(it.id) != true) {
+                val profileImagesRef: StorageReference = storageRef.child("profile/${it.id}")
+                profileImagesRef.downloadUrl.addOnSuccessListener { res ->
+                    map[it.id] = res
+                    if(map.size==list.size)
+                        _neighboursPhoto.value = map
+                }.addOnFailureListener { _ ->
+                    map[it.id] = Uri.parse("")
+                    if(map.size==list.size)
+                        _neighboursPhoto.value = map
+                }
             }
         }
     }

@@ -31,7 +31,6 @@ import kotlin.math.abs
 
 class AddPlantToGardenFragment : Fragment() {
 
-    //TODO: add image management
 
     private var _binding: FragmentAddPlantToGardenBinding? = null
     private val binding get() = _binding!!
@@ -56,8 +55,7 @@ class AddPlantToGardenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        //TODO: problems with what the text is showing vs what it is supposed to show
-        //TODO: photo
+        //TODO: problems with what the text is showing vs what it is supposed to show + checks
 
         _binding = FragmentAddPlantToGardenBinding.inflate(inflater, container, false)
 
