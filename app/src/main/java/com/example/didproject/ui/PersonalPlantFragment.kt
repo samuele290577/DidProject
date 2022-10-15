@@ -2,17 +2,16 @@ package com.example.didproject.ui
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import android.widget.TextView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentPersonalPlantBinding
 import com.example.didproject.model.data.User
-import com.example.didproject.model.data.UserPlant
 import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
@@ -26,6 +25,7 @@ class PersonalPlantFragment : Fragment() {
     private lateinit var friendViewModel: FriendViewModel
     private lateinit var catalogueViewModel: PlantCatalogueViewModel
 
+    //TODO: problema backstack
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -68,12 +68,10 @@ class PersonalPlantFragment : Fragment() {
                             var i=0
                             bundle.putBoolean("edit",true)
                             bundle.putString("name",arguments?.getString("plantName")!!)
-                            for(u:UserPlant  in user.plants) {
-                                if(u.plantName==arguments?.getString("plantName")!!)
-                                    break;
-                                i++
-                            }
-                            bundle.putInt("pos",i)
+                            val key = user.plants.filter {
+                                it.value.plantName == arguments?.getString("plantName")!!
+                            }.keys.first()
+                            bundle.putString("key",key)
                             navController.navigate(R.id.addPlantToGardenFragment,bundle)
                             return true
                         }
@@ -86,7 +84,8 @@ class PersonalPlantFragment : Fragment() {
             user = friendViewModel.searchUserById(arguments?.getString("id")!!)
         }
 
-        val userPlant = user.plants.first { it.plantName == arguments?.getString("plantName")!! }
+        //????????????????
+        val userPlant = user.plants.values.first { it.plantName == arguments?.getString("plantName")!! }
         location.text=userPlant.location
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = userPlant.date

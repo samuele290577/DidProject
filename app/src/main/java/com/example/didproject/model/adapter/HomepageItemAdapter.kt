@@ -6,18 +6,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
-import com.example.didproject.model.getImageResourceId
 import com.squareup.picasso.Picasso
 
 class HomepageItemAdapter(private var data:List<String>, private var imageData: List<Uri>, private var bundleData:List<String>, private var plants:Boolean, private val status:List<Int> = listOf()) : RecyclerView.Adapter<HomepageItemAdapter.HomepageItemViewHolder>() {
-
 
     class HomepageItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val card = v.findViewById<CardView>(R.id.homepage_card)
@@ -30,11 +28,11 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
             itemName.text = name
 
             if(status>50)
-                itemLayout.setBackgroundColor(ContextCompat.getColor(card.context, R.color.primary_main))
+                itemLayout.setBackgroundColor(Color.parseColor("#0b3b2d"))
             else if(status in 25..51)
-                itemLayout.setBackgroundColor(ContextCompat.getColor(card.context, R.color.secondary))
+                itemLayout.setBackgroundColor(Color.parseColor("#f5bd3d"))
             else
-                itemLayout.setBackgroundColor(ContextCompat.getColor(card.context, R.color.black))
+                itemLayout.setBackgroundColor(Color.parseColor("#FF000000"))
 
 
             Picasso.get().load(imageData).fit().centerCrop().into(itemImage)
@@ -72,7 +70,6 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
                 holder.bind(data[position], imageData[position], bundleData[position], plants, status[position])
             else
                 holder.bind(data[position], imageData[position], bundleData[position], plants, 100)
-
         }
 
         override fun getItemCount() = data.size

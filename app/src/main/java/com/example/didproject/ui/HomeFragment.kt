@@ -8,17 +8,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentHomeBinding
 import com.example.didproject.model.adapter.HomepageItemAdapter
-import com.example.didproject.model.adapter.PlantCategoryAdapter
 import com.example.didproject.model.data.User
 import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
@@ -36,7 +32,8 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
+        //TODO:problem with adding plant sometimes (list of images)
+        //TODO:problem update plant images
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
         friendViewModel = ViewModelProvider(requireActivity())[FriendViewModel::class.java]
 
@@ -52,11 +49,18 @@ class HomeFragment : Fragment() {
         var user = User()
         val navController = findNavController()
 
+
         profileViewModel.user.observe(viewLifecycleOwner){ userValue ->
             user=userValue
             greetings.text = "Ciao, "+user.nickname+"!"
-            gardenList.adapter = HomepageItemAdapter(userValue.plants.map{it.nickname}, userValue.plants.map{ Uri.parse(it.customPhoto)}, userValue.plants.map{it.plantName},true, userValue.plants.map { it.status })
             friendList.adapter = HomepageItemAdapter(userValue.friends.values.map{it.nickname}, userValue.friends.values.map{ Uri.parse(it.imageUri) },userValue.friends.values.map { it.id },false)
+            friendList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
+        }
+
+        profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner){ map ->
+            val user = profileViewModel.user.value!!
+            gardenList.adapter = HomepageItemAdapter(user.plants.values.map{it.nickname}, map.values.toList(), user.plants.values.map{it.plantName},true, user.plants.values.map { it.status })
+            gardenList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
         }
 
         //TODO: aggiungere citazioni
@@ -72,8 +76,6 @@ class HomeFragment : Fragment() {
             navController.navigate(R.id.nav_friends)
         }
 
-        gardenList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
-        friendList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
 
 
         return root

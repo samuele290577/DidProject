@@ -19,12 +19,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.didproject.BuildConfig
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentAddPlantToGardenBinding
+import com.example.didproject.model.data.Plant
 import com.example.didproject.model.data.UserPlant
+import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import java.io.File
 import java.util.*
+import kotlin.math.abs
 
 class AddPlantToGardenFragment : Fragment() {
 
@@ -36,14 +39,16 @@ class AddPlantToGardenFragment : Fragment() {
     private lateinit var getPhotoImage : ActivityResultLauncher<Uri>
     private lateinit var getGalleryImage : ActivityResultLauncher<String>
     private lateinit var profileViewModel : ProfileViewModel
+    private lateinit var catalogueViewModel : PlantCatalogueViewModel
     private lateinit var uriTmp : Uri
-    private var lastUri : Uri = Uri.parse("")
 
+    private lateinit var plant : Plant
     private val possibleLocation : Array<String> = arrayOf("Balcone","Giardino","Interno")
     private var location = -1
     private var dateInMillis : Long = 0
     private var arduinoSelected = -1
     private lateinit var possibleArduino : Array<String>
+    private lateinit var newUri: Uri
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,8 +60,6 @@ class AddPlantToGardenFragment : Fragment() {
         //TODO: photo
 
         _binding = FragmentAddPlantToGardenBinding.inflate(inflater, container, false)
-
-        var plantToEdit : UserPlant
 
         val root: View = binding.root
         val dateButton = binding.DayButton
@@ -74,25 +77,43 @@ class AddPlantToGardenFragment : Fragment() {
         val navController = findNavController()
         val menuHost: MenuHost = requireActivity()
 
-        var pos=0
+        var key=""
+        newUri=Uri.parse("")
         val edit=arguments?.getBoolean("edit")?:false
 
+
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
+        catalogueViewModel = ViewModelProvider(requireActivity())[PlantCatalogueViewModel::class.java]
         possibleArduino=profileViewModel.getAvailableArduinos()
 
-        plantName.text = arguments?.getString("name")
+        var boolCatalogue=true
+        val plantNameCatalogue = arguments?.getString("name")
+        plantName.text = plantNameCatalogue
+        plant=catalogueViewModel.getByName(arguments?.getString("name")!!)
         if(edit){
+            boolCatalogue=false
             deleteButton.visibility=View.VISIBLE
-            pos=arguments?.getInt("pos")!!
-            date.timeInMillis=profileViewModel.user.value?.plants?.get(pos)?.date!!
-            location=possibleLocation.indexOf(profileViewModel.user.value?.plants?.get(pos)?.location!!)
-            nickname.setText(profileViewModel.user.value?.plants?.get(pos)?.nickname!!)
+            key=arguments?.getString("key")!!
+            date.timeInMillis=profileViewModel.user.value?.plants?.get(key)?.date!!
+            location=possibleLocation.indexOf(profileViewModel.user.value?.plants?.get(key)?.location!!)
+            nickname.setText(profileViewModel.user.value?.plants?.get(key)?.nickname!!)
+            profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner) {
+                if (it.containsKey(key))
+                    Picasso.get().load(it[key]).fit().centerCrop().into(plantPersonalImage)
+                else
+                    boolCatalogue=true
+            }
         }
+        else if(boolCatalogue){
+        catalogueViewModel.photoList.observe(viewLifecycleOwner) {
+            if(it.containsKey(plantNameCatalogue))
+                Picasso.get().load(it[plantNameCatalogue]).fit().centerCrop().into(plantPersonalImage)
+        }}
 
         getPhotoImage = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
             if (isSuccess) {
                 uriTmp.let { uri ->
-                    lastUri=uri
+                    newUri=uri
                     Picasso.get().load(uri).fit().centerCrop().into(plantPersonalImage)
                 }
             }
@@ -101,7 +122,7 @@ class AddPlantToGardenFragment : Fragment() {
         getGalleryImage = registerForActivityResult(
             ActivityResultContracts.GetContent()){
             if(it!=null) {
-                lastUri = it
+                newUri=it
                 Picasso.get().load(it).fit().centerCrop().into(plantPersonalImage)
             }
         }
@@ -164,7 +185,7 @@ class AddPlantToGardenFragment : Fragment() {
         }
 
         deleteButton.setOnClickListener {
-            savePersonalPlantData(edit,true,pos)
+            savePersonalPlantData(edit,true,key)
         }
 
         //save in db
@@ -176,7 +197,7 @@ class AddPlantToGardenFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.actionbar_check -> {
-                        savePersonalPlantData(edit,false,pos)
+                        savePersonalPlantData(edit,false,key)
 
                         navController.navigate(R.id.nav_home)
                         return true
@@ -191,31 +212,32 @@ class AddPlantToGardenFragment : Fragment() {
         return root
     }
 
-     fun savePersonalPlantData(edit: Boolean, delete:Boolean=false, pos:Int=0) {
+     fun savePersonalPlantData(edit: Boolean, delete:Boolean=false, key:String) {
          val user = profileViewModel.user.value
          if(location==-1)
              location=0
          val userPlant = UserPlant(arguments?.getString("name")!!,
              dateInMillis,
              binding.NicknamePlantEdit.text.toString(),
-             lastUri.toString(),
+             plant,
              possibleLocation[location],
              100)
+
          if(!edit) {
 
-             user?.plants?.add(userPlant)
+             user?.plants!![abs(userPlant.hashCode()).toString()]=userPlant
              if(arduinoSelected!=-1)
-                 if(user?.arduino != null)
-                 user.arduino[possibleArduino[arduinoSelected]]?.plantIndex= user.plants.size+1
+                 user.arduino[possibleArduino[arduinoSelected]]?.plantIndex= abs(userPlant.hashCode())+1
+             if(newUri != Uri.parse(""))
+                 profileViewModel.uploadPhoto(newUri, false, abs(userPlant.hashCode()).toString())
          }
          else
              if(!delete) {
-                 user?.plants?.removeAt(pos)
-                 user?.plants?.add(pos,userPlant)
+                 user?.plants!![key]=userPlant
                  if(arduinoSelected!=-1)
-                     if(user?.arduino != null)
-                         user.arduino[possibleArduino[arduinoSelected]]?.plantIndex= pos+1
-
+                     user.arduino[possibleArduino[arduinoSelected]]?.plantIndex= key.toInt()+1
+                 if(newUri != Uri.parse(""))
+                     profileViewModel.uploadPhoto(newUri, false, key)
              }
             else {
                  MaterialAlertDialogBuilder(requireContext())
@@ -228,7 +250,7 @@ class AddPlantToGardenFragment : Fragment() {
                      }
                      .setPositiveButton("Conferma") { _, _ ->
 
-                         user?.plants?.removeAt(pos)
+                         user?.plants?.remove(key)
                          profileViewModel.updateProfile(user!!,1)
                          findNavController().navigate(R.id.nav_garden)
                      }

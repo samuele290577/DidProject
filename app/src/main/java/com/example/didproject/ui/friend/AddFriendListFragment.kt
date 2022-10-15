@@ -24,7 +24,7 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var friendViewModel: FriendViewModel
     private lateinit var addFriendRecyclerView: RecyclerView
-
+    //TODO: non carica subito le immagini
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -65,7 +65,6 @@ class AddFriendListFragment : Fragment(R.layout.fragment_add_friend_list) {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         addFriendRecyclerView.layoutManager = LinearLayoutManager(this.context)
-        val userList = mutableListOf<User>()
         addFriendRecyclerView.adapter = FriendItemAdapter(updateSearchRecycleView("",
             friendList?.values?.toList()!!
         ),true)    }

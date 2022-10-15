@@ -4,7 +4,7 @@ data class UserPlant(
     val plantName: String = "",
     var date: Long = 0,
     var nickname: String = "",
-    var customPhoto: String = "",
+    var plant : Plant = Plant(),
     var location: String = "",
     var status: Int = 100,
 ) {
@@ -13,7 +13,7 @@ data class UserPlant(
             "plantName" to plantName,
             "date" to date,
             "nickname" to nickname,
-            "customPhoto" to customPhoto,
+            "plant" to plant,
             "location" to location,
             "status" to status
         )

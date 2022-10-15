@@ -6,7 +6,7 @@ data class User(
     var nickname: String = "",
     var bio: String = "",
     //TODO: setup another way to save photos in usere, userplant
-    val plants: ArrayList<UserPlant> = arrayListOf(),
+    val plants: HashMap<String,UserPlant> = hashMapOf(),
     var imageUri : String = "",
     val friends: MutableMap<String, Neighbour> = mutableMapOf(),
     val arduino: Map<String, Arduino> = mapOf(),

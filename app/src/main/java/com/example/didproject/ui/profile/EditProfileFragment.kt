@@ -93,7 +93,7 @@ class EditProfileFragment : Fragment() {
             binding.nameField.text.toString(),
             binding.nicknameField.text.toString(),
             binding.bioField.text.toString(),
-            profileViewModel.user.value?.plants?:arrayListOf(),
+            profileViewModel.user.value?.plants?: hashMapOf(),
             profileViewModel.user.value?.imageUri?:"",
             profileViewModel.user.value?.friends?: mutableMapOf(),
             profileViewModel.user.value?.arduino?:mapOf()

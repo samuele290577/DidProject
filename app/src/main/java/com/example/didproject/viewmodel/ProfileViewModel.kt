@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.didproject.model.data.Neighbour
 import com.example.didproject.model.data.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -27,8 +26,10 @@ class ProfileViewModel : ViewModel() {
     val photo: LiveData<Uri> = _photo
     val user: LiveData<User> = _user
     private val storageRef: StorageReference = Firebase.storage.reference
-    private val _personalNeighbourPlantPhoto = MutableLiveData<List<Uri>>()
-    val personalNeighbourPlantPhoto: LiveData<List<Uri>> = _personalNeighbourPlantPhoto
+    private val _personalNeighbourPlantPhoto = MutableLiveData<HashMap<String,Uri>>()
+    val personalNeighbourPlantPhoto: LiveData<HashMap<String,Uri>> = _personalNeighbourPlantPhoto
+    private val _personalPlantPhoto = MutableLiveData<HashMap<String,Uri>>()
+    val personalPlantPhoto: LiveData<HashMap<String,Uri>> = _personalPlantPhoto
 
 
     init {
@@ -42,7 +43,7 @@ class ProfileViewModel : ViewModel() {
         writeUser(user)
         when(state){
             0->downloadPhoto()
-            1->getPersonalPlantsPhoto()
+            1->downloadPersonalPlant()
             2->if(!_user.value?.friends.isNullOrEmpty())
                 downloadFriendPhoto()
         }
@@ -61,8 +62,8 @@ class ProfileViewModel : ViewModel() {
                 downloadPhoto()
                 if(!_user.value?.friends.isNullOrEmpty())
                     downloadFriendPhoto()
-                getPersonalPlantsPhoto()
-                // ...
+                downloadPersonalPlant()
+            // ...
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -73,8 +74,11 @@ class ProfileViewModel : ViewModel() {
         dr.child("users").child(id).addValueEventListener(userEventListener)
     }
 
-    fun uploadPhoto(uri: Uri){
-        val profileImagesRef: StorageReference = storageRef.child("profile/${_user.value?.id}")
+    fun uploadPhoto(uri: Uri, userFlag:Boolean=true, additionalPath:String=""){
+        val profileImagesRef: StorageReference = if(userFlag)
+            storageRef.child("profile/${_user.value?.id}")
+        else
+            storageRef.child("profile/${_user.value?.id}/${additionalPath}")
         val metadata = storageMetadata {
             contentType = "image/jpeg"
         }
@@ -90,24 +94,8 @@ class ProfileViewModel : ViewModel() {
             friendImagesRef.downloadUrl.addOnSuccessListener { uri->
                  it.imageUri = uri.toString()
                 _user.value=_user.value
-            }.addOnFailureListener { _ ->
+            }.addOnFailureListener {
                 _user.value=_user.value
-            }
-        }
-    }
-
-    private fun getPersonalPlantsPhoto(){
-        _user.value?.plants?.forEach {
-            val plantsImagesRef: StorageReference
-            if(it.customPhoto!="")
-                plantsImagesRef= storageRef.child("${_user.value?.id}/${it.nickname}")
-            else
-                plantsImagesRef =storageRef.child("catalogue/${it.plantName}")
-            plantsImagesRef.downloadUrl.addOnSuccessListener { uri->
-                it.customPhoto = uri.toString()
-                _user.value=_user.value
-            }.addOnFailureListener { _ ->
-                it.customPhoto = ""
             }
         }
     }
@@ -125,16 +113,52 @@ class ProfileViewModel : ViewModel() {
         return _user.value?.arduino?.filter { a->a.value.plantIndex<=0 }?.keys?.toTypedArray()?: arrayOf()
     }
 
+    fun downloadPersonalPlant(){
+        val plantPhotoList : HashMap<String,Uri> = hashMapOf()
+        _user.value?.plants?.keys?.forEach { key ->
+            val profileImagesRef: StorageReference = storageRef.child("profile/${_user.value?.id}/${key}")
+            profileImagesRef.downloadUrl.addOnSuccessListener {
+                plantPhotoList[key]=it
+                if(plantPhotoList.size==_user.value?.plants?.size)
+                    _personalPlantPhoto.value = plantPhotoList
+            }.addOnFailureListener{
+                standardPlantPhoto(plantPhotoList, key, _user.value?.plants!![key]?.plant?.name!!)
+            }
+        }
+    }
+
     fun downloadPersonalPlantNeighbour(id: String){
         val neighbour = user.value?.friends!![id]
-        val plantPhotoList : MutableList<Uri> = mutableListOf()
-        neighbour?.plants?.forEachIndexed { i, _ ->
-            val profileImagesRef: StorageReference = storageRef.child("profile/${_user.value?.id}/${i}")
+        val plantPhotoList : HashMap<String,Uri> = hashMapOf()
+        neighbour?.plants?.keys?.forEach { key ->
+            val profileImagesRef: StorageReference = storageRef.child("profile/${neighbour.id}/${key}")
             profileImagesRef.downloadUrl.addOnSuccessListener {
-                plantPhotoList[i]=it
-                _personalNeighbourPlantPhoto.value = plantPhotoList
+                plantPhotoList[key]=it
+                if(plantPhotoList.size== neighbour.plants.size)
+                    _personalNeighbourPlantPhoto.value = plantPhotoList
             }.addOnFailureListener{
-                _photo.value=Uri.parse("")
+                standardPlantPhoto(plantPhotoList, key, neighbour.plants[key]?.plant?.name!!, false)
+            }
+        }
+    }
+
+    private fun standardPlantPhoto(map:HashMap<String, Uri>, key:String, plantName:String, personal:Boolean=true){
+        val profileImagesRef: StorageReference = storageRef.child("catalogue/${plantName}")
+        profileImagesRef.downloadUrl.addOnSuccessListener {
+            map[key]=it
+            if(map.size==_user.value?.plants?.size) {
+                if (personal)
+                    _personalPlantPhoto.value = map
+                else
+                    _personalNeighbourPlantPhoto.value = map
+            }
+        }.addOnFailureListener{
+            map[key]=Uri.parse("")
+            if(map.size==_user.value?.plants?.size){
+                if (personal)
+                    _personalPlantPhoto.value = map
+                else
+                    _personalNeighbourPlantPhoto.value = map
             }
         }
     }

@@ -15,7 +15,7 @@ import com.example.didproject.model.data.Plant
 import com.example.didproject.model.data.UserPlant
 import com.squareup.picasso.Picasso
 
-class PersonalPlantItemAdapter(private var data:List<Plant>, private var auxData:List<UserPlant>, private var userId: String) : RecyclerView.Adapter<PersonalPlantItemAdapter.PersonalPlantItemViewHolder>() {
+class PersonalPlantItemAdapter(private var auxData:HashMap<String,UserPlant>, private var images:HashMap<String,Uri>, private var userId: String) : RecyclerView.Adapter<PersonalPlantItemAdapter.PersonalPlantItemViewHolder>() {
 
 
     class PersonalPlantItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -27,18 +27,18 @@ class PersonalPlantItemAdapter(private var data:List<Plant>, private var auxData
         private val plantSun: TextView = v.findViewById(R.id.personal_plant_card_sun)
         private val plantImage: ImageView = v.findViewById(R.id.personal_plant_card_image)
 
-        fun bind(plant: Plant, userPlant: UserPlant, userId: String) {
+        fun bind(userPlant: UserPlant, image:Uri, userId: String) {
             plantName.text=userPlant.nickname
-            plantScientificName.text=plant.scName
-            plantDifficulty.text=plant.difficulty.toString()
-            plantSun.text=plant.sun.toString()
-            plantHumidity.text=plant.humidity.toString()
-            Picasso.get().load(Uri.parse(userPlant.customPhoto)).fit().centerCrop().into(plantImage)
+            plantScientificName.text=userPlant.plant.scName
+            plantDifficulty.text=userPlant.plant.difficulty.toString()
+            plantSun.text=userPlant.plant.sun.toString()
+            plantHumidity.text=userPlant.plant.humidity.toString()
+            Picasso.get().load(image).fit().centerCrop().into(plantImage)
 
 
             plantCard.setOnClickListener {
                 val bundle = Bundle()
-                bundle.putString("plantName",plant.name)
+                bundle.putString("plantName",userPlant.plant.name)
                 bundle.putString("id", userId)
 
                 Navigation.findNavController(view = it)
@@ -58,11 +58,10 @@ class PersonalPlantItemAdapter(private var data:List<Plant>, private var auxData
         }
 
         override fun onBindViewHolder(holder: PersonalPlantItemViewHolder, position: Int) {
-            holder.bind(data[position], auxData[position], userId)
+            holder.bind(auxData.values.toList()[position],images.values.toList()[position], userId)
         }
 
-        override fun getItemCount() = data.size
-
+        override fun getItemCount() = auxData.size
 
 }
 

@@ -4,22 +4,16 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuHost
-import androidx.fragment.app.Fragment
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentFriendProfileBinding
 import com.example.didproject.model.adapter.PersonalPlantItemAdapter
-import com.example.didproject.model.adapter.PlantCategoryAdapter
-import com.example.didproject.model.data.Neighbour
-import com.example.didproject.model.data.Plant
-import com.example.didproject.model.data.User
-import com.example.didproject.model.data.UserPlant
 import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
@@ -27,8 +21,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 
 class FriendProfileFragment : Fragment() {
-
-
 
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var plantsViewModel: PlantCatalogueViewModel
@@ -61,12 +53,14 @@ class FriendProfileFragment : Fragment() {
 
         val user = profileViewModel.user.value!!
 
-        var friend = Neighbour()
 
 
-        friend=friendViewModel.searchUserById(arguments?.getString("id")!!).toNeighbour()
+
+        val friend=friendViewModel.searchUserById(arguments?.getString("id")!!).toNeighbour()
         user.friends[friend.id] = friend
         profileViewModel.updateProfile(user,2)
+
+        profileViewModel.downloadPersonalPlantNeighbour(friend.id)
 
         profileViewModel.user.observe(viewLifecycleOwner) {
             bio.text = it.friends[friend.id]?.bio
@@ -80,10 +74,11 @@ class FriendProfileFragment : Fragment() {
         }
 
         recyclerViewPersonalPlant.layoutManager = LinearLayoutManager(this.context)
-        val plantList = mutableListOf<Plant>()
-        plantFromUserPlant(plantList,friend.plants)
-        recyclerViewPersonalPlant.adapter = PersonalPlantItemAdapter(plantList,friend.plants,arguments?.getString("id")!!)
 
+        profileViewModel.personalNeighbourPlantPhoto.observe(viewLifecycleOwner) {
+            recyclerViewPersonalPlant.adapter =
+                PersonalPlantItemAdapter(friend.plants, it, arguments?.getString("id")!!)
+        }
 
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -119,13 +114,5 @@ class FriendProfileFragment : Fragment() {
         return binding.root
     }
 
-    private fun plantFromUserPlant(plantList:MutableList<Plant>,friendPlants:MutableList<UserPlant>){
-        val plantlistTmp=plantsViewModel.plantList.value
-        friendPlants.forEach{
-            plantList.add(
-                plantlistTmp?.first{
-                        plant:Plant -> it.plantName==plant.name
-                }?:Plant())}
-    }
 
 }

@@ -35,22 +35,15 @@ class PersonalGardenListFragment : Fragment() {
         val root: View = binding.root
 
         val gardenList : RecyclerView = binding.recyclerViewGardenList
-        val plantList = mutableListOf<Plant>()
 
-        plantFromUserPlant(plantList,profileViewModel.user.value?.plants!!)
+        profileViewModel.downloadPersonalPlant()
+
         gardenList.layoutManager=LinearLayoutManager(requireContext())
-        gardenList.adapter = PersonalPlantItemAdapter(plantList,profileViewModel.user.value?.plants?:listOf(UserPlant()),"")
+        profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner) {
+            gardenList.adapter = PersonalPlantItemAdapter(
+                profileViewModel.user.value?.plants!!, it, "")
+        }
         return root
-    }
-
-    private fun plantFromUserPlant(plantList:MutableList<Plant>, friendPlants:MutableList<UserPlant>){
-        val plantlistTmp=catalogueViewModel.plantList.value
-        friendPlants.forEach{
-            plantList.add(
-                plantlistTmp?.first{
-                        plant: Plant -> it.plantName==plant.name
-                }?: Plant()
-            )}
     }
 
 }

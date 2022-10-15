@@ -7,7 +7,7 @@ data class Neighbour (
     val nickname: String = "",
     val name:String ="",
     var bio: String = "",
-    val plants: ArrayList<UserPlant> = arrayListOf(),
+    val plants: HashMap<String,UserPlant> = hashMapOf(),
     var imageUri: String = "",
     ){
         fun toMap(): Map<String, Any?> {
