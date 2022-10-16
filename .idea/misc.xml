@@ -19,7 +19,9 @@
         <entry key="../DidProject/app/src/main/res/drawable/search-48px.xml" value="0.1275" />
         <entry key="../DidProject/app/src/main/res/drawable/search.xml" value="0.207" />
         <entry key="../DidProject/app/src/main/res/drawable/yard-48px.xml" value="0.207" />
-        <entry key="../DidProject/app/src/main/res/layout/activity_main.xml" value="0.11197916666666667" />
+        <entry key="../DidProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="../DidProject/app/src/main/res/layout/app_bar_main.xml" value="0.11684782608695653" />
+        <entry key="../DidProject/app/src/main/res/layout/content_main.xml" value="0.11684782608695653" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_add_friend_list.xml" value="0.1" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_add_plant_to_garden.xml" value="0.1" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_already_friend_list.xml" value="0.165" />

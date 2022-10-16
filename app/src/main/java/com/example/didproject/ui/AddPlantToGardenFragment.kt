@@ -102,7 +102,7 @@ class AddPlantToGardenFragment : Fragment() {
                     boolCatalogue=true
             }
         }
-        else if(boolCatalogue){
+        if(boolCatalogue){
         catalogueViewModel.photoList.observe(viewLifecycleOwner) {
             if(it.containsKey(plantNameCatalogue))
                 Picasso.get().load(it[plantNameCatalogue]).fit().centerCrop().into(plantPersonalImage)

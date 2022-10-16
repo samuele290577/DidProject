@@ -2,6 +2,7 @@ package com.example.didproject.ui
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -15,6 +16,7 @@ import com.example.didproject.model.data.User
 import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
+import com.squareup.picasso.Picasso
 import java.util.*
 
 
@@ -34,7 +36,6 @@ class PersonalPlantFragment : Fragment() {
         catalogueViewModel = ViewModelProvider(requireActivity())[PlantCatalogueViewModel::class.java]
         _binding = FragmentPersonalPlantBinding.inflate(inflater, container, false)
 
-        //TODO: add image
         val menuHost: MenuHost = requireActivity()
         val root: View = binding.root
 
@@ -46,14 +47,32 @@ class PersonalPlantFragment : Fragment() {
         val humidity : TextView = binding.humidityPersonalPlant
         val sun : TextView = binding.sunPersonalPlant
         val status : TextView = binding.statusPersonalPlant
+        val image : ImageView = binding.plantPersonalImage
 
         val date : TextView = binding.plantDatePersonal
         val location : TextView = binding.plantLocationPersonal
 
+        var boolCatalogue=true
+
         var user : User
+        val plantName=arguments?.getString("plantName")!!
 
         if(arguments?.getString("id").isNullOrEmpty()) {
-                user = profileViewModel.user.value!!
+            user = profileViewModel.user.value!!
+
+
+            val key = user.plants.filter {
+                it.value.plantName == plantName
+            }.keys.first()
+
+            profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner) {
+                if (it.containsKey(key))
+                    Picasso.get().load(it[key]).fit().centerCrop().into(image)
+                else {
+                    if(catalogueViewModel.photoList.value?.containsKey(plantName)!!)
+                        Picasso.get().load(it[plantName]).fit().centerCrop().into(image)
+                }
+            }
 
             menuHost.addMenuProvider(object : MenuProvider {
                 override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -66,10 +85,8 @@ class PersonalPlantFragment : Fragment() {
                             val navController = findNavController()
                             val bundle = Bundle()
                             bundle.putBoolean("edit",true)
-                            bundle.putString("name",arguments?.getString("plantName")!!)
-                            val key = user.plants.filter {
-                                it.value.plantName == arguments?.getString("plantName")!!
-                            }.keys.first()
+                            bundle.putString("name",plantName)
+
                             bundle.putString("key",key)
                             navController.navigate(R.id.addPlantToGardenFragment,bundle)
                             return true
@@ -81,6 +98,17 @@ class PersonalPlantFragment : Fragment() {
         }
         else{
             user = friendViewModel.searchUserById(arguments?.getString("id")!!)
+            val key = user.plants.filter {
+                it.value.plantName == plantName
+            }.keys.first()
+            profileViewModel.personalNeighbourPlantPhoto.observe(viewLifecycleOwner) {
+                if (it.containsKey(key))
+                    Picasso.get().load(it[key]).fit().centerCrop().into(image)
+                else {
+                    if(catalogueViewModel.photoList.value?.containsKey(plantName)!!)
+                        Picasso.get().load(it[plantName]).fit().centerCrop().into(image)
+                }
+            }
         }
 
         //????????????????
