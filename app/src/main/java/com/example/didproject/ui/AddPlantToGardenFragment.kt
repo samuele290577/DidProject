@@ -250,7 +250,7 @@ class AddPlantToGardenFragment : Fragment() {
 
                          user?.plants?.remove(key)
                          profileViewModel.updateProfile(user!!,1)
-                         findNavController().navigate(R.id.nav_garden)
+                         findNavController().navigate(R.id.nav_home)
                      }
                      .show()
 

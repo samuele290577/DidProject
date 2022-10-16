@@ -65,10 +65,42 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
         }
 
         override fun onBindViewHolder(holder: HomepageItemViewHolder, position: Int) {
-            if(plants)
-                holder.bind(data[position], imageData[position], bundleData[position], plants, status[position])
-            else
-                holder.bind(data[position], imageData[position], bundleData[position], plants, 100)
+            if(plants) {
+                if (position >= imageData.size)
+                    holder.bind(
+                        data[position],
+                        Uri.parse(""),
+                        bundleData[position],
+                        plants,
+                        status[position]
+                    )
+                else
+                    holder.bind(
+                        data[position],
+                        imageData[position],
+                        bundleData[position],
+                        plants,
+                        status[position]
+                    )
+            }
+            else {
+                if (position >= imageData.size)
+                    holder.bind(
+                        data[position],
+                        Uri.parse(""),
+                        bundleData[position],
+                        plants,
+                        100
+                    )
+                else
+                    holder.bind(
+                        data[position],
+                        imageData[position],
+                        bundleData[position],
+                        plants,
+                        100
+                    )
+            }
         }
 
         override fun getItemCount() = data.size
