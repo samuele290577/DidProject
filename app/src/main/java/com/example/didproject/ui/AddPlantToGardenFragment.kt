@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.*
 import android.widget.Button
 import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
@@ -43,7 +44,7 @@ class AddPlantToGardenFragment : Fragment() {
 
     private lateinit var plant : Plant
     private val possibleLocation : Array<String> = arrayOf("Balcone","Giardino","Interno")
-    private var location = -1
+    private var location = 0
     private var dateInMillis : Long = 0
     private var arduinoSelected = -1
     private lateinit var possibleArduino : Array<String>
@@ -55,7 +56,6 @@ class AddPlantToGardenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        //TODO: problems with what the text is showing vs what it is supposed to show + checks
 
         _binding = FragmentAddPlantToGardenBinding.inflate(inflater, container, false)
 
@@ -68,12 +68,13 @@ class AddPlantToGardenFragment : Fragment() {
         val deleteButton = binding.deletePlantButton
         val nickname = binding.NicknamePlantEdit
         val arduino : Button = binding.arduinoButton
-
-        val locationPlaceHolder = binding.plantLocation
+        val dateText : TextView = binding.plantDate
+        val plantLocationText : TextView = binding.plantLocation
 
         val date = Calendar.getInstance()
         val navController = findNavController()
         val menuHost: MenuHost = requireActivity()
+
 
         var key=""
         newUri=Uri.parse("")
@@ -102,6 +103,9 @@ class AddPlantToGardenFragment : Fragment() {
                     boolCatalogue=true
             }
         }
+        else{
+            nickname.setText(plantNameCatalogue)
+        }
         if(boolCatalogue){
         catalogueViewModel.photoList.observe(viewLifecycleOwner) {
             if(it.containsKey(plantNameCatalogue))
@@ -125,19 +129,19 @@ class AddPlantToGardenFragment : Fragment() {
             }
         }
 
-
+        dateText.text="${date.get(Calendar.DAY_OF_MONTH)}/${date.get(Calendar.MONTH)}/${date.get(Calendar.YEAR)}"
         dateButton.setOnClickListener {
             val datePickerDialog = DatePickerDialog(requireContext(),
                  { _, myear, mmonth, mdayOfMonth ->
                     date.set(myear,mmonth,mdayOfMonth)
                     dateInMillis=date.timeInMillis
-            }, date.get(Calendar.YEAR),date.get(Calendar.MONTH),date.get(Calendar.DAY_OF_MONTH))
+                     dateText.text="${mdayOfMonth}/${mmonth}/${myear}"
+                 }, date.get(Calendar.YEAR),date.get(Calendar.MONTH),date.get(Calendar.DAY_OF_MONTH))
             datePickerDialog.show()
         }
 
-
+        plantLocationText.text=possibleLocation[location]
         var locationTmp=location
-        Log.d("Sam location", "locationTmp $locationTmp")
         locationButton.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
                 .setIcon(R.drawable.balcony)
@@ -153,9 +157,9 @@ class AddPlantToGardenFragment : Fragment() {
                     // Respond to positive button press
                     location=locationTmp
                     when (location){
-                        0 -> locationPlaceHolder.text="Balcone"
-                        1 -> locationPlaceHolder.text="Giardino"
-                        2 -> locationPlaceHolder.text="Interno"
+                        0 -> plantLocationText.text=possibleLocation[0]
+                        1 -> plantLocationText.text=possibleLocation[1]
+                        2 -> plantLocationText.text=possibleLocation[2]
                         else -> {
                             print("no location found error")
                         }
