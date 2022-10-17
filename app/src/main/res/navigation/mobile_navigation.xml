@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@id/nav_home">
-<!--TODO:rename pages-->
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.didproject.ui.HomeFragment"
@@ -12,19 +11,14 @@
         tools:layout="@layout/fragment_home" />
 
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.didproject.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
+       <fragment
         android:id="@+id/nav_catalogue"
         android:name="com.example.didproject.ui.PlantCategoryList"
-        android:label="PlantCategoryList" />
+        android:label="Catalogo" />
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.didproject.ui.profile.ProfileFragment"
-        android:label="ProfileFragment" >
+        android:label="Profilo" >
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
@@ -32,44 +26,44 @@
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.didproject.ui.profile.EditProfileFragment"
-        android:label="EditProfileFragment" />
+        android:label="Modifica profilo" />
     <activity
         android:id="@+id/nav_signIn"
         android:name="com.example.didproject.SignInActivity"
-        android:label="SignIn" />
+        android:label="Accesso" />
     <fragment
         android:id="@+id/cataloguePlantFragment"
         android:name="com.example.didproject.ui.CataloguePlantFragment"
-        android:label="fragment_catalogue_plant"
+        android:label="Pagina del catalogo"
         tools:layout="@layout/fragment_catalogue_plant" />
     <fragment
         android:id="@+id/plantListFragment"
         android:name="com.example.didproject.ui.PlantListFragment"
-        android:label="fragment_plant_list" />
+        android:label="Piante del catalogo" />
     <fragment
         android:id="@+id/addPlantToGardenFragment"
         android:name="com.example.didproject.ui.AddPlantToGardenFragment"
-        android:label="fragment_add_plant_to_garden" />
+        android:label="Aggiungi al giardino" />
     <fragment
         android:id="@+id/addFriendListFragment"
         android:name="com.example.didproject.ui.friend.AddFriendListFragment"
-        android:label="AddFriendListFragment" />
+        android:label="Nuovo vicino" />
     <fragment
         android:id="@+id/nav_friends"
         android:name="com.example.didproject.ui.friend.AlreadyFriendListFragment"
-        android:label="AlreadyFriendListFragment" />
+        android:label="Vicini" />
     <fragment
         android:id="@+id/friendProfileFragment"
         android:name="com.example.didproject.ui.friend.FriendProfileFragment"
-        android:label="FriendProfileFragment" />
+        android:label="Profilo vicino" />
     <fragment
         android:id="@+id/personalPlantFragment"
         android:name="com.example.didproject.ui.PersonalPlantFragment"
-        android:label="fragment_personal_plant"
+        android:label="Profilo pianta"
         tools:layout="@layout/fragment_personal_plant" />
 
     <fragment
         android:id="@+id/nav_garden"
         android:name="com.example.didproject.ui.PersonalGardenListFragment"
-        android:label="PersonalGardenListFragment" />
+        android:label="Il mio giardino" />
 </navigation>
