@@ -231,6 +231,5 @@ Oltre ad essere usate come condimento, le foglie possono anche essere usate per 
                  Il mio giardino</string>
 
     <string name="lbl_nickname_plant"> Nickname Plant </string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

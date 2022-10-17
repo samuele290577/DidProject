@@ -1,13 +1,12 @@
 package com.example.didproject.ui.profile
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.Button
-import androidx.fragment.app.Fragment
 import android.widget.TextView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController

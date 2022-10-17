@@ -1,14 +1,15 @@
 package com.example.didproject.ui
 
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.didproject.R
@@ -44,7 +45,7 @@ class CataloguePlantFragment : Fragment() {
 
 
         val plant = plantCatalogueViewModel.getByName(arguments?.getString("name")!!)
-        Log.d("plant",plant.toString());
+        Log.d("plant",plant.toString())
 
         tipText.text = plant.info
         name.text=plant.name
@@ -59,14 +60,14 @@ class CataloguePlantFragment : Fragment() {
 
 
         labelInfo.setOnClickListener {
-            Log.d("clicked", "clicked");
+            Log.d("clicked", "clicked")
             tipText.text = plant.info
             labelCura.setTextColor(Color.WHITE)
             labelInfo.setTextColor(Color.GREEN)
             labelTips.setTextColor(Color.WHITE)
         }
         labelCura.setOnClickListener {
-            Log.d("clicked", "clicked");
+            Log.d("clicked", "clicked")
             tipText.text = plant.care
            labelCura.setTextColor(Color.GREEN)
             labelInfo.setTextColor(Color.WHITE)
@@ -74,7 +75,7 @@ class CataloguePlantFragment : Fragment() {
 
         }
         labelTips.setOnClickListener {
-            Log.d("clicked", "clicked");
+            Log.d("clicked", "clicked")
             tipText.text = plant.tips
             labelCura.setTextColor(Color.WHITE)
             labelInfo.setTextColor(Color.WHITE)

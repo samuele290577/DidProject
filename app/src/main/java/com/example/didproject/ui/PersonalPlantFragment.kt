@@ -46,15 +46,13 @@ class PersonalPlantFragment : Fragment() {
         val tips : TextView = binding.plantTipPersonal
         val humidity : TextView = binding.humidityPersonalPlant
         val sun : TextView = binding.sunPersonalPlant
-        val status : TextView = binding.statusPersonalPlant
+        binding.statusPersonalPlant
         val image : ImageView = binding.plantPersonalImage
 
         val date : TextView = binding.plantDatePersonal
         val location : TextView = binding.plantLocationPersonal
 
-        var boolCatalogue=true
-
-        var user : User
+        val user : User
         val plantName=arguments?.getString("plantName")!!
 
         if(arguments?.getString("id").isNullOrEmpty()) {
@@ -111,7 +109,6 @@ class PersonalPlantFragment : Fragment() {
             }
         }
 
-        //????????????????
         val userPlant = user.plants.values.first { it.plantName == arguments?.getString("plantName")!! }
         location.text=userPlant.location
         val calendar = Calendar.getInstance()

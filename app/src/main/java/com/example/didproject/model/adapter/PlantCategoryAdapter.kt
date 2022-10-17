@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toDrawable
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
 import com.example.didproject.model.getImageResourceId
-import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
 class PlantCategoryAdapter(private var data:List<String>) : RecyclerView.Adapter<PlantCategoryAdapter.PlantCategoryViewHolder>() {

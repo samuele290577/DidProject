@@ -7,15 +7,4 @@ data class UserPlant(
     var plant : Plant = Plant(),
     var location: String = "",
     var status: Int = 100,
-) {
-    fun toMap(): Map<String, Any?> {
-        return mapOf(
-            "plantName" to plantName,
-            "date" to date,
-            "nickname" to nickname,
-            "plant" to plant,
-            "location" to location,
-            "status" to status
-        )
-    }
-}
+)

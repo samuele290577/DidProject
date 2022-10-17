@@ -21,7 +21,6 @@ class PlantCatalogueViewModel : ViewModel() {
     private val dr = Firebase.database.reference
     private val storageRef: StorageReference = Firebase.storage.reference
     private val _plantList = MutableLiveData<ArrayList<Plant>>()
-    val plantList: LiveData<ArrayList<Plant>> = _plantList
     private val _photoList = MutableLiveData<Map<String, Uri>>()
     val photoList: LiveData<Map<String, Uri>> = _photoList
 
@@ -30,35 +29,32 @@ class PlantCatalogueViewModel : ViewModel() {
     }
 
     fun getByInputName(name: String): List<Plant> {
-        return plantList.value?.filter {
+        return _plantList.value?.filter {
             it.name.lowercase().contains(name.lowercase()) ||
                     it.scName.lowercase().contains(name.lowercase()) }!!
     }
 
     fun getByCategory(category: String): List<Plant> {
-        return plantList.value?.filter { it.category == category }?.toList()!!
+        return _plantList.value?.filter { it.category == category }?.toList()!!
     }
 
     fun getByName(name:String):Plant{
-        return plantList.value?.first { it.name==name }!!
+        return _plantList.value?.first { it.name==name }!!
     }
 
     private fun readList(){
         val userEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val plantListTmp = arrayListOf<Plant>()
-                // Get Post object and use the values to update the UI
                 dataSnapshot.children.forEach { a->
                     val plantTmp=a.getValue(Plant::class.java)!!
                     plantListTmp.add(plantTmp)
                 }
                 downloadPlantPhoto(plantListTmp)
                 _plantList.value=plantListTmp
-                // ...
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
                 Log.w(ContentValues.TAG, "loadPost:onCancelled", databaseError.toException())
             }
         }

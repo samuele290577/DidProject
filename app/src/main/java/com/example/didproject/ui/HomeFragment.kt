@@ -46,10 +46,10 @@ class HomeFragment : Fragment() {
         val navController = findNavController()
 
 
-        profileViewModel.neighboursPhoto.observe(viewLifecycleOwner){
+        profileViewModel.neighboursPhoto.observe(viewLifecycleOwner){ map ->
             val userValue=profileViewModel.user.value!!
             greetings.text = "Ciao, "+userValue.nickname+"!"
-            friendList.adapter = HomepageItemAdapter(userValue.friends.values.map{it.nickname}, it.values.toList(),userValue.friends.values.map { it.id },false)
+            friendList.adapter = HomepageItemAdapter(userValue.friends.values.map{ it.nickname}, map.values.toList(),userValue.friends.values.map { it.id },false)
             friendList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
         }
 
