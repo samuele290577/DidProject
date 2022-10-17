@@ -28,7 +28,7 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
             itemName.text = name
 
             if(status>50)
-                itemLayout.setBackgroundColor(Color.parseColor("#0b3b2d"))
+                itemLayout.setBackgroundColor(Color.parseColor("#386555"))
             else if(status in 25..51)
                 itemLayout.setBackgroundColor(Color.parseColor("#f5bd3d"))
             else
