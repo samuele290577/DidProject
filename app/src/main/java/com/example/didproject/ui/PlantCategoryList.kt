@@ -15,7 +15,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
-import com.example.didproject.model.`object`.PlantCategory
 import com.example.didproject.model.adapter.PlantCategoryAdapter
 import com.example.didproject.model.adapter.PlantItemAdapter
 import com.example.didproject.model.data.Plant
@@ -37,10 +36,11 @@ class PlantCategoryList : Fragment(R.layout.fragment_plant_category_list) {
         recyclerViewPlant = view.findViewById(R.id.recyclerView_plant_search_list)
 
         // configuring recyclerview
-        recyclerViewCatalogue.layoutManager = LinearLayoutManager(this.context)
-        val categoryList = mutableListOf<String>()
-        initialize(categoryList)
-        recyclerViewCatalogue.adapter = PlantCategoryAdapter(categoryList)
+        plantCatalogueViewModel.categoryPhoto.observe(viewLifecycleOwner) {
+            recyclerViewCatalogue.layoutManager = LinearLayoutManager(this.context)
+            val categoryList = mutableListOf<String>()
+            recyclerViewCatalogue.adapter = PlantCategoryAdapter(it)
+        }
 
         recyclerViewPlant.layoutManager = LinearLayoutManager(context)
 
@@ -84,14 +84,6 @@ class PlantCategoryList : Fragment(R.layout.fragment_plant_category_list) {
                 return false
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-    }
-
-    private fun initialize(list:MutableList<String>) {
-            list.add(PlantCategory.ARBUSTI)
-            list.add(PlantCategory.AROMATICHE)
-            list.add(PlantCategory.BULBOSE)
-            list.add(PlantCategory.GRASSE)
-            list.add(PlantCategory.INTERNO)
     }
 
     private fun updateSearchRecycleView(name: String):List<Plant>{

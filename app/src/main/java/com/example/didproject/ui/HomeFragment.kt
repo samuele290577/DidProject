@@ -59,8 +59,10 @@ class HomeFragment : Fragment() {
             gardenList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
         }
 
-        //TODO: aggiungere citazioni
-        quote.text="Questa è una citazione di prova"
+        profileViewModel.trivia.observe(viewLifecycleOwner){
+            quote.text=it.random()
+        }
+
 
         gardenButton.setOnClickListener {
             navController.popBackStack()

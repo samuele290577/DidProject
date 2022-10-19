@@ -25,6 +25,8 @@ class ProfileViewModel : ViewModel() {
     private val _user = MutableLiveData<User>()
     val photo: LiveData<Uri> = _photo
     val user: LiveData<User> = _user
+    private val _trivia = MutableLiveData<List<String>>()
+    val trivia: LiveData<List<String>> = _trivia
     private val storageRef: StorageReference = Firebase.storage.reference
     private val _personalNeighbourPlantPhoto = MutableLiveData<HashMap<String,Uri>>()
     val personalNeighbourPlantPhoto: LiveData<HashMap<String,Uri>> = _personalNeighbourPlantPhoto
@@ -65,6 +67,7 @@ class ProfileViewModel : ViewModel() {
                 if(!_user.value?.friends.isNullOrEmpty())
                     downloadFriendPhoto()
                 downloadPersonalPlant()
+                downloadTrivia()
             // ...
             }
 
@@ -74,6 +77,19 @@ class ProfileViewModel : ViewModel() {
             }
         }
         dr.child("users").child(id).addValueEventListener(userEventListener)
+    }
+
+    private fun downloadTrivia(){
+        val triviaEventListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                _trivia.value = dataSnapshot.getValue() as List<String>
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w(ContentValues.TAG, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        dr.child("trivia").addValueEventListener(triviaEventListener)
+
     }
 
     fun uploadPhoto(uri: Uri, userFlag:Boolean=true, additionalPath:String=""){

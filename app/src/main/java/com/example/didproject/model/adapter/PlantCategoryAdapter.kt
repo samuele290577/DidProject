@@ -1,5 +1,6 @@
 package com.example.didproject.model.adapter
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,9 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
-import com.example.didproject.model.getImageResourceId
 import com.squareup.picasso.Picasso
 
-class PlantCategoryAdapter(private var data:List<String>) : RecyclerView.Adapter<PlantCategoryAdapter.PlantCategoryViewHolder>() {
+class PlantCategoryAdapter(private var data:Map<String, Uri>) : RecyclerView.Adapter<PlantCategoryAdapter.PlantCategoryViewHolder>() {
 
     class PlantCategoryViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val card = v.findViewById<CardView>(R.id.category_card)
@@ -21,14 +21,14 @@ class PlantCategoryAdapter(private var data:List<String>) : RecyclerView.Adapter
         private val categoryImage: ImageView = v.findViewById(R.id.plant_category_image)
 
 
-        fun bind(entity: String) {
-            category.text = entity
-            Picasso.get().load(entity.getImageResourceId()).fit().centerCrop().into(categoryImage)
+        fun bind(name : String, photo : Uri) {
+            category.text = name
+            Picasso.get().load(photo).fit().centerCrop().into(categoryImage)
 
             card.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("key", "category")
-                bundle.putString("category",entity)
+                bundle.putString("category",name)
 
                 Navigation.findNavController(view = it)
                     .navigate(R.id.plantListFragment, bundle)
@@ -47,7 +47,7 @@ class PlantCategoryAdapter(private var data:List<String>) : RecyclerView.Adapter
         }
 
         override fun onBindViewHolder(holder: PlantCategoryViewHolder, position: Int) {
-            holder.bind(data[position])
+            holder.bind(data.keys.elementAt(position), data.values.elementAt(position))
         }
 
         override fun getItemCount() = data.size
