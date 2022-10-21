@@ -79,7 +79,7 @@ class FriendProfileFragment : Fragment() {
 
         profileViewModel.personalNeighbourPlantPhoto.observe(viewLifecycleOwner) {
             recyclerViewPersonalPlant.adapter =
-                PersonalPlantItemAdapter(friend.plants, it, arguments?.getString("id")!!)
+                PersonalPlantItemAdapter(friend.plants, it, friend.plants.keys.toList(),arguments?.getString("id")!!)
         }
 
         menuHost.addMenuProvider(object : MenuProvider {

@@ -21,13 +21,14 @@ import com.google.firebase.storage.ktx.storageMetadata
 class ProfileViewModel : ViewModel() {
 
     private val dr = Firebase.database.reference
+    private val storageRef: StorageReference = Firebase.storage.reference
+
     private val _photo = MutableLiveData<Uri>()
     private val _user = MutableLiveData<User>()
     val photo: LiveData<Uri> = _photo
     val user: LiveData<User> = _user
     private val _trivia = MutableLiveData<List<String>>()
     val trivia: LiveData<List<String>> = _trivia
-    private val storageRef: StorageReference = Firebase.storage.reference
     private val _personalNeighbourPlantPhoto = MutableLiveData<HashMap<String,Uri>>()
     val personalNeighbourPlantPhoto: LiveData<HashMap<String,Uri>> = _personalNeighbourPlantPhoto
     private val _neighboursPhoto = MutableLiveData<Map<String,Uri>>()
@@ -40,7 +41,6 @@ class ProfileViewModel : ViewModel() {
         val id=FirebaseAuth.getInstance().currentUser?.email
         if(id!=null)
             readUser(id.replace(".",","))
-
     }
 
     fun updateProfile(user: User, state:Int){
@@ -70,7 +70,6 @@ class ProfileViewModel : ViewModel() {
                 downloadTrivia()
             // ...
             }
-
             override fun onCancelled(databaseError: DatabaseError) {
                 // Getting Post failed, log a message
                 Log.w(ContentValues.TAG, "loadPost:onCancelled", databaseError.toException())
@@ -89,7 +88,6 @@ class ProfileViewModel : ViewModel() {
             }
         }
         dr.child("trivia").addValueEventListener(triviaEventListener)
-
     }
 
     fun uploadPhoto(uri: Uri, userFlag:Boolean=true, additionalPath:String=""){
@@ -104,7 +102,6 @@ class ProfileViewModel : ViewModel() {
             if (userFlag) downloadPhoto()
             else downloadPersonalPlant()
         }
-
     }
 
     private fun downloadFriendPhoto(){
@@ -145,7 +142,7 @@ class ProfileViewModel : ViewModel() {
                 if(plantPhotoList.size==_user.value?.plants?.size)
                     _personalPlantPhoto.value = plantPhotoList
             }.addOnFailureListener{
-                standardPlantPhoto(plantPhotoList, key, _user.value?.plants!![key]?.plant?.name!!)
+                standardPlantPhoto(plantPhotoList, key, _user.value?.plants!![key]?.plant?.name!!, _user.value?.plants?.size!!)
             }
         }
     }
@@ -160,24 +157,24 @@ class ProfileViewModel : ViewModel() {
                 if(plantPhotoList.size== neighbour.plants.size)
                     _personalNeighbourPlantPhoto.value = plantPhotoList
             }.addOnFailureListener{
-                standardPlantPhoto(plantPhotoList, key, neighbour.plants[key]?.plant?.name!!, false)
+                standardPlantPhoto(plantPhotoList, key, neighbour.plants[key]?.plant?.name!!, neighbour.plants.size,false)
             }
         }
     }
 
-    private fun standardPlantPhoto(map:HashMap<String, Uri>, key:String, plantName:String, personal:Boolean=true){
+    private fun standardPlantPhoto(map:HashMap<String, Uri>, key:String, plantName:String, size:Int, personal:Boolean=true){
         val profileImagesRef: StorageReference = storageRef.child("catalogue/${plantName}")
         profileImagesRef.downloadUrl.addOnSuccessListener {
             map[key]=it
-            if(map.size==_user.value?.plants?.size) {
-                if (personal)
+            if(map.size==size) {
+                if (personal )
                     _personalPlantPhoto.value = map
                 else
                     _personalNeighbourPlantPhoto.value = map
             }
         }.addOnFailureListener{
             map[key]=Uri.parse("")
-            if(map.size==_user.value?.plants?.size){
+            if(map.size==size){
                 if (personal)
                     _personalPlantPhoto.value = map
                 else

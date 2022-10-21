@@ -43,6 +43,7 @@ class AddPlantToGardenFragment : Fragment() {
     private lateinit var uriTmp : Uri
 
     private lateinit var plant : Plant
+    private lateinit var userOriginalPlant : UserPlant
     private val possibleLocation : Array<String> = arrayOf("Balcone","Giardino","Interno")
     private var location = 0
     private var dateInMillis : Long = 0
@@ -93,9 +94,11 @@ class AddPlantToGardenFragment : Fragment() {
             boolCatalogue=false
             deleteButton.visibility=View.VISIBLE
             key=arguments?.getString("key")!!
-            date.timeInMillis=profileViewModel.user.value?.plants?.get(key)?.date!!
-            location=possibleLocation.indexOf(profileViewModel.user.value?.plants?.get(key)?.location!!)
-            nickname.setText(profileViewModel.user.value?.plants?.get(key)?.nickname!!)
+            userOriginalPlant=profileViewModel.user.value?.plants?.get(key)!!
+            date.timeInMillis=userOriginalPlant.date
+            dateInMillis=date.timeInMillis
+            location=possibleLocation.indexOf(userOriginalPlant.location)
+            nickname.setText(userOriginalPlant.nickname)
             profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner) {
                 if (it.containsKey(key))
                     Picasso.get().load(it[key]).fit().centerCrop().into(plantPersonalImage)
@@ -104,6 +107,7 @@ class AddPlantToGardenFragment : Fragment() {
             }
         }
         else{
+            userOriginalPlant= UserPlant()
             nickname.setText(plantNameCatalogue)
         }
         if(boolCatalogue){
@@ -129,13 +133,13 @@ class AddPlantToGardenFragment : Fragment() {
             }
         }
 
-        dateText.text="${date.get(Calendar.DAY_OF_MONTH)}/${date.get(Calendar.MONTH)}/${date.get(Calendar.YEAR)}"
+        dateText.text="${date.get(Calendar.DAY_OF_MONTH)}/${date.get(Calendar.MONTH)+1}/${date.get(Calendar.YEAR)}"
         dateButton.setOnClickListener {
             val datePickerDialog = DatePickerDialog(requireContext(),
                  { _, myear, mmonth, mdayOfMonth ->
                     date.set(myear,mmonth,mdayOfMonth)
                     dateInMillis=date.timeInMillis
-                     dateText.text="${mdayOfMonth}/${mmonth}/${myear}"
+                    dateText.text="${mdayOfMonth}/${mmonth+1}/${myear}"
                  }, date.get(Calendar.YEAR),date.get(Calendar.MONTH),date.get(Calendar.DAY_OF_MONTH))
             datePickerDialog.show()
         }
@@ -223,7 +227,8 @@ class AddPlantToGardenFragment : Fragment() {
              binding.NicknamePlantEdit.text.toString(),
              plant,
              possibleLocation[location],
-             100)
+             userOriginalPlant.status
+             )
 
          if(!edit) {
 
@@ -233,15 +238,14 @@ class AddPlantToGardenFragment : Fragment() {
              if(newUri != Uri.parse(""))
                  profileViewModel.uploadPhoto(newUri, false, abs(userPlant.hashCode()).toString())
          }
-         else
-             if(!delete) {
-                 user?.plants!![key]=userPlant
-                 if(arduinoSelected!=-1)
-                     user.arduino[possibleArduino[arduinoSelected]]?.plantIndex= key.toInt()+1
-                 if(newUri != Uri.parse(""))
+         else {
+             if (!delete) {
+                 user?.plants!![key] = userPlant
+                 if (arduinoSelected != -1)
+                     user.arduino[possibleArduino[arduinoSelected]]?.plantIndex = key.toInt() + 1
+                 if (newUri != Uri.parse(""))
                      profileViewModel.uploadPhoto(newUri, false, key)
-             }
-            else {
+             } else {
                  MaterialAlertDialogBuilder(requireContext())
                      .setIcon(R.drawable.delete)
                      .setTitle("Elimina")
@@ -253,12 +257,13 @@ class AddPlantToGardenFragment : Fragment() {
                      .setPositiveButton("Conferma") { _, _ ->
 
                          user?.plants?.remove(key)
-                         profileViewModel.updateProfile(user!!,1)
+                         profileViewModel.updateProfile(user!!, 1)
                          findNavController().navigate(R.id.nav_home)
                      }
                      .show()
 
              }
+         }
          profileViewModel.updateProfile(user!!,1)
     }
 

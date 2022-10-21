@@ -17,8 +17,9 @@ import com.example.didproject.model.data.UserPlant
 import com.squareup.picasso.Picasso
 
 class PersonalPlantItemAdapter(
-    private var auxData: HashMap<String, UserPlant>,
+    private var data: HashMap<String, UserPlant>,
     private var images: HashMap<String, Uri>,
+    private var plantNameList: List<String>,
     private var userId: String
 ) : RecyclerView.Adapter<PersonalPlantItemAdapter.PersonalPlantItemViewHolder>() {
 
@@ -73,10 +74,10 @@ class PersonalPlantItemAdapter(
     }
 
     override fun onBindViewHolder(holder: PersonalPlantItemViewHolder, position: Int) {
-        holder.bind(auxData.values.toList()[position], images.values.toList()[position], userId)
+        holder.bind(data[plantNameList[position]]?: UserPlant(), images[plantNameList[position]]?:Uri.parse(""), userId)
     }
 
-    override fun getItemCount() = auxData.size
+    override fun getItemCount() = plantNameList.size
 
 }
 

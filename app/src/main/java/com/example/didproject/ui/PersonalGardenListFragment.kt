@@ -37,7 +37,7 @@ class PersonalGardenListFragment : Fragment() {
         gardenList.layoutManager=LinearLayoutManager(requireContext())
         profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner) {
             gardenList.adapter = PersonalPlantItemAdapter(
-                profileViewModel.user.value?.plants!!, it, "")
+                profileViewModel.user.value?.plants!!, it,profileViewModel.user.value?.plants!!.keys.toList(), "")
         }
         return root
     }
