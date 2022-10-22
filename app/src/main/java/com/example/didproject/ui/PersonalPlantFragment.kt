@@ -1,8 +1,11 @@
 package com.example.didproject.ui
 
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -20,6 +23,9 @@ import com.squareup.picasso.Picasso
 import java.util.*
 
 
+//TODO: assegnare valore status alla progressBar e gestire il colore della progress bar in base al numero passato alla progress bar
+//TODO: visualizzazione condizionale del box di arduino.
+//TODO: cosa visualizzare alla sinistra?
 class PersonalPlantFragment : Fragment() {
     private var _binding: FragmentPersonalPlantBinding? = null
     private val binding get() = _binding!!
@@ -41,9 +47,6 @@ class PersonalPlantFragment : Fragment() {
 
         val name : TextView = binding.plantNamePersonal
         val scName : TextView = binding.plantScnamePersonal
-        val info : TextView = binding.plantInfoPersonal
-        val care : TextView = binding.plantCarePersonal
-        val tips : TextView = binding.plantTipPersonal
         val humidity : TextView = binding.humidityPersonalPlant
         val sun : TextView = binding.sunPersonalPlant
         binding.statusPersonalPlant
@@ -51,6 +54,47 @@ class PersonalPlantFragment : Fragment() {
 
         val date : TextView = binding.plantDatePersonal
         val location : TextView = binding.plantLocationPersonal
+
+        val labelInfo : TextView = binding.labelInfo
+        val labelCura : TextView = binding.labelCura
+        val labelTips : TextView = binding.labelConsigli
+        val tipText : TextView = binding.tipsPlaceholder
+
+        val waterBar : ProgressBar = binding.waterBar
+
+        val plant = catalogueViewModel.getByName(arguments?.getString("plantName")!!)
+        name.text=plant.name
+        scName.text=plant.scName
+        tipText.text=plant.info
+        humidity.text=plant.humidity.toString()
+        sun.text=plant.sun.toString()
+
+        labelInfo.setOnClickListener {
+            Log.d("clicked", "clicked")
+            tipText.text = plant.info
+            labelCura.setTextColor(Color.BLACK)
+            labelInfo.setTextColor(Color.GREEN)
+            labelTips.setTextColor(Color.WHITE)
+        }
+        labelCura.setOnClickListener {
+            Log.d("clicked", "clicked")
+            tipText.text = plant.care
+            labelCura.setTextColor(Color.GREEN)
+            labelInfo.setTextColor(Color.BLACK)
+            labelTips.setTextColor(Color.BLACK)
+
+        }
+        labelTips.setOnClickListener {
+            Log.d("clicked", "clicked")
+            tipText.text = plant.tips
+            labelCura.setTextColor(Color.BLACK)
+            labelInfo.setTextColor(Color.BLACK)
+            labelTips.setTextColor(Color.GREEN)
+        }
+
+
+
+
 
         val user : User
         val plantName=arguments?.getString("plantName")!!
@@ -116,14 +160,7 @@ class PersonalPlantFragment : Fragment() {
         date.text =  "Piantata il "+calendar.get(Calendar.DAY_OF_MONTH).toString()+"/"+calendar.get(Calendar.MONTH).toString()
 
 
-        val plant = catalogueViewModel.getByName(arguments?.getString("plantName")!!)
-        name.text=plant.name
-        scName.text=plant.scName
-        info.text=plant.info
-        tips.text=plant.tips
-        care.text=plant.care
-        humidity.text=plant.humidity.toString()
-        sun.text=plant.sun.toString()
+
         return root
     }
 }

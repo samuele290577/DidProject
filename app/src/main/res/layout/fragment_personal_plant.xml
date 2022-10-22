@@ -11,11 +11,12 @@
         android:id="@+id/constraintup"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/rounded_corner_bottom"
         app:layout_constraintBottom_toTopOf="@+id/constraintdown"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="6">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/plant_personal_image"
@@ -31,47 +32,60 @@
             tools:src="@tools:sample/avatars" />
 
 
-        <TextView
-            android:id="@+id/plant_name_personal"
+        <LinearLayout
+            android:id="@+id/linearLayout5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:text="basilico"
-            app:layout_constraintBottom_toTopOf="@+id/plant_scname_personal"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/plant_personal_image"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.517"
-            app:layout_constraintStart_toEndOf="@id/plant_personal_image"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.218"
+            app:layout_constraintStart_toEndOf="@+id/plant_personal_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.472">
 
-        <TextView
-            android:id="@+id/plant_scname_personal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Ocimum basilicum"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/plant_personal_image"
-            app:layout_constraintTop_toBottomOf="@+id/plant_name_personal" />
+            <TextView
+                android:id="@+id/plant_name_personal"
+                style="@style/accent_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="basilico" />
 
-        <TextView
-            android:id="@+id/plant_date_personal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="data piant"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/plant_personal_image"
-            app:layout_constraintTop_toBottomOf="@+id/plant_scname_personal" />
+            <TextView
+                android:id="@+id/plant_scname_personal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Ocimum basilicum"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/plant_location_personal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="location"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/plant_personal_image"
-            app:layout_constraintTop_toBottomOf="@+id/plant_date_personal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/plant_date_personal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="data piant"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/plant_location_personal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="location"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/status_text_personal_plant"
@@ -111,44 +125,137 @@
             app:layout_constraintStart_toEndOf="@+id/status_personal_plant"
             app:layout_constraintTop_toTopOf="@+id/status_personal_plant" />
 
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+            app:layout_constraintVertical_bias="0.55">
+
+            <LinearLayout
+                android:layout_width="94dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/round_shape"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/label_serb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Water Level"
+                    android:textAlignment="center"
+                    android:textColor="#19989D" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/waterBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:indeterminateTint="#ff12"
+                        android:minWidth="80dp"
+                        android:minHeight="80dp"
+                        android:progress="25" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="22dp"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="28dp"
+                        android:background="@drawable/water_drop"></ImageView>
+                </FrameLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/icon_arduino"
+                android:backgroundTint="#19989D" />
+        </FrameLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintdown"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/rounded_corner_top"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintup">
+        app:layout_constraintTop_toBottomOf="@id/constraintup"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintVertical_weight="5">
+
 
         <TextView
-            android:id="@+id/plant_tip_personal"
+            android:id="@+id/label_info"
+            style="@style/accent_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="270dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/plant_care_personal"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:text="Info"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/label_consigli"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
-            android:id="@+id/plant_care_personal"
+            android:id="@+id/label_consigli"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="270dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/plant_info_personal"
-            app:layout_constraintStart_toEndOf="@+id/plant_tip_personal" />
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:text="Consigli"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/label_cura"
+            app:layout_constraintStart_toEndOf="@+id/label_info"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/plant_info_personal"
+            android:id="@+id/label_cura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="270dp"
-            android:text="TextView"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="56dp"
+            android:clickable="true"
+            android:text="Cura"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/label_consigli"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tips_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:text="Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta tutto Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta quanto ciao carissimi come state tutti bene qui!!! ciao :) "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/plant_care_personal" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label_consigli"
+            app:layout_constraintVertical_bias="0.110000014" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
