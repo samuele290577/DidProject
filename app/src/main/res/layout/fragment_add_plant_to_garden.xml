@@ -67,7 +67,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
+                    android:fontFamily="@font/playfair"
+                    android:textFontWeight="700"
                     android:text="TextView"
+                    android:letterSpacing="0.03"
                     app:layout_constraintStart_toEndOf="@+id/PlantPersonalImage"
                     app:layout_constraintTop_toTopOf="parent" />
 

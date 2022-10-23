@@ -71,6 +71,7 @@
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/rounded_corner_bottom.xml" value="0.3105" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/rounded_corner_top.xml" value="0.318" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/water_drop.xml" value="0.318" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/font/roboto.xml" value="0.21197916666666666" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/font/roboto_medium.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/activity_sign_in.xml" value="0.3255208333333333" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_add_friend_list.xml" value="0.3255208333333333" />
@@ -79,7 +80,7 @@
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_catalogue_plant.xml" value="0.4" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_friend_profile.xml" value="0.4" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_personal_garden_list.xml" value="0.3255208333333333" />
-        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_personal_plant.xml" value="0.18" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_personal_plant.xml" value="0.5" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_plant_category_list.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_plant_list.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_profile_edit.xml" value="0.4" />

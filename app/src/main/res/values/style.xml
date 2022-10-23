@@ -11,7 +11,7 @@
         <item name="android:background">@color/secondary</item>
     </style>
     <style name= "accent_title" >
-        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="fontFamily">@font/playfair</item>
         <item name="android:textColor">@color/secondary</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
     </style>
