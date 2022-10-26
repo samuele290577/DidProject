@@ -63,6 +63,15 @@ class ProfileViewModel : ViewModel() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
                 _user.value = dataSnapshot.getValue(User::class.java)?:user
+                if(_user.value?.name.isNullOrEmpty()){
+                    _user.value?.name=FirebaseAuth.getInstance().currentUser?.displayName?:"name"
+                    updateProfile(_user.value!!,0)
+                }
+                if(_user.value?.nickname.isNullOrEmpty()) {
+                    _user.value?.nickname =
+                        FirebaseAuth.getInstance().currentUser?.displayName ?: "nickname"
+                    updateProfile(_user.value!!,0)
+                }
                 downloadPhoto()
                 if(!_user.value?.friends.isNullOrEmpty())
                     downloadFriendPhoto()
@@ -127,6 +136,14 @@ class ProfileViewModel : ViewModel() {
             }.addOnFailureListener{
                 _photo.value=Uri.parse("")
             }
+    }
+
+    fun removePlantImage(key:String){
+        val profileImagesRef: StorageReference = storageRef.child("profile/${_user.value?.id}/${key}")
+        if(_personalPlantPhoto.value?.containsKey(key) == true)
+        profileImagesRef.delete().addOnSuccessListener {
+            _personalPlantPhoto.value?.remove(key)
+        }
     }
 
     fun getAvailableArduinos() : Array<String> {

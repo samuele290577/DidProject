@@ -4,14 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.didproject.R
 import com.example.didproject.databinding.FragmentPersonalGardenListBinding
 import com.example.didproject.model.adapter.PersonalPlantItemAdapter
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class PersonalGardenListFragment : Fragment() {
@@ -30,9 +34,21 @@ class PersonalGardenListFragment : Fragment() {
         profileViewModel= ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
         val root: View = binding.root
 
+        val gardenFAB : FloatingActionButton = binding.fabAddPlant
+        val gardenNoPlantText : TextView = binding.noPlantText
         val gardenList : RecyclerView = binding.recyclerViewGardenList
 
         profileViewModel.downloadPersonalPlant()
+
+        val navController = findNavController()
+
+        gardenFAB.setOnClickListener {
+            navController.popBackStack()
+            navController.navigate(R.id.nav_catalogue)
+        }
+
+        if(profileViewModel.user.value?.plants?.isEmpty() != false)
+            gardenNoPlantText.visibility=View.VISIBLE
 
         gardenList.layoutManager=LinearLayoutManager(requireContext())
         profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner) {

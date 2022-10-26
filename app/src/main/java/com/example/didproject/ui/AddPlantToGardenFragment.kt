@@ -257,6 +257,7 @@ class AddPlantToGardenFragment : Fragment() {
                      .setPositiveButton("Conferma") { _, _ ->
 
                          user?.plants?.remove(key)
+                         profileViewModel.removePlantImage(key)
                          profileViewModel.updateProfile(user!!, 1)
                          findNavController().navigate(R.id.nav_home)
                      }
