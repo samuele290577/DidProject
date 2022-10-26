@@ -52,13 +52,13 @@ class HomeFragment : Fragment() {
 
         profileViewModel.neighboursPhoto.observe(viewLifecycleOwner){ map ->
             val userValue=profileViewModel.user.value!!
-            friendList.adapter = HomepageItemAdapter(userValue.friends.values.map{ it.nickname}, map.values.toList(),userValue.friends.values.map { it.id },false)
+            friendList.adapter = HomepageItemAdapter(map.keys.toList(), map,false, neighbours = userValue.friends)
             friendList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
         }
 
         profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner){ map ->
             val user = profileViewModel.user.value!!
-            gardenList.adapter = HomepageItemAdapter(user.plants.values.map{it.nickname}, map.values.toList(), user.plants.values.map{it.plantName},true, user.plants.values.map { it.status })
+            gardenList.adapter = HomepageItemAdapter(map.keys.toList(), map,true, plants = user.plants)
             gardenList.layoutManager = LinearLayoutManager(this.context,LinearLayoutManager.HORIZONTAL,false)
         }
 

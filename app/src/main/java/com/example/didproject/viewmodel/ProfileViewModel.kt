@@ -180,7 +180,7 @@ class ProfileViewModel : ViewModel() {
     }
 
     private fun standardPlantPhoto(map:HashMap<String, Uri>, key:String, plantName:String, size:Int, personal:Boolean=true){
-        val profileImagesRef: StorageReference = storageRef.child("catalogue/${plantName}")
+        val profileImagesRef: StorageReference = storageRef.child("catalogue/${plantName.lowercase()}")
         profileImagesRef.downloadUrl.addOnSuccessListener {
             map[key]=it
             if(map.size==size) {

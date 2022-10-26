@@ -13,9 +13,11 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.didproject.R
+import com.example.didproject.model.data.Neighbour
+import com.example.didproject.model.data.UserPlant
 import com.squareup.picasso.Picasso
 
-class HomepageItemAdapter(private var data:List<String>, private var imageData: List<Uri>, private var bundleData:List<String>, private var plants:Boolean, private val status:List<Int> = listOf()) : RecyclerView.Adapter<HomepageItemAdapter.HomepageItemViewHolder>() {
+class HomepageItemAdapter(private var keys:List<String>, private var imageData: Map<String,Uri>, private var arePlants:Boolean,private var plants:Map<String,UserPlant> = mapOf(), private var neighbours :Map<String, Neighbour> = mapOf()) : RecyclerView.Adapter<HomepageItemAdapter.HomepageItemViewHolder>() {
 
     class HomepageItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val card = v.findViewById<CardView>(R.id.homepage_card)
@@ -24,7 +26,7 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
         private val itemLayout: LinearLayout = v.findViewById(R.id.homepage_linear_layout)
 
 
-        fun bind(name: String, imageData:Uri, bundleData:String, plants:Boolean, status:Int) {
+        fun bind(name: String, imageData:Uri, bundleData:String, plants:Boolean, status:Int=100) {
             itemName.text = name
 
             if(status>50)
@@ -65,45 +67,26 @@ class HomepageItemAdapter(private var data:List<String>, private var imageData: 
         }
 
         override fun onBindViewHolder(holder: HomepageItemViewHolder, position: Int) {
-            if(plants) {
-                if (position >= imageData.size)
+            if(arePlants) {
                     holder.bind(
-                        data[position],
-                        Uri.parse(""),
-                        bundleData[position],
-                        plants,
-                        status[position]
-                    )
-                else
-                    holder.bind(
-                        data[position],
-                        imageData[position],
-                        bundleData[position],
-                        plants,
-                        status[position]
-                    )
+                        plants[keys[position]]?.nickname?:"no name",
+                        imageData[keys[position]]?: Uri.parse(""),
+                        plants[keys[position]]?.plantName?:"",
+                        arePlants,
+                        plants[keys[position]]?.status?:100)
             }
             else {
-                if (position >= imageData.size)
                     holder.bind(
-                        data[position],
-                        Uri.parse(""),
-                        bundleData[position],
-                        plants,
-                        100
-                    )
-                else
-                    holder.bind(
-                        data[position],
-                        imageData[position],
-                        bundleData[position],
-                        plants,
-                        100
-                    )
+                        neighbours[keys[position]]?.nickname?:"no name",
+                        imageData[keys[position]]?: Uri.parse(""),
+                        neighbours[keys[position]]?.id?:"",
+                        arePlants)
             }
         }
 
-        override fun getItemCount() = data.size
+        override fun getItemCount()=keys.size
+
+
 
 }
 
