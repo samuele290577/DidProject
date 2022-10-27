@@ -2,6 +2,7 @@ package com.example.didproject.ui
 
 import android.graphics.Color
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.example.didproject.R
 import com.example.didproject.databinding.FragmentCataloguePlantBinding
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.squareup.picasso.Picasso
+
 
 class CataloguePlantFragment : Fragment() {
 
@@ -43,6 +45,8 @@ class CataloguePlantFragment : Fragment() {
         val labelTips : TextView = binding.labelConsigli
         val tipText : TextView = binding.tipsPlaceholder
 
+        tipText.setMovementMethod(ScrollingMovementMethod())
+
 
         val plant = plantCatalogueViewModel.getByName(arguments?.getString("name")!!)
         Log.d("plant",plant.toString())
@@ -60,26 +64,23 @@ class CataloguePlantFragment : Fragment() {
 
 
         labelInfo.setOnClickListener {
-            Log.d("clicked", "clicked")
             tipText.text = plant.info
             labelCura.setTextColor(Color.WHITE)
-            labelInfo.setTextColor(Color.GREEN)
+            labelInfo.setTextColor(Color.parseColor("#f5bd3d"))
             labelTips.setTextColor(Color.WHITE)
         }
         labelCura.setOnClickListener {
-            Log.d("clicked", "clicked")
             tipText.text = plant.care
-           labelCura.setTextColor(Color.GREEN)
+           labelCura.setTextColor(Color.parseColor("#f5bd3d"))
             labelInfo.setTextColor(Color.WHITE)
             labelTips.setTextColor(Color.WHITE)
 
         }
         labelTips.setOnClickListener {
-            Log.d("clicked", "clicked")
             tipText.text = plant.tips
             labelCura.setTextColor(Color.WHITE)
             labelInfo.setTextColor(Color.WHITE)
-            labelTips.setTextColor(Color.GREEN)
+            labelTips.setTextColor(Color.parseColor("#f5bd3d"))
         }
 
         button.setOnClickListener{

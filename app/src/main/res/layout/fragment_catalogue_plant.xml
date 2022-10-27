@@ -44,29 +44,20 @@
 
             <TextView
                 android:id="@+id/plant_name_catalogue"
+                style="@style/accent_title_black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:fontFamily="@font/roboto"
                 android:text="TextView"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
 
-            <View
-                android:id="@+id/view"
-                style="@style/Divider"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/plant_name_catalogue"
-                app:layout_constraintStart_toStartOf="@+id/plant_name_catalogue"
-                app:layout_constraintTop_toBottomOf="@+id/plant_name_catalogue" />
-
             <TextView
                 android:id="@+id/plant_scname_catalogue"
+                style="@style/accent_title_medium_green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="2dp"
                 android:text="TextView"
                 android:textSize="20sp" />
 
@@ -88,8 +79,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="24dp"
                 android:text="Umidità"
+                android:textSize="16dp"
+                android:textColor="@color/primary_main"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,8 +90,10 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="24dp"
                 android:text="Difficoltà"
+                android:textSize="16dp"
+                android:textColor="@color/primary_main"
                 app:layout_constraintEnd_toStartOf="@+id/textView7"
                 app:layout_constraintHorizontal_bias="0.439"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
@@ -108,9 +103,11 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="48dp"
                 android:text="Sole"
+                android:textSize="16dp"
+                android:textColor="@color/primary_main"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -197,6 +194,7 @@
 
         <TextView
             android:id="@+id/label_consigli"
+            style="@style/accent_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -211,6 +209,7 @@
 
         <TextView
             android:id="@+id/label_cura"
+            style="@style/accent_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -228,16 +227,22 @@
             android:id="@+id/tips_placeholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxHeight="150dp"
+            android:scrollbars="vertical"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:justificationMode="inter_word"
             android:text="Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta tutto Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta quanto ciao carissimi come state tutti bene qui!!! ciao :) "
             app:layout_constraintBottom_toTopOf="@+id/plant_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textColor="#f2f2f2"
+            android:textSize="16dp"
+            android:lineHeight="22dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_consigli"
-            app:layout_constraintVertical_bias="0.110000014" />
+            app:layout_constraintVertical_bias="0.11" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
