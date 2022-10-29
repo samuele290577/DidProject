@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary_main">
 
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/friend_profile_image"
         app:strokeWidth="3dp"
@@ -22,7 +23,7 @@
 
     <TextView
         android:id="@+id/friend_profile_nickname"
-        style="@style/accent_title"
+        style="@style/yellow_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

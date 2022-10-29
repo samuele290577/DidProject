@@ -23,20 +23,19 @@
 
                 <TextView
                     android:id="@+id/homepage_greeting"
-                    style="@style/accent_title"
+                    style="@style/yellow_subtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="32dp"
                     android:textAlignment="center"
-                    android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="aaa" />
 
                 <TextView
                     android:id="@+id/homepage_quote"
-                    style="@style/body_white_color"
+                    style="@style/white_paragraph"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"

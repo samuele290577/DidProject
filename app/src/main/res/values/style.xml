@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name= "yellow_title" >
+        <item name="fontFamily">@font/playfair</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+    <style name= "yellow_subtitle" >
+        <item name="fontFamily">@font/playfair</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name= "white_title" >
+        <item name="fontFamily">@font/playfair</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+
+    <style name= "yellow_paragraph" >
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name= "black_paragraph" >
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name= "white_paragraph" >
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name= "title_text" >
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textColor">@color/primary_light</item>
@@ -21,6 +56,11 @@
         <item name="android:textSize">24dp</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
     </style>
+    <style name= "white_subtitle" >
+        <item name="fontFamily">@font/playfair</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+    </style>
     <style name= "accent_title_black" >
         <item name="fontFamily">@font/playfair</item>
         <item name="android:textColor">@color/black</item>
@@ -29,6 +69,11 @@
     <style name= "body_main_color" >
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/primary_main</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+    </style>
+    <style name= "body_black_color" >
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
     </style>
     <style name= "body_white_color" >
@@ -48,5 +93,6 @@
     <style name="round_square">
         <item name="cornerSize">25%</item>
     </style>
+
 
 </resources>

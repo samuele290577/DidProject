@@ -81,7 +81,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/name_field"
-                    style="@style/body_main_color"
+                    style="@style/body_black_color"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
@@ -113,7 +113,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/nickname_field"
-                    style="@style/body_main_color"
+                    style="@style/body_black_color"
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
                     android:layout_width="match_parent"
@@ -138,6 +138,7 @@
                 android:text="@string/lbl_bio" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/body_black_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:startIconDrawable="@drawable/icon_bio_prova"

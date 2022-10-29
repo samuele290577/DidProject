@@ -62,7 +62,7 @@
 
                 <TextView
                     android:id="@+id/PlantName"
-                    style="@style/accent_title"
+                    style="@style/yellow_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -100,6 +100,7 @@
 
             <TextView
                 android:id="@+id/plant_location_label"
+                style="@style/yellow_paragraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
@@ -133,6 +134,7 @@
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
                 android:text="Plant Nickname"
+                android:textColor="@color/secondary"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintStart_toStartOf="@+id/NicknamePlant"
                 app:layout_constraintTop_toBottomOf="@+id/PlantPersonalImage" />
@@ -144,10 +146,11 @@
                 app:boxBackgroundColor="@color/primary_main"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nickname"
-                app:startIconDrawable="@drawable/icon_bio_prova">
+                app:startIconDrawable="@drawable/icon_plant_white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/NicknamePlantEdit"
+                    style="@style/white_paragraph"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
@@ -174,6 +177,7 @@
 
             <TextView
                 android:id="@+id/plant_date_label"
+                style="@style/yellow_paragraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
@@ -187,6 +191,7 @@
 
             <TextView
                 android:id="@+id/plant_date"
+                style="@style/white_paragraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"

@@ -116,7 +116,11 @@
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.15680796305338546" />
         <entry key="app/src/main/res/layout/personal_plant_list_item.xml" value="0.45359446207682297" />
         <entry key="app/src/main/res/layout/plant_category_list_item.xml" value="0.32473856608072915" />
+<<<<<<< Updated upstream
         <entry key="app/src/main/res/layout/plant_list_item.xml" value="0.3147598266601562" />
+=======
+        <entry key="app/src/main/res/layout/plant_list_item.xml" value="0.15339202880859376" />
+>>>>>>> Stashed changes
       </map>
     </option>
   </component>

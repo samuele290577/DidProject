@@ -61,7 +61,7 @@
 
             <TextView
                 android:id="@+id/name_field"
-                style="@style/body_main_color"
+                style="@style/body_black_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -80,7 +80,7 @@
 
             <TextView
                 android:id="@+id/email_field"
-                style="@style/body_main_color"
+                style="@style/body_black_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -103,7 +103,7 @@
 
             <TextView
                 android:id="@+id/nickname_field"
-                style="@style/body_main_color"
+                style="@style/body_black_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -125,7 +125,7 @@
 
             <TextView
                 android:id="@+id/bio_field"
-                style="@style/body_main_color"
+                style="@style/body_black_color"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
