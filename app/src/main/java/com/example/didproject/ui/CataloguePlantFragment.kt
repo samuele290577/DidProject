@@ -1,6 +1,7 @@
 package com.example.didproject.ui
 
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
@@ -35,9 +36,9 @@ class CataloguePlantFragment : Fragment() {
         val name : TextView = binding.plantNameCatalogue
         val button : Button = binding.plantButton
         val image : ImageView = binding.plantCatalogueImage
-        val humidity : TextView = binding.plantCatalogueHumidity
-        val sun : TextView = binding.plantCatalogueSun
-        val difficulty : TextView = binding.plantCatalogueDifficulty
+        val humidity : ImageView = binding.plantCatalogueHumidity
+        val sun : ImageView = binding.plantCatalogueSun
+        val difficulty : ImageView = binding.plantCatalogueDifficulty
         val scName : TextView = binding.plantScnameCatalogue
 
         val labelInfo : TextView = binding.labelInfo
@@ -54,9 +55,38 @@ class CataloguePlantFragment : Fragment() {
         tipText.text = plant.info
         name.text=plant.name
         scName.text=plant.scName
-        humidity.text = plant.humidity.toString()
-        difficulty.text = plant.difficulty.toString()
-        sun.text = plant.sun.toString()
+
+        val levelOne : Drawable = resources.getDrawable(R.drawable.level_one)
+        val levelTwo : Drawable = resources.getDrawable(R.drawable.level_two)
+        val levelThree : Drawable = resources.getDrawable(R.drawable.level_three)
+
+
+
+        when (plant.humidity){
+            1 -> humidity.setImageDrawable(levelOne)
+            2 -> humidity.setImageDrawable(levelTwo)
+            else -> {
+                humidity.setImageDrawable(levelThree)
+            }
+        }
+        when (plant.difficulty){
+            1 -> difficulty.setImageDrawable(levelOne)
+            2 -> difficulty.setImageDrawable(levelTwo)
+            else -> {
+                difficulty.setImageDrawable(levelThree)
+            }
+        }
+        when (plant.sun){
+            1 -> sun.setImageDrawable(levelOne)
+            2 -> sun.setImageDrawable(levelTwo)
+            else -> {
+                sun.setImageDrawable(levelThree)
+            }
+        }
+
+
+
+
         plantCatalogueViewModel.photoList.observe(viewLifecycleOwner){
             if(it.containsKey(plant.name))
                 Picasso.get().load(it[plant.name]).fit().centerCrop().into(image)

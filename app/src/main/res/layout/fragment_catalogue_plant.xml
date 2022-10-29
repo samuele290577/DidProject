@@ -111,41 +111,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <ImageView
+                android:layout_width="60dp"
                 android:id="@+id/plant_catalogue_difficulty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAlignment="center"
+                android:layout_height="30dp"
+                android:src="@drawable/level_one"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView6"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/textView6"
                 app:layout_constraintTop_toBottomOf="@+id/textView6"
                 app:layout_constraintVertical_bias="0.081" />
 
-            <TextView
+            <ImageView
+                android:layout_width="60dp"
                 android:id="@+id/plant_catalogue_humidity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAlignment="center"
+                android:layout_height="30dp"
+                android:src="@drawable/level_one"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView5"
-                app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
-                app:layout_constraintVertical_bias="0.081" />
+                app:layout_constraintVertical_bias="0.081"
+                />
 
-            <TextView
+            <ImageView
+                android:layout_width="60dp"
                 android:id="@+id/plant_catalogue_sun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAlignment="center"
+                android:layout_height="30dp"
+                android:src="@drawable/level_one"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView7"
-                app:layout_constraintHorizontal_bias="0.451"
                 app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/textView7"
                 app:layout_constraintVertical_bias="0.081" />
