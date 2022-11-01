@@ -23,6 +23,7 @@ class FriendViewModel : ViewModel() {
     private val dr = Firebase.database.reference
     private val storageRef: StorageReference = Firebase.storage.reference
     private val _users = MutableLiveData<ArrayList<User>>()
+    val users: LiveData<ArrayList<User>> = _users
     private val userId = FirebaseAuth.getInstance().currentUser?.email?.replace(".",",")
     private val _neighboursPhoto = MutableLiveData<Map<String,Uri>>()
     val neighboursPhoto: LiveData<Map<String,Uri>> = _neighboursPhoto

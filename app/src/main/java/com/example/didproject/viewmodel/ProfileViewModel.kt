@@ -113,6 +113,15 @@ class ProfileViewModel : ViewModel() {
         }
     }
 
+    fun removeFriend(id: String){
+        _user.value?.friends?.remove(id)
+        val tmpMap = _neighboursPhoto.value as MutableMap
+        tmpMap.remove(id)
+        _neighboursPhoto.value = tmpMap
+        writeUser(_user.value!!)
+
+    }
+
     private fun downloadFriendPhoto(){
         val map : MutableMap<String, Uri> = mutableMapOf()
         _user.value?.friends?.values?.forEach {
@@ -200,4 +209,7 @@ class ProfileViewModel : ViewModel() {
         }
     }
 
+    fun delete(){
+        dr.child("users").child(user.value?.id!!).removeValue()
+    }
 }

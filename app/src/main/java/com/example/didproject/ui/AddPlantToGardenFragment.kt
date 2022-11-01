@@ -173,22 +173,31 @@ class AddPlantToGardenFragment : Fragment() {
         }
 
         var arduinoTmp=arduinoSelected
-        arduino.setOnClickListener {
-            MaterialAlertDialogBuilder(requireContext())
-                .setIcon(R.drawable.icon_arduino)
-                .setTitle("Collega ad un arduino")
-                .setSingleChoiceItems(possibleArduino,arduinoSelected) { _, which ->
-                    arduinoTmp = which
+
+            arduino.setOnClickListener {
+                if(possibleArduino.isNotEmpty()) {
+                    MaterialAlertDialogBuilder(requireContext())
+                        .setIcon(R.drawable.icon_arduino)
+                        .setTitle("Collega ad un arduino")
+                        .setSingleChoiceItems(possibleArduino, arduinoSelected) { _, which ->
+                            arduinoTmp = which
+                        }
+                        .setNeutralButton("Annulla") { _, _ ->
+                            // Respond to neutral button press
+                        }
+                        .setPositiveButton("Conferma") { _, _ ->
+                            // Respond to positive button press
+                            arduinoSelected = arduinoTmp
+                        }
+                        .show()
                 }
-                .setNeutralButton("Annulla") { _, _ ->
-                    // Respond to neutral button press
+                else {
+                    MaterialAlertDialogBuilder(requireContext())
+                        .setIcon(R.drawable.icon_arduino)
+                        .setTitle("Collega ad un arduino").setMessage("Non risulta ancora collegato nessun arduino.../nSe non l'hai ancora collegato segui le istruzioni altrimenti prova a ricollegarlo!")
                 }
-                .setPositiveButton("Conferma") { _, _ ->
-                    // Respond to positive button press
-                    arduinoSelected=arduinoTmp
-                }
-                .show()
-        }
+            }
+
 
         deleteButton.setOnClickListener {
             savePersonalPlantData(edit,true,key)

@@ -39,7 +39,7 @@
         <entry key="../DidProject/app/src/main/res/layout/fragment_profile_edit.xml" value="0.16168478260869565" />
         <entry key="../DidProject/app/src/main/res/layout/fragment_slideshow.xml" value="0.1" />
         <entry key="../DidProject/app/src/main/res/layout/friend_list_item.xml" value="0.1" />
-        <entry key="../DidProject/app/src/main/res/layout/homepage_list_item.xml" value="0.1" />
+        <entry key="../DidProject/app/src/main/res/layout/homepage_list_item.xml" value="0.25" />
         <entry key="../DidProject/app/src/main/res/layout/nav_header_main.xml" value="0.11197916666666667" />
         <entry key="../DidProject/app/src/main/res/layout/personal_plant_list_item.xml" value="0.335" />
         <entry key="../DidProject/app/src/main/res/layout/plant_category_list_item.xml" value="0.15885416666666666" />
@@ -62,7 +62,6 @@
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable-v24/delete.xml" value="0.1225" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/balcony.xml" value="0.318" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/calendar_today.xml" value="0.2855" />
-        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/custom_progress.xml" value="0.1955" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.2855" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/ic_profile.xml" value="0.2855" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/icon_arduino.xml" value="0.2165" />
@@ -70,7 +69,6 @@
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/icon_sun.xml" value="0.2855" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/round_shape.xml" value="0.3105" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/rounded_corner_bottom.xml" value="0.3105" />
-        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/rounded_corner_full.xml" value="0.2205" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/rounded_corner_top.xml" value="0.318" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/water_drop.xml" value="0.318" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/font/roboto.xml" value="0.21197916666666666" />
@@ -88,39 +86,6 @@
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_profile_edit.xml" value="0.4" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/plant_category_list_item.xml" value="0.25226449275362317" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/plant_list_item.xml" value="0.22826086956521738" />
-        <entry key="app/src/main/res/drawable/balcony.xml" value="0.203" />
-        <entry key="app/src/main/res/drawable/icon_bio_prova.xml" value="0.203" />
-        <entry key="app/src/main/res/drawable/icon_plant_white.xml" value="0.203" />
-        <entry key="app/src/main/res/drawable/nest_eco_leaf.xml" value="0.1705" />
-        <entry key="app/src/main/res/drawable/rounded_corner_full.xml" value="0.203" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/content_main.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/fragment_add_friend_list.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/fragment_add_plant_to_garden.xml" value="0.18535003662109376" />
-        <entry key="app/src/main/res/layout/fragment_already_friend_list.xml" value="0.1953125" />
-        <entry key="app/src/main/res/layout/fragment_catalogue_plant.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/fragment_friend_profile.xml" value="0.23324584960937494" />
-        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/fragment_personal_garden_list.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/fragment_personal_plant.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/fragment_plant_category_list.xml" value="0.1953125" />
-        <entry key="app/src/main/res/layout/fragment_plant_list.xml" value="0.1953125" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3436386108398437" />
-        <entry key="app/src/main/res/layout/fragment_profile_edit.xml" value="0.45228576660156256" />
-        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.19479166666666667" />
-        <entry key="app/src/main/res/layout/friend_list_item.xml" value="0.5111260401059503" />
-        <entry key="app/src/main/res/layout/homepage_list_item.xml" value="0.2480662027994791" />
-        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.15680796305338546" />
-        <entry key="app/src/main/res/layout/personal_plant_list_item.xml" value="0.45359446207682297" />
-        <entry key="app/src/main/res/layout/plant_category_list_item.xml" value="0.32473856608072915" />
-<<<<<<< Updated upstream
-        <entry key="app/src/main/res/layout/plant_list_item.xml" value="0.3147598266601562" />
-=======
-        <entry key="app/src/main/res/layout/plant_list_item.xml" value="0.15339202880859376" />
->>>>>>> Stashed changes
       </map>
     </option>
   </component>

@@ -73,7 +73,7 @@ class HomepageItemAdapter(private var keys:List<String>, private var imageData: 
                         imageData[keys[position]]?: Uri.parse(""),
                         plants[keys[position]]?.plantName?:"",
                         arePlants,
-                        plants[keys[position]]?.status?:100)
+                        plants[keys[position]]?.status?:101)
             }
             else {
                     holder.bind(
