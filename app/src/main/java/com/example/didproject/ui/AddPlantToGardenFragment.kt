@@ -194,7 +194,12 @@ class AddPlantToGardenFragment : Fragment() {
                 else {
                     MaterialAlertDialogBuilder(requireContext())
                         .setIcon(R.drawable.icon_arduino)
-                        .setTitle("Collega ad un arduino").setMessage("Non risulta ancora collegato nessun arduino.../nSe non l'hai ancora collegato segui le istruzioni altrimenti prova a ricollegarlo!")
+                        .setTitle("Collega ad un arduino")
+                        .setMessage("Non risulta ancora collegato nessun arduino..." +
+                                "Se non l'hai ancora collegato segui le istruzioni altrimenti prova a ricollegarlo!")
+                        .setPositiveButton("Va bene"){ _,_ ->
+                        }
+                        .show()
                 }
             }
 
