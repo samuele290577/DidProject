@@ -51,6 +51,7 @@
                     android:id="@+id/personal_plant_card_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/accent_title_medium_green"
                     android:text="Title"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -59,35 +60,77 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                <LinearLayout
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#e09c00"
+                    android:textSize="14dp" />
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
                     <TextView
-                        android:id="@+id/personal_plant_card_humidity"
+                        android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Title"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                        android:textColor="@color/primary_main"
+                        android:text="Difficoltà"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sole"
+                        android:textColor="@color/primary_main"
+                        app:layout_constraintEnd_toStartOf="@+id/textView4"
+                        app:layout_constraintStart_toEndOf="@+id/textView"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Umidità"
+                        android:textColor="@color/primary_main"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                    <ImageView
+                        android:id="@+id/personal_plant_card_difficulty"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/level_one"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/textView"
+                        app:layout_constraintStart_toStartOf="@+id/textView"
+                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                    <ImageView
                         android:id="@+id/personal_plant_card_sun"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingHorizontal="16dp"
-                        android:text="Title"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-                </LinearLayout>
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/level_one"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintEnd_toEndOf="@+id/textView8"
+                        app:layout_constraintStart_toStartOf="@+id/textView8"
+                        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-                <TextView
-                    android:id="@+id/personal_plant_card_difficulty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Title"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:id="@+id/personal_plant_card_humidity"
+                        android:layout_height="20dp"
+                        android:src="@drawable/level_one"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView4"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </LinearLayout>
 

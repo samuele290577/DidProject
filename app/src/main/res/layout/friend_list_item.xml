@@ -42,11 +42,10 @@
                 <!-- Title, secondary and supporting text -->
                 <TextView
                     android:id="@+id/friend_card_nickname"
-                    style="@style/accent_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    style="@style/accent_title_medium_yellow" />
 
                 <TextView
                     android:id="@+id/friend_card_name"
@@ -54,20 +53,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title"
-                    android:paddingTop="8dp"
+                    android:layout_marginTop="8dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="-12dp">
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         app:srcCompat="@drawable/nest_eco_leaf"
                         app:tint="@color/white" />
 
@@ -76,7 +75,7 @@
                         style="@style/body_white_color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
+
                         android:text="Title"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         app:drawableTint="@color/white" />

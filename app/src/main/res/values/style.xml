@@ -56,6 +56,12 @@
         <item name="android:textSize">24dp</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
     </style>
+    <style name= "accent_title_medium_yellow" >
+        <item name="fontFamily">@font/playfair</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+    </style>
     <style name= "white_subtitle" >
         <item name="fontFamily">@font/playfair</item>
         <item name="android:textColor">@color/white</item>

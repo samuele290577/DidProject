@@ -1,6 +1,7 @@
 package com.example.didproject.model.adapter
 
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,18 +30,43 @@ class PersonalPlantItemAdapter(
         private val plantName: TextView = v.findViewById(R.id.personal_plant_card_name)
         private val plantScientificName: TextView =
             v.findViewById(R.id.personal_plant_card_scientific_name)
-        private val plantDifficulty: TextView = v.findViewById(R.id.personal_plant_card_difficulty)
-        private val plantHumidity: TextView = v.findViewById(R.id.personal_plant_card_humidity)
-        private val plantSun: TextView = v.findViewById(R.id.personal_plant_card_sun)
+        private val plantDifficulty: ImageView = v.findViewById(R.id.personal_plant_card_difficulty)
+        private val plantHumidity: ImageView = v.findViewById(R.id.personal_plant_card_humidity)
+        private val plantSun: ImageView = v.findViewById(R.id.personal_plant_card_sun)
         private val plantImage: ImageView = v.findViewById(R.id.personal_plant_card_image)
         private val plantStatus: RelativeLayout = v.findViewById(R.id.status_color)
+
+
+        val levelOne : Drawable = v.context.resources.getDrawable(R.drawable.level_one)
+        val levelTwo : Drawable = v.context.resources.getDrawable(R.drawable.level_two)
+        val levelThree : Drawable = v.context.resources.getDrawable(R.drawable.level_three)
 
         fun bind(userPlant: UserPlant, image: Uri, userId: String) {
             plantName.text = userPlant.nickname
             plantScientificName.text = userPlant.plant.scName
-            plantDifficulty.text = userPlant.plant.difficulty.toString()
-            plantSun.text = userPlant.plant.sun.toString()
-            plantHumidity.text = userPlant.plant.humidity.toString()
+
+            when (userPlant.plant.humidity){
+                1 -> plantHumidity.setImageDrawable(levelOne)
+                2 -> plantHumidity.setImageDrawable(levelTwo)
+                else -> {
+                    plantHumidity.setImageDrawable(levelThree)
+                }
+            }
+            when (userPlant.plant.difficulty){
+                1 -> plantDifficulty.setImageDrawable(levelOne)
+                2 -> plantDifficulty.setImageDrawable(levelTwo)
+                else -> {
+                    plantDifficulty.setImageDrawable(levelThree)
+                }
+            }
+            when (userPlant.plant.sun){
+                1 -> plantSun.setImageDrawable(levelOne)
+                2 -> plantSun.setImageDrawable(levelTwo)
+                else -> {
+                    plantSun.setImageDrawable(levelThree)
+                }
+            }
+
             if (userId == "") {
                 if (userPlant.status > 50)
                     plantStatus.setBackgroundColor(Color.parseColor("#386555"))
