@@ -2,6 +2,7 @@ package com.example.didproject.ui.friend
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -98,10 +99,10 @@ class FriendProfileFragment : Fragment() {
                                 // Respond to neutral button press
                             }
                             .setPositiveButton("Conferma") { _, _ ->
-                                user.friends.remove(friend.id)
-                                profileViewModel.updateProfile(user,3)
+                                profileViewModel.removeFriend(friend.id)
                                 val navController = findNavController()
-                                navController.navigate(R.id.nav_friends)
+                                navController.popBackStack()
+                                navController.navigate(R.id.nav_home)
                             }
                             .show()
 
@@ -112,9 +113,9 @@ class FriendProfileFragment : Fragment() {
                 }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-
+        val activity=requireActivity() as AppCompatActivity
+        activity.supportActionBar?.title="Profilo di "+ friend.nickname
         return binding.root
     }
-
 
 }

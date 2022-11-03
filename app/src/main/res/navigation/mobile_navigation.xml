@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/cataloguePlantFragment"
         android:name="com.example.didproject.ui.CataloguePlantFragment"
-        android:label="Pagina del catalogo"
+        android:label=""
         tools:layout="@layout/fragment_catalogue_plant" />
     <fragment
         android:id="@+id/plantListFragment"
@@ -42,8 +42,7 @@
         android:label="Piante del catalogo" />
     <fragment
         android:id="@+id/addPlantToGardenFragment"
-        android:name="com.example.didproject.ui.AddPlantToGardenFragment"
-        android:label="Aggiungi al giardino" />
+        android:name="com.example.didproject.ui.AddPlantToGardenFragment" />
     <fragment
         android:id="@+id/addFriendListFragment"
         android:name="com.example.didproject.ui.friend.AddFriendListFragment"
@@ -55,11 +54,11 @@
     <fragment
         android:id="@+id/friendProfileFragment"
         android:name="com.example.didproject.ui.friend.FriendProfileFragment"
-        android:label="Profilo vicino" />
+        android:label="" />
     <fragment
         android:id="@+id/personalPlantFragment"
         android:name="com.example.didproject.ui.PersonalPlantFragment"
-        android:label="Profilo pianta"
+        android:label=""
         tools:layout="@layout/fragment_personal_plant" />
 
     <fragment

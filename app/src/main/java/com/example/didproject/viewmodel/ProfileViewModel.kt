@@ -153,6 +153,7 @@ class ProfileViewModel : ViewModel() {
         profileImagesRef.delete().addOnSuccessListener {
             _personalPlantPhoto.value?.remove(key)
         }
+        _personalPlantPhoto.value?.remove(key)
     }
 
     fun getAvailableArduinos() : Array<String> {

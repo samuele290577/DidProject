@@ -23,6 +23,7 @@ class SignInActivity : AppCompatActivity() {
     lateinit var button:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title = "Terrarium"
         setContentView(R.layout.activity_sign_in)
         mFirebaseAuth= FirebaseAuth.getInstance()
         button=findViewById(R.id.sign_in_button)

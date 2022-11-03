@@ -10,6 +10,7 @@ import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -95,10 +96,12 @@ class AddPlantToGardenFragment : Fragment() {
             deleteButton.visibility=View.VISIBLE
             key=arguments?.getString("key")!!
             userOriginalPlant=profileViewModel.user.value?.plants?.get(key)!!
+            val activity=requireActivity() as AppCompatActivity
+            activity.supportActionBar?.title="Modifica ${userOriginalPlant.nickname}"
             date.timeInMillis=userOriginalPlant.date
             dateInMillis=date.timeInMillis
             location=possibleLocation.indexOf(userOriginalPlant.location)
-            nickname.setText(userOriginalPlant.nickname)
+            nickname.setText(userOriginalPlant.plantName)
             profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner) {
                 if (it.containsKey(key))
                     Picasso.get().load(it[key]).fit().centerCrop().into(plantPersonalImage)
@@ -107,7 +110,11 @@ class AddPlantToGardenFragment : Fragment() {
             }
         }
         else{
+            val activity=requireActivity() as AppCompatActivity
+            activity.supportActionBar?.title="Aggiungi ${plantNameCatalogue}"
             userOriginalPlant= UserPlant()
+
+
             nickname.setText(plantNameCatalogue)
         }
         if(boolCatalogue){
@@ -143,6 +150,7 @@ class AddPlantToGardenFragment : Fragment() {
                  }, date.get(Calendar.YEAR),date.get(Calendar.MONTH),date.get(Calendar.DAY_OF_MONTH))
             datePickerDialog.show()
         }
+        dateInMillis=date.timeInMillis
 
         plantLocationText.text=possibleLocation[location]
         var locationTmp=location
@@ -269,10 +277,10 @@ class AddPlantToGardenFragment : Fragment() {
 
                      }
                      .setPositiveButton("Conferma") { _, _ ->
-
                          user?.plants?.remove(key)
                          profileViewModel.removePlantImage(key)
                          profileViewModel.updateProfile(user!!, 1)
+                         findNavController().popBackStack()
                          findNavController().navigate(R.id.nav_home)
                      }
                      .show()

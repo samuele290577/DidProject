@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -60,7 +61,8 @@ class CataloguePlantFragment : Fragment() {
         val levelTwo : Drawable = resources.getDrawable(R.drawable.level_two)
         val levelThree : Drawable = resources.getDrawable(R.drawable.level_three)
 
-
+        val activity=requireActivity() as AppCompatActivity
+        activity.supportActionBar?.title="Pagina "+plant.name
 
         when (plant.humidity){
             1 -> humidity.setImageDrawable(levelOne)

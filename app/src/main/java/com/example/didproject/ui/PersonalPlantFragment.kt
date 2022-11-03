@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -159,8 +160,8 @@ class PersonalPlantFragment : Fragment() {
         calendar.timeInMillis = userPlant.date
         date.text =  "Piantata il "+calendar.get(Calendar.DAY_OF_MONTH).toString()+"/"+calendar.get(Calendar.MONTH).toString()
 
-
-
+        val activity=requireActivity() as AppCompatActivity
+        activity.supportActionBar?.title="Profilo di "+userPlant.nickname
         return root
     }
 }

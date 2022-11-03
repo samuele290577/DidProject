@@ -48,6 +48,10 @@ class HomeFragment : Fragment() {
 
         profileViewModel.user.observe(viewLifecycleOwner){
             greetings.text = "Ciao, "+it.nickname+"!"
+            if(it.plants.isEmpty())
+                gardenButton.text="Aggiungi la tua prima pianta!"
+            if(it.friends.isEmpty())
+                friendButton.text="Aggiungi il tuo primo vicino!"
         }
 
         profileViewModel.neighboursPhoto.observe(viewLifecycleOwner){ map ->
@@ -71,6 +75,7 @@ class HomeFragment : Fragment() {
             navController.popBackStack()
             navController.navigate(R.id.nav_garden)
          }
+
 
         friendButton.setOnClickListener {
             navController.popBackStack()
