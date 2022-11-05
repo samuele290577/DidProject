@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ import com.example.didproject.databinding.FragmentHomeBinding
 import com.example.didproject.model.adapter.HomepageItemAdapter
 import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
+
 
 class HomeFragment : Fragment() {
 
@@ -44,7 +46,10 @@ class HomeFragment : Fragment() {
         val friendList : RecyclerView = binding.recyclerViewHomepageFriendList
 
         val navController = findNavController()
-
+        val navOptions: NavOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.nav_home, inclusive = false, saveState = true)
+            .setRestoreState(true)
+            .build()
 
         profileViewModel.user.observe(viewLifecycleOwner){
             greetings.text = "Ciao, "+it.nickname+"!"
@@ -72,14 +77,12 @@ class HomeFragment : Fragment() {
 
 
         gardenButton.setOnClickListener {
-            navController.popBackStack()
-            navController.navigate(R.id.nav_garden)
+            navController.navigate(R.id.nav_garden, null, navOptions)
          }
 
 
         friendButton.setOnClickListener {
-            navController.popBackStack()
-            navController.navigate(R.id.nav_friends)
+            navController.navigate(R.id.nav_friends, null, navOptions)
         }
 
 

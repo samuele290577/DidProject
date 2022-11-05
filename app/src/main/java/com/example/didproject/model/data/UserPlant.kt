@@ -6,5 +6,5 @@ data class UserPlant(
     var nickname: String = "",
     var plant : Plant = Plant(),
     var location: String = "",
-    var status: Int = 101,
+    var status: Int = 101
 )
