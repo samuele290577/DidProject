@@ -1,13 +1,17 @@
 package com.example.didproject.ui
 
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.*
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -48,10 +52,12 @@ class PersonalPlantFragment : Fragment() {
 
         val name : TextView = binding.plantNamePersonal
         val scName : TextView = binding.plantScnamePersonal
-        val humidity : TextView = binding.humidityPersonalPlant
-        val sun : TextView = binding.sunPersonalPlant
-        binding.statusPersonalPlant
+
+        val humidity : ImageView = binding.humidityPersonalPlant
+        val sun : ImageView = binding.sunPersonalPlant
+        val difficulty : ImageView = binding.difficultyPersonalPlant
         val image : ImageView = binding.plantPersonalImage
+
 
         val date : TextView = binding.plantDatePersonal
         val location : TextView = binding.plantLocationPersonal
@@ -61,40 +67,67 @@ class PersonalPlantFragment : Fragment() {
         val labelTips : TextView = binding.labelConsigli
         val tipText : TextView = binding.tipsPlaceholder
 
+        val arduinoLabel : FrameLayout = binding.arduinoLabel
+        val basicInfo : ConstraintLayout = binding.basicInfo
+
+        tipText.movementMethod = ScrollingMovementMethod()
+
+        val levelOne : Drawable = resources.getDrawable(R.drawable.level_one)
+        val levelTwo : Drawable = resources.getDrawable(R.drawable.level_two)
+        val levelThree : Drawable = resources.getDrawable(R.drawable.level_three)
+
+
         val waterBar : ProgressBar = binding.waterBar
 
         val plant = catalogueViewModel.getByName(arguments?.getString("plantName")!!)
         name.text=plant.name
         scName.text=plant.scName
         tipText.text=plant.info
-        humidity.text=plant.humidity.toString()
-        sun.text=plant.sun.toString()
+
+
+        when (plant.humidity){
+            1 -> humidity.setImageDrawable(levelOne)
+            2 -> humidity.setImageDrawable(levelTwo)
+            else -> {
+                humidity.setImageDrawable(levelThree)
+            }
+        }
+        when (plant.difficulty){
+            1 -> difficulty.setImageDrawable(levelOne)
+            2 -> difficulty.setImageDrawable(levelTwo)
+            else -> {
+                difficulty.setImageDrawable(levelThree)
+            }
+        }
+        when (plant.sun){
+            1 -> sun.setImageDrawable(levelOne)
+            2 -> sun.setImageDrawable(levelTwo)
+            else -> {
+                sun.setImageDrawable(levelThree)
+            }
+        }
+
+
 
         labelInfo.setOnClickListener {
-            Log.d("clicked", "clicked")
             tipText.text = plant.info
             labelCura.setTextColor(Color.BLACK)
-            labelInfo.setTextColor(Color.GREEN)
-            labelTips.setTextColor(Color.WHITE)
+            labelInfo.setTextColor(Color.parseColor("#0b3b2d"))
+            labelTips.setTextColor(Color.BLACK)
         }
         labelCura.setOnClickListener {
-            Log.d("clicked", "clicked")
             tipText.text = plant.care
-            labelCura.setTextColor(Color.GREEN)
+            labelCura.setTextColor(Color.parseColor("#0b3b2d"))
             labelInfo.setTextColor(Color.BLACK)
             labelTips.setTextColor(Color.BLACK)
 
         }
         labelTips.setOnClickListener {
-            Log.d("clicked", "clicked")
             tipText.text = plant.tips
             labelCura.setTextColor(Color.BLACK)
             labelInfo.setTextColor(Color.BLACK)
-            labelTips.setTextColor(Color.GREEN)
+            labelTips.setTextColor(Color.parseColor("#0b3b2d"))
         }
-
-
-
 
 
         val user : User
@@ -159,6 +192,14 @@ class PersonalPlantFragment : Fragment() {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = userPlant.date
         date.text =  "Piantata il "+calendar.get(Calendar.DAY_OF_MONTH).toString()+"/"+calendar.get(Calendar.MONTH).toString()
+
+        val status = userPlant?.status;
+
+        // info visualizzate.
+        when (status) {
+            101 -> arduinoLabel.visibility = View.GONE
+            else -> basicInfo.visibility = View.GONE
+        }
 
         val activity=requireActivity() as AppCompatActivity
         activity.supportActionBar?.title="Profilo di "+userPlant.nickname

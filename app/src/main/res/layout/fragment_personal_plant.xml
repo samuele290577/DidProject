@@ -86,53 +86,96 @@
 
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/status_text_personal_plant"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginBottom="32dp"
-            android:text="TextView"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/basic_info"
+            android:layout_width="409dp"
+            android:layout_height="188dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plant_personal_image"
+            app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/humidity_personal_plant"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginBottom="32dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/status_text_personal_plant"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="24dp"
+                android:text="Umidità"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/status_personal_plant"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/humidity_personal_plant"
-            app:layout_constraintTop_toTopOf="@+id/humidity_personal_plant" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Difficoltà"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView7"
+                app:layout_constraintHorizontal_bias="0.439"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/sun_personal_plant"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/status_personal_plant"
-            app:layout_constraintTop_toTopOf="@+id/status_personal_plant" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="48dp"
+                android:text="Sole"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/difficulty_personal_plant"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:src="@drawable/level_one"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                app:layout_constraintStart_toStartOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintVertical_bias="0.081" />
+
+            <ImageView
+                android:id="@+id/humidity_personal_plant"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:src="@drawable/level_one"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:layout_constraintVertical_bias="0.081" />
+
+            <ImageView
+                android:id="@+id/sun_personal_plant"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:src="@drawable/level_one"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView7"
+                app:layout_constraintStart_toStartOf="@+id/textView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                app:layout_constraintVertical_bias="0.081" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <FrameLayout
+            android:id="@+id/arduino_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
             app:layout_constraintVertical_bias="0.55">
 
@@ -200,28 +243,27 @@
 
         <TextView
             android:id="@+id/label_info"
-            style="@style/accent_title"
+            style="@style/accent_title_green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
             android:layout_marginTop="24dp"
             android:clickable="true"
             android:text="Info"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/label_consigli"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/label_consigli"
+            style="@style/accent_title_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:clickable="true"
             android:text="Consigli"
-            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/label_cura"
             app:layout_constraintStart_toEndOf="@+id/label_info"
@@ -229,13 +271,13 @@
 
         <TextView
             android:id="@+id/label_cura"
+            style="@style/accent_title_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="56dp"
             android:clickable="true"
             android:text="Cura"
-            android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/label_consigli"
             app:layout_constraintEnd_toEndOf="parent"
@@ -246,15 +288,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:justificationMode="inter_word"
+            android:lineHeight="22dp"
+            android:maxHeight="150dp"
+            android:scrollbars="vertical"
+            android:maxLines="7"
             android:text="Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta tutto Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta quanto ciao carissimi come state tutti bene qui!!! ciao :) "
+            android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_consigli"
-            app:layout_constraintVertical_bias="0.110000014" />
+            app:layout_constraintVertical_bias="0.102" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
