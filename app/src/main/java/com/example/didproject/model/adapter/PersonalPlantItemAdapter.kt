@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso
 class PersonalPlantItemAdapter(
     private var data: HashMap<String, UserPlant>,
     private var images: HashMap<String, Uri>,
-    private var plantNameList: List<String>,
+    private var keyList: List<String>,
     private var userId: String
 ) : RecyclerView.Adapter<PersonalPlantItemAdapter.PersonalPlantItemViewHolder>() {
 
@@ -41,7 +41,7 @@ class PersonalPlantItemAdapter(
         val levelTwo : Drawable = v.context.resources.getDrawable(R.drawable.level_two)
         val levelThree : Drawable = v.context.resources.getDrawable(R.drawable.level_three)
 
-        fun bind(userPlant: UserPlant, image: Uri, userId: String) {
+        fun bind(userPlant: UserPlant, image: Uri,key:String, userId: String) {
             plantName.text = userPlant.nickname
             plantScientificName.text = userPlant.plant.scName
 
@@ -80,7 +80,7 @@ class PersonalPlantItemAdapter(
 
             plantCard.setOnClickListener {
                 val bundle = Bundle()
-                bundle.putString("plantName", userPlant.plant.name)
+                bundle.putString("plantName", key)
                 bundle.putString("id", userId)
 
                 Navigation.findNavController(view = it)
@@ -100,10 +100,10 @@ class PersonalPlantItemAdapter(
     }
 
     override fun onBindViewHolder(holder: PersonalPlantItemViewHolder, position: Int) {
-        holder.bind(data[plantNameList[position]]?: UserPlant(), images[plantNameList[position]]?:Uri.parse(""), userId)
+        holder.bind(data[keyList[position]]?: UserPlant(), images[keyList[position]]?:Uri.parse(""), keyList[position], userId)
     }
 
-    override fun getItemCount() = plantNameList.size
+    override fun getItemCount() = keyList.size
 
 }
 

@@ -62,7 +62,7 @@ class CataloguePlantFragment : Fragment() {
         val levelThree : Drawable = resources.getDrawable(R.drawable.level_three)
 
         val activity=requireActivity() as AppCompatActivity
-        activity.supportActionBar?.title="Pagina "+plant.name
+        activity.supportActionBar?.title=plant.name
 
         when (plant.humidity){
             1 -> humidity.setImageDrawable(levelOne)

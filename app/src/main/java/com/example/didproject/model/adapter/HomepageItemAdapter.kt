@@ -71,7 +71,7 @@ class HomepageItemAdapter(private var keys:List<String>, private var imageData: 
                     holder.bind(
                         plants[keys[position]]?.nickname?:"no name",
                         imageData[keys[position]]?: Uri.parse(""),
-                        plants[keys[position]]?.plantName?:"",
+                        keys[position],
                         arePlants,
                         plants[keys[position]]?.status?:101)
             }
@@ -79,7 +79,7 @@ class HomepageItemAdapter(private var keys:List<String>, private var imageData: 
                     holder.bind(
                         neighbours[keys[position]]?.nickname?:"no name",
                         imageData[keys[position]]?: Uri.parse(""),
-                        neighbours[keys[position]]?.id?:"",
+                        keys[position],
                         arePlants)
             }
         }

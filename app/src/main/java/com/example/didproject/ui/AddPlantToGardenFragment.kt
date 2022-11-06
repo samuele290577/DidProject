@@ -101,7 +101,7 @@ class AddPlantToGardenFragment : Fragment() {
             date.timeInMillis=userOriginalPlant.date
             dateInMillis=date.timeInMillis
             location=possibleLocation.indexOf(userOriginalPlant.location)
-            nickname.setText(userOriginalPlant.plantName)
+            nickname.setText(userOriginalPlant.nickname)
             profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner) {
                 if (it.containsKey(key))
                     Picasso.get().load(it[key]).fit().centerCrop().into(plantPersonalImage)
@@ -113,7 +113,6 @@ class AddPlantToGardenFragment : Fragment() {
             val activity=requireActivity() as AppCompatActivity
             activity.supportActionBar?.title="Aggiungi ${plantNameCatalogue}"
             userOriginalPlant= UserPlant()
-
 
             nickname.setText(plantNameCatalogue)
         }
@@ -181,7 +180,8 @@ class AddPlantToGardenFragment : Fragment() {
         }
 
         var arduinoTmp=arduinoSelected
-
+        if(userOriginalPlant.status<=100)
+            arduino.visibility = View.GONE
             arduino.setOnClickListener {
                 if(possibleArduino.isNotEmpty()) {
                     MaterialAlertDialogBuilder(requireContext())

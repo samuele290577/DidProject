@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.util.Log
 import android.view.*
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -20,7 +19,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.didproject.R
 import com.example.didproject.databinding.FragmentPersonalPlantBinding
+import com.example.didproject.model.data.Plant
 import com.example.didproject.model.data.User
+import com.example.didproject.model.data.UserPlant
 import com.example.didproject.viewmodel.FriendViewModel
 import com.example.didproject.viewmodel.PlantCatalogueViewModel
 import com.example.didproject.viewmodel.ProfileViewModel
@@ -76,14 +77,93 @@ class PersonalPlantFragment : Fragment() {
         val levelTwo : Drawable = resources.getDrawable(R.drawable.level_two)
         val levelThree : Drawable = resources.getDrawable(R.drawable.level_three)
 
-
         val waterBar : ProgressBar = binding.waterBar
+        var userPlant = UserPlant()
+        var plant = Plant()
+        var key=""
 
-        val plant = catalogueViewModel.getByName(arguments?.getString("plantName")!!)
+
+
+        val plantName=plant.name
+        val user : User
+
+
+
+        if(arguments?.getString("id").isNullOrEmpty()) {
+            user = profileViewModel.user.value!!
+            if(catalogueViewModel.getByInputName(arguments?.getString("plantName")!!).isEmpty()){
+                key=arguments?.getString("plantName")!!
+                userPlant=profileViewModel.user.value?.plants!![key]!!
+                plant=userPlant.plant
+            }
+            else{
+                plant=catalogueViewModel.getByName(arguments?.getString("plantName")!!)
+            }
+            profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner) {
+                if (it.containsKey(key))
+                    Picasso.get().load(it[key]).fit().centerCrop().into(image)
+                else {
+                    if(catalogueViewModel.photoList.value?.containsKey(plantName)!!)
+                        Picasso.get().load(it[plantName]).fit().centerCrop().into(image)
+                }
+            }
+
+            menuHost.addMenuProvider(object : MenuProvider {
+                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                    menuInflater.inflate(R.menu.edit, menu)
+                }
+
+                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                    return when (menuItem.itemId) {
+                        R.id.actionbar_edit -> {
+                            val navController = findNavController()
+                            val bundle = Bundle()
+                            bundle.putBoolean("edit",true)
+                            bundle.putString("name",plantName)
+
+                            bundle.putString("key",key)
+                            navController.navigate(R.id.addPlantToGardenFragment,bundle)
+                            return true
+                        }
+                        else -> false
+                    }
+                }
+            }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        }
+        else{
+            user = friendViewModel.searchUserById(arguments?.getString("id")!!)
+            val key = arguments?.getString("plantName")!!
+            userPlant=user.plants[key]?:UserPlant()
+            plant=userPlant.plant
+
+            profileViewModel.personalNeighbourPlantPhoto.observe(viewLifecycleOwner) {
+                if (it.containsKey(key))
+                    Picasso.get().load(it[key]).fit().centerCrop().into(image)
+                else {
+                    if(catalogueViewModel.photoList.value?.containsKey(plantName)!!)
+                        Picasso.get().load(it[plantName]).fit().centerCrop().into(image)
+                }
+            }
+        }
+
         name.text=plant.name
         scName.text=plant.scName
         tipText.text=plant.info
+        location.text=userPlant.location
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = userPlant.date
+        date.text =  "Piantata il "+calendar.get(Calendar.DAY_OF_MONTH).toString()+"/"+calendar.get(Calendar.MONTH).toString()
 
+        val status = userPlant?.status;
+
+        // info visualizzate.
+        when (status) {
+            101 -> arduinoLabel.visibility = View.GONE
+            else -> basicInfo.visibility = View.GONE
+        }
+
+        val activity=requireActivity() as AppCompatActivity
+        activity.supportActionBar?.title=userPlant.nickname
 
         when (plant.humidity){
             1 -> humidity.setImageDrawable(levelOne)
@@ -129,80 +209,6 @@ class PersonalPlantFragment : Fragment() {
             labelTips.setTextColor(Color.parseColor("#0b3b2d"))
         }
 
-
-        val user : User
-        val plantName=arguments?.getString("plantName")!!
-
-        if(arguments?.getString("id").isNullOrEmpty()) {
-            user = profileViewModel.user.value!!
-
-
-            val key = user.plants.filter {
-                it.value.plantName == plantName
-            }.keys.first()
-
-            profileViewModel.personalPlantPhoto.observe(viewLifecycleOwner) {
-                if (it.containsKey(key))
-                    Picasso.get().load(it[key]).fit().centerCrop().into(image)
-                else {
-                    if(catalogueViewModel.photoList.value?.containsKey(plantName)!!)
-                        Picasso.get().load(it[plantName]).fit().centerCrop().into(image)
-                }
-            }
-
-            menuHost.addMenuProvider(object : MenuProvider {
-                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                    menuInflater.inflate(R.menu.edit, menu)
-                }
-
-                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                    return when (menuItem.itemId) {
-                        R.id.actionbar_edit -> {
-                            val navController = findNavController()
-                            val bundle = Bundle()
-                            bundle.putBoolean("edit",true)
-                            bundle.putString("name",plantName)
-
-                            bundle.putString("key",key)
-                            navController.navigate(R.id.addPlantToGardenFragment,bundle)
-                            return true
-                        }
-                        else -> false
-                    }
-                }
-            }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-        }
-        else{
-            user = friendViewModel.searchUserById(arguments?.getString("id")!!)
-            val key = user.plants.filter {
-                it.value.plantName == plantName
-            }.keys.first()
-            profileViewModel.personalNeighbourPlantPhoto.observe(viewLifecycleOwner) {
-                if (it.containsKey(key))
-                    Picasso.get().load(it[key]).fit().centerCrop().into(image)
-                else {
-                    if(catalogueViewModel.photoList.value?.containsKey(plantName)!!)
-                        Picasso.get().load(it[plantName]).fit().centerCrop().into(image)
-                }
-            }
-        }
-
-        val userPlant = user.plants.values.first { it.plantName == arguments?.getString("plantName")!! }
-        location.text=userPlant.location
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = userPlant.date
-        date.text =  "Piantata il "+calendar.get(Calendar.DAY_OF_MONTH).toString()+"/"+calendar.get(Calendar.MONTH).toString()
-
-        val status = userPlant?.status;
-
-        // info visualizzate.
-        when (status) {
-            101 -> arduinoLabel.visibility = View.GONE
-            else -> basicInfo.visibility = View.GONE
-        }
-
-        val activity=requireActivity() as AppCompatActivity
-        activity.supportActionBar?.title="Profilo di "+userPlant.nickname
         return root
     }
 }
