@@ -84,7 +84,7 @@ class PersonalPlantFragment : Fragment() {
 
 
 
-        val plantName=plant.name
+        var plantName=""
         val user : User
 
 
@@ -95,6 +95,7 @@ class PersonalPlantFragment : Fragment() {
                 key=arguments?.getString("plantName")!!
                 userPlant=profileViewModel.user.value?.plants!![key]!!
                 plant=userPlant.plant
+                plantName=plant.name
             }
             else{
                 plant=catalogueViewModel.getByName(arguments?.getString("plantName")!!)
@@ -135,7 +136,7 @@ class PersonalPlantFragment : Fragment() {
             val key = arguments?.getString("plantName")!!
             userPlant=user.plants[key]?:UserPlant()
             plant=userPlant.plant
-
+            plantName=plant.name
             profileViewModel.personalNeighbourPlantPhoto.observe(viewLifecycleOwner) {
                 if (it.containsKey(key))
                     Picasso.get().load(it[key]).fit().centerCrop().into(image)
