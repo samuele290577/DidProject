@@ -48,9 +48,10 @@
             <TextView
                 android:id="@+id/plant_name_personal"
                 style="@style/accent_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="basilico" />
+                android:maxLines="2"
+                android:text="basilico"/>
 
             <TextView
                 android:id="@+id/plant_scname_personal"
