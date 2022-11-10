@@ -67,10 +67,15 @@
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/icon_arduino.xml" value="0.2165" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/icon_bio_prova.xml" value="0.2855" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/icon_sun.xml" value="0.2855" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/library_books.xml" value="0.2935" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/round_shape.xml" value="0.3105" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/rounded_corner_bottom.xml" value="0.3105" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/rounded_corner_full.xml" value="0.2935" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/rounded_corner_top.xml" value="0.318" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/search.xml" value="0.2935" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/side_nav_bar.xml" value="0.2935" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/water_drop.xml" value="0.318" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/drawable/yard.xml" value="0.2935" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/font/roboto.xml" value="0.21197916666666666" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/font/roboto_medium.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/activity_sign_in.xml" value="0.3255208333333333" />
@@ -85,6 +90,7 @@
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_plant_list.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/fragment_profile_edit.xml" value="0.4" />
+        <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/personal_plant_list_item.xml" value="0.33" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/plant_category_list_item.xml" value="0.25226449275362317" />
         <entry key="..\:/Users/samue/Documents/DidProject/DidProject/app/src/main/res/layout/plant_list_item.xml" value="0.22826086956521738" />
       </map>

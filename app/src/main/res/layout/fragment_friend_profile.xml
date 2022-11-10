@@ -29,6 +29,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:maxLines="2"
         app:layout_constraintStart_toEndOf="@+id/friend_profile_image"
         app:layout_constraintTop_toTopOf="@+id/friend_profile_image" />
 

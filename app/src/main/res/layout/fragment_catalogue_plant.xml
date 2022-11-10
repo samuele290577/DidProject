@@ -48,17 +48,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="TextView"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
                 android:maxLines="2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:text="TextView"
+                android:textSize="28dp"/>
 
 
             <TextView
                 android:id="@+id/plant_scname_catalogue"
                 style="@style/accent_title_medium_green"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
                 android:text="TextView"
                 android:textSize="20sp" />
 
@@ -223,7 +228,7 @@
             android:id="@+id/tips_placeholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxHeight="150dp"
+            android:maxHeight="200dp"
             android:scrollbars="vertical"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
@@ -236,6 +241,7 @@
             android:textColor="#f2f2f2"
             android:textSize="16dp"
             android:lineHeight="22dp"
+            android:maxLines="9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_consigli"
             app:layout_constraintVertical_bias="0.11" />
