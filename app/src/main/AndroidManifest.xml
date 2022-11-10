@@ -21,6 +21,7 @@
         </provider>
         <activity
             android:name=".SignInActivity"
+            android:screenOrientation="sensorPortrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +31,7 @@
 
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="sensorPortrait"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.DidProject.NoActionBar">
