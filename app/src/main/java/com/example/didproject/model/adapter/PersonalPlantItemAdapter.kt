@@ -68,12 +68,17 @@ class PersonalPlantItemAdapter(
             }
 
             if (userId == "") {
-                if (userPlant.status > 50)
+                if(userPlant.status>100)
+                    plantStatus.visibility=View.GONE
+                else if (userPlant.status in 50 .. 100)
                     plantStatus.setBackgroundColor(Color.parseColor("#386555"))
                 else if (userPlant.status in 25..51)
                     plantStatus.setBackgroundColor(Color.parseColor("#f5bd3d"))
                 else
-                    plantStatus.setBackgroundColor(Color.parseColor("#FF000000"))
+                    plantStatus.setBackgroundColor(Color.parseColor("#ff00"))
+            }
+            else{
+                plantStatus.visibility=View.GONE
             }
             Picasso.get().load(image).fit().centerCrop().into(plantImage)
 
