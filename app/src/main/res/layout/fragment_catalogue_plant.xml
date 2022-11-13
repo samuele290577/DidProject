@@ -18,6 +18,7 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/plant_catalogue_image"
+            android:padding="3dp"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_marginStart="16dp"
@@ -26,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/round_square"
             app:strokeColor="@color/primary_light"
-            app:strokeWidth="3dp"
+            app:strokeWidth="2.5dp"
             tools:src="@tools:sample/avatars" />
 
         <LinearLayout

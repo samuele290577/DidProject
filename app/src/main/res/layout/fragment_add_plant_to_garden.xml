@@ -26,8 +26,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/PlantPersonalImage"
-                android:layout_width="192dp"
-                android:layout_height="192dp"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +40,8 @@
                 style="@style/button_accent"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="-8dp"
                 android:background="@drawable/rounded_corner_full"
                 android:src="@drawable/ic_outline_photo_camera_24"
                 app:layout_constraintBottom_toBottomOf="@+id/PlantPersonalImage"
@@ -50,103 +50,69 @@
 
 
             <LinearLayout
-                android:id="@+id/linearLayout3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="@+id/PlantPersonalImage"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/PlantPersonalImage"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.179">
+                app:layout_constraintTop_toTopOf="@+id/PlantPersonalImage"
+                app:layout_constraintVertical_bias="0.081">
 
                 <TextView
                     android:id="@+id/PlantName"
-                    style="@style/yellow_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/playfair"
-                    android:textFontWeight="700"
-                    android:text="TextView"
-                    android:letterSpacing="0.03"
-                    app:layout_constraintStart_toEndOf="@+id/PlantPersonalImage"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:maxLines="2"
+                    android:text="basilico"
+                    android:textColor="@color/secondary"
+                    android:textSize="28sp" />
 
-                <View
-                    android:id="@+id/view"
-                    style="@style/Divider"
-                    android:layout_height="1dp"
-                    app:layout_constraintEnd_toEndOf="@+id/PlantName"
-                    app:layout_constraintStart_toStartOf="@+id/PlantName"
-                    app:layout_constraintTop_toBottomOf="@id/PlantName" />
+                <TextView
+                    android:id="@+id/sc_name"
+                    style="@style/accent_title_medium_green"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/playfair"
+                    android:maxLines="2"
+                    android:text="sc name"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
             </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/LocationButton"
-                style="@style/button_accent"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/rounded_corner_full"
-                android:src="@drawable/balcony"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.135"
-                app:layout_constraintStart_toEndOf="@+id/PlantPersonalImage"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:id="@+id/plant_location_label"
-                style="@style/yellow_paragraph"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Location"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textSize="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.104"
-                app:layout_constraintStart_toEndOf="@+id/LocationButton"
-                app:layout_constraintTop_toTopOf="@+id/LocationButton" />
-
-            <TextView
-                android:id="@+id/plant_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/roboto_medium"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textSize="20dp"
-                app:layout_constraintEnd_toEndOf="@+id/plant_location_label"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/plant_location_label"
-                app:layout_constraintTop_toBottomOf="@+id/plant_location_label" />
 
             <TextView
                 android:id="@+id/nickname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/playfair"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
-                android:text="Plant Nickname"
+                android:text="Nickname della pianta"
                 android:textColor="@color/secondary"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="@+id/NicknamePlant"
                 app:layout_constraintTop_toBottomOf="@+id/PlantPersonalImage" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/NicknamePlant"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/primary_main"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nickname"
-                app:startIconDrawable="@drawable/icon_plant_white">
+                app:startIconDrawable="@drawable/icon_plant_white"
+                app:startIconTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/NicknamePlantEdit"
@@ -157,7 +123,8 @@
                     android:layout_marginRight="30dp"
                     android:paddingStart="32dp"
                     android:paddingTop="10dp"
-                    android:paddingEnd="32dp" />
+                    android:paddingEnd="32dp"
+                    android:textSize="20dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -166,7 +133,7 @@
                 style="@style/button_accent"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="32dp"
                 android:background="@drawable/rounded_corner_full"
                 android:src="@drawable/calendar_today"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -180,9 +147,9 @@
                 style="@style/yellow_paragraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Data di piantagione"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/playfair"
+                android:text="Piantata il..."
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.034"
@@ -196,15 +163,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_medium"
+                android:text="data"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="@+id/plant_date_label"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/plant_date_label"
                 app:layout_constraintTop_toBottomOf="@+id/plant_date_label" />
 
             <Button
-                android:visibility="gone"
                 android:id="@+id/delete_plant_button"
                 style="@style/button_accent"
                 android:layout_width="wrap_content"
@@ -212,12 +179,67 @@
                 android:layout_marginBottom="16dp"
                 android:drawableLeft="@drawable/delete"
                 android:text="Elimina dal giardino"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/plant_date"
                 app:layout_constraintVertical_bias="1.0" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/DayButton"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp">
+
+                <ImageButton
+                    android:id="@+id/LocationButton"
+                    style="@style/button_accent"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/rounded_corner_full"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/balcony"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <TextView
+                    android:id="@+id/plant_location_label"
+                    style="@style/yellow_paragraph"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/playfair"
+                    android:text="Location"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.104"
+                    app:layout_constraintStart_toEndOf="@+id/LocationButton"
+                    app:layout_constraintTop_toTopOf="@+id/LocationButton" />
+
+                <TextView
+                    android:id="@+id/plant_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Giardino"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="@+id/plant_location_label"
+                    app:layout_constraintTop_toBottomOf="@+id/plant_location_label" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
