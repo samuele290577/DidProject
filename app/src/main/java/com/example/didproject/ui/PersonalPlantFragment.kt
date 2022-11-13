@@ -160,7 +160,10 @@ class PersonalPlantFragment : Fragment() {
         // info visualizzate.
         when (status) {
             101 -> arduinoLabel.visibility = View.GONE
-            else -> basicInfo.visibility = View.GONE
+            else -> {basicInfo.visibility = View.GONE
+                arduinoLabel.visibility = View.VISIBLE
+                waterBar.progress = status
+            }
         }
 
         val activity=requireActivity() as AppCompatActivity
