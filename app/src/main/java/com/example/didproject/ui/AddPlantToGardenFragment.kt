@@ -196,6 +196,10 @@ class AddPlantToGardenFragment : Fragment() {
                         .setPositiveButton("Conferma") { _, _ ->
                             // Respond to positive button press
                             arduinoSelected = arduinoTmp
+                            if(arduinoSelected!=-1) {
+                                arduino.text = "Si collegerà a ${possibleArduino[arduinoSelected]}"
+                                arduino.isClickable = false
+                            }
                         }
                         .show()
                 }
@@ -210,6 +214,7 @@ class AddPlantToGardenFragment : Fragment() {
                         .show()
                 }
             }
+
 
 
         deleteButton.setOnClickListener {
@@ -227,7 +232,7 @@ class AddPlantToGardenFragment : Fragment() {
                     R.id.actionbar_check -> {
                         savePersonalPlantData(edit,false,key)
 
-                        navController.navigate(R.id.nav_home)
+                        navController.popBackStack()
                         return true
                     }
                     else -> false
