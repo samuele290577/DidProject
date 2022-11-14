@@ -155,16 +155,29 @@ class PersonalPlantFragment : Fragment() {
         calendar.timeInMillis = userPlant.date
         date.text =  "Piantata il "+calendar.get(Calendar.DAY_OF_MONTH).toString()+"/"+calendar.get(Calendar.MONTH).toString()
 
-        val status = userPlant?.status;
 
+        val status = userPlant.status
         // info visualizzate.
-        when (status) {
-            101 -> arduinoLabel.visibility = View.GONE
-            else -> {basicInfo.visibility = View.GONE
-                arduinoLabel.visibility = View.VISIBLE
-                waterBar.progress = status
+        if(arguments?.getString("id").isNullOrEmpty()){
+            profileViewModel.user.observe(viewLifecycleOwner){
+                when (it.plants[key]?.status?:101) {
+                    101 -> arduinoLabel.visibility = View.GONE
+                    else -> {basicInfo.visibility = View.GONE
+                        arduinoLabel.visibility = View.VISIBLE
+                        waterBar.progress = it.plants[key]?.status!!
+                    }
+                }
+            }
+        }else{
+            when (status) {
+                101 -> arduinoLabel.visibility = View.GONE
+                else -> {basicInfo.visibility = View.GONE
+                    arduinoLabel.visibility = View.VISIBLE
+                    waterBar.progress = status
+                }
             }
         }
+
 
         val activity=requireActivity() as AppCompatActivity
         activity.supportActionBar?.title=userPlant.nickname

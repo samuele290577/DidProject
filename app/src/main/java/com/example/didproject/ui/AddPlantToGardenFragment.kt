@@ -199,6 +199,7 @@ class AddPlantToGardenFragment : Fragment() {
                             // Respond to positive button press
                             arduinoSelected = arduinoTmp
                             if(arduinoSelected!=-1) {
+                                userOriginalPlant.status=100
                                 arduino.text = "Si collegerà a ${possibleArduino[arduinoSelected]}"
                                 arduino.isClickable = false
                             }
