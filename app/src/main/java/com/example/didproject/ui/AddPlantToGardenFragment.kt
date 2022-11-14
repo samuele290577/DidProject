@@ -72,7 +72,7 @@ class AddPlantToGardenFragment : Fragment() {
         val arduino : Button = binding.arduinoButton
         val dateText : TextView = binding.plantDate
         val plantLocationText : TextView = binding.plantLocation
-
+        val scName : TextView = binding.scName
         val date = Calendar.getInstance()
         val navController = findNavController()
         val menuHost: MenuHost = requireActivity()
@@ -91,6 +91,8 @@ class AddPlantToGardenFragment : Fragment() {
         val plantNameCatalogue = arguments?.getString("name")
         plantName.text = plantNameCatalogue
         plant=catalogueViewModel.getByName(arguments?.getString("name")!!)
+        scName.text = plant?.scName
+
         if(edit){
             boolCatalogue=false
             deleteButton.visibility=View.VISIBLE
