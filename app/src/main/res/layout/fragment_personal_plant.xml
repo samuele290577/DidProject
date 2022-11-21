@@ -246,11 +246,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <FrameLayout
-            android:visibility="gone"
             android:id="@+id/arduino_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -270,7 +270,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Water Level"
+                    android:text="Livello acqua"
                     android:textAlignment="center"
                     android:textColor="#19989D" />
 
@@ -280,15 +280,15 @@
 
                     <ProgressBar
                         android:id="@+id/waterBar"
+                        style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:indeterminateTint="#ff12"
-                        android:minWidth="80dp"
-                        android:minHeight="80dp"
                         android:indeterminate="false"
-
+                        android:indeterminateTint="#ff12"
                         android:max="100"
+                        android:minWidth="80dp"
+
+                        android:minHeight="80dp"
                         android:progressDrawable="@drawable/progress" />
 
                     <ImageView
@@ -297,14 +297,15 @@
                         android:layout_marginLeft="35dp"
                         android:layout_marginTop="28dp"
                         android:background="@drawable/water_drop"></ImageView>
+
                     <TextView
                         android:id="@+id/progress_perc"
                         android:layout_width="32dp"
                         android:layout_height="22dp"
-                        android:textSize="10sp"
                         android:layout_marginLeft="45.5dp"
                         android:layout_marginTop="20dp"
-                        android:text=""></TextView>
+                        android:text=""
+                        android:textSize="10sp"></TextView>
                 </FrameLayout>
             </LinearLayout>
 

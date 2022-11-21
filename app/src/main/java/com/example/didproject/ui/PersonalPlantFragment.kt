@@ -67,6 +67,7 @@ class PersonalPlantFragment : Fragment() {
         val labelCura : TextView = binding.labelCura
         val labelTips : TextView = binding.labelConsigli
         val tipText : TextView = binding.tipsPlaceholder
+        val statusText : TextView = binding.progressPerc
 
         val arduinoLabel : FrameLayout = binding.arduinoLabel
         val basicInfo : ConstraintLayout = binding.basicInfo
@@ -165,6 +166,7 @@ class PersonalPlantFragment : Fragment() {
                     else -> {basicInfo.visibility = View.GONE
                         arduinoLabel.visibility = View.VISIBLE
                         waterBar.progress = it.plants[key]?.status!!
+                        statusText.text= "$status%"
                     }
                 }
             }
@@ -174,6 +176,7 @@ class PersonalPlantFragment : Fragment() {
                 else -> {basicInfo.visibility = View.GONE
                     arduinoLabel.visibility = View.VISIBLE
                     waterBar.progress = status
+                    statusText.text= "$status%"
                 }
             }
         }
