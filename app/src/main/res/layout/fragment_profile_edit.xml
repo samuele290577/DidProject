@@ -38,12 +38,11 @@
         style="@style/button_accent"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="12dp"
         android:background="@drawable/rounded_corner_full"
         android:src="@drawable/ic_outline_photo_camera_24"
         app:layout_constraintBottom_toBottomOf="@+id/profilePicture"
         app:layout_constraintEnd_toEndOf="@+id/profilePicture"
-        app:layout_constraintStart_toEndOf="@+id/profilePicture"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ScrollView
