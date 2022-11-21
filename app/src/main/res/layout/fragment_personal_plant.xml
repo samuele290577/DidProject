@@ -384,6 +384,7 @@
             android:justificationMode="inter_word"
             android:lineHeight="22dp"
             android:maxHeight="220dp"
+            android:paddingEnd="8dp"
             android:scrollbars="vertical"
             android:maxLines="10"
             android:text="Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta tutto Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta Lorem ipsum, dolor sit amet Buongiorno e buonasera a tutti questo testo è un placeholder per vedere come si comporta quanto ciao carissimi come state tutti bene qui!!! ciao :) "
