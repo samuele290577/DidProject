@@ -166,7 +166,7 @@ class PersonalPlantFragment : Fragment() {
                     else -> {basicInfo.visibility = View.GONE
                         arduinoLabel.visibility = View.VISIBLE
                         waterBar.progress = it.plants[key]?.status!!
-                        statusText.text= "${it.plants[key]?.status!!}%"
+                        statusText.text= "$status%"
                     }
                 }
             }
