@@ -42,8 +42,8 @@ class PersonalPlantItemAdapter(
         val levelThree : Drawable = v.context.resources.getDrawable(R.drawable.level_three)
 
         fun bind(userPlant: UserPlant, image: Uri,key:String, userId: String) {
-            plantName.text = userPlant.nickname
-            plantScientificName.text = userPlant.plant.scName
+            plantName.text = userPlant.nickname.capitalize()
+            plantScientificName.text = userPlant.plant.scName.capitalize()
 
             when (userPlant.plant.humidity){
                 1 -> plantHumidity.setImageDrawable(levelOne)

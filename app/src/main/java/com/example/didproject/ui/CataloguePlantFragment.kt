@@ -54,8 +54,8 @@ class CataloguePlantFragment : Fragment() {
         Log.d("plant",plant.toString())
 
         tipText.text = plant.info
-        name.text=plant.name
-        scName.text=plant.scName
+        name.text=plant.name.capitalize()
+        scName.text=plant.scName.capitalize()
 
         val levelOne : Drawable = resources.getDrawable(R.drawable.level_one)
         val levelTwo : Drawable = resources.getDrawable(R.drawable.level_two)

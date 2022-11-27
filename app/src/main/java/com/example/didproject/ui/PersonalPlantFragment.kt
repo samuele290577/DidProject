@@ -148,8 +148,8 @@ class PersonalPlantFragment : Fragment() {
             }
         }
 
-        name.text=plant.name
-        scName.text=plant.scName
+        name.text=plant.name.capitalize()
+        scName.text=plant.scName.capitalize()
         tipText.text=plant.info
         location.text=userPlant.location
         val calendar = Calendar.getInstance()

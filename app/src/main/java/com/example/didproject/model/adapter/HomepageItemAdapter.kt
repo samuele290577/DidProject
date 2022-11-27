@@ -27,7 +27,7 @@ class HomepageItemAdapter(private var keys:List<String>, private var imageData: 
 
 
         fun bind(name: String, imageData:Uri, bundleData:String, plants:Boolean, status:Int=100) {
-            itemName.text = name
+            itemName.text = name.capitalize()
 
             if(status>50)
                 itemLayout.setBackgroundColor(Color.parseColor("#386555"))

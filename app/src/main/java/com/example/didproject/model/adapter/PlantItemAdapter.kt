@@ -30,7 +30,7 @@ class PlantItemAdapter(private var data:List<Plant>, private var photoMap :Map<S
         val levelThree : Drawable = v.context.resources.getDrawable(R.drawable.level_three)
 
         fun bind(plant: Plant, photo:Uri) {
-            plantName.text=plant.name
+            plantName.text=plant.name.capitalize()
             plantScientificName.text=plant.scName
 
             when (plant.humidity){
