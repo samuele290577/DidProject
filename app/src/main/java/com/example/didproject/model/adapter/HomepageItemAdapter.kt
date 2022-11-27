@@ -34,7 +34,7 @@ class HomepageItemAdapter(private var keys:List<String>, private var imageData: 
             else if(status in 25..51)
                 itemLayout.setBackgroundColor(Color.parseColor("#f5bd3d"))
             else
-                itemLayout.setBackgroundColor(Color.parseColor("#FF000000"))
+                itemLayout.setBackgroundColor(Color.parseColor("#b90e0a"))
 
 
             Picasso.get().load(imageData).fit().centerCrop().into(itemImage)

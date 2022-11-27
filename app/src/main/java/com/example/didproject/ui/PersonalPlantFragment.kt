@@ -166,7 +166,7 @@ class PersonalPlantFragment : Fragment() {
                     else -> {basicInfo.visibility = View.GONE
                         arduinoLabel.visibility = View.VISIBLE
                         waterBar.progress = it.plants[key]?.status!!
-                        statusText.text= "$status%"
+                        statusText.text= "${it.plants[key]?.status!!}%"
                     }
                 }
             }
@@ -212,12 +212,12 @@ class PersonalPlantFragment : Fragment() {
         labelInfo.setOnClickListener {
             tipText.text = plant.info
             labelCura.setTextColor(Color.BLACK)
-            labelInfo.setTextColor(Color.parseColor("#0b3b2d"))
+            labelInfo.setTextColor(Color.parseColor("#3f8653"))
             labelTips.setTextColor(Color.BLACK)
         }
         labelCura.setOnClickListener {
             tipText.text = plant.care
-            labelCura.setTextColor(Color.parseColor("#0b3b2d"))
+            labelCura.setTextColor(Color.parseColor("#3f8653"))
             labelInfo.setTextColor(Color.BLACK)
             labelTips.setTextColor(Color.BLACK)
 
@@ -226,7 +226,7 @@ class PersonalPlantFragment : Fragment() {
             tipText.text = plant.tips
             labelCura.setTextColor(Color.BLACK)
             labelInfo.setTextColor(Color.BLACK)
-            labelTips.setTextColor(Color.parseColor("#0b3b2d"))
+            labelTips.setTextColor(Color.parseColor("#3f8653"))
         }
 
         return root

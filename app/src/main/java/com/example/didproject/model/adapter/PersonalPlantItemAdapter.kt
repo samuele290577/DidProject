@@ -75,7 +75,7 @@ class PersonalPlantItemAdapter(
                 else if (userPlant.status in 25..51)
                     plantStatus.setBackgroundColor(Color.parseColor("#f5bd3d"))
                 else
-                    plantStatus.setBackgroundColor(Color.parseColor("#ff00"))
+                    plantStatus.setBackgroundColor(Color.parseColor("#b90e0a"))
             }
             else{
                 plantStatus.visibility=View.GONE
