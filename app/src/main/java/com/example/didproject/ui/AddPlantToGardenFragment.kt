@@ -8,6 +8,7 @@ import android.view.*
 import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -89,9 +90,9 @@ class AddPlantToGardenFragment : Fragment() {
 
         var boolCatalogue=true
         val plantNameCatalogue = arguments?.getString("name")
-        plantName.text = plantNameCatalogue
+        plantName.text = plantNameCatalogue?.capitalize()
         plant=catalogueViewModel.getByName(arguments?.getString("name")!!)
-        scName.text = plant?.scName
+        scName.text = plant?.scName.capitalize()
 
         if(edit){
             boolCatalogue=false
@@ -234,8 +235,8 @@ class AddPlantToGardenFragment : Fragment() {
                 return when (menuItem.itemId) {
                     R.id.actionbar_check -> {
                         savePersonalPlantData(edit,false,key)
-
                         navController.popBackStack()
+                        Toast.makeText(requireContext(),"Il tuo giardino è stato aggiornato!",Toast.LENGTH_LONG).show()
                         return true
                     }
                     else -> false
