@@ -8,6 +8,7 @@ import android.view.*
 import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -233,6 +234,8 @@ class AddPlantToGardenFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.actionbar_check -> {
+                        Toast.makeText(requireContext(),"Il tuo giardino è stato aggiornato!",
+                            Toast.LENGTH_LONG).show()
                         savePersonalPlantData(edit,false,key)
 
                         return true
