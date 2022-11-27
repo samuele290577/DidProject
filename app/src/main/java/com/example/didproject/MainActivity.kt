@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_signIn -> {
-                    startActivity(Intent(this, SignInActivity::class.java), ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+                    startActivity( Intent(this, SignInActivity::class.java),ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
                 }
             }
             true

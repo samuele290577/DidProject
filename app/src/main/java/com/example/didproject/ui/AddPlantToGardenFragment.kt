@@ -235,7 +235,6 @@ class AddPlantToGardenFragment : Fragment() {
                     R.id.actionbar_check -> {
                         savePersonalPlantData(edit,false,key)
 
-                        navController.popBackStack()
                         return true
                     }
                     else -> false
@@ -267,6 +266,8 @@ class AddPlantToGardenFragment : Fragment() {
                  user.arduino[possibleArduino[arduinoSelected]]?.plantIndex= abs(userPlant.hashCode())+1
              if(newUri != Uri.parse(""))
                  profileViewModel.uploadPhoto(newUri, false, abs(userPlant.hashCode()).toString())
+
+             findNavController().navigate(R.id.nav_home)
          }
          else {
              if (!delete) {
@@ -275,6 +276,7 @@ class AddPlantToGardenFragment : Fragment() {
                      user.arduino[possibleArduino[arduinoSelected]]?.plantIndex = key.toInt() + 1
                  if (newUri != Uri.parse(""))
                      profileViewModel.uploadPhoto(newUri, false, key)
+                 findNavController().popBackStack()
              } else {
                  MaterialAlertDialogBuilder(requireContext())
                      .setIcon(R.drawable.delete)
@@ -290,6 +292,7 @@ class AddPlantToGardenFragment : Fragment() {
                          profileViewModel.updateProfile(user!!, 1)
                          findNavController().popBackStack()
                          findNavController().navigate(R.id.nav_home)
+
                      }
                      .show()
 

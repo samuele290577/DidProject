@@ -23,6 +23,8 @@ class SignInActivity : AppCompatActivity() {
     lateinit var button:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         title = "Terrarium"
         setContentView(R.layout.activity_sign_in)
         mFirebaseAuth= FirebaseAuth.getInstance()
@@ -33,9 +35,11 @@ class SignInActivity : AppCompatActivity() {
             .requestEmail()
             .build()
         val mSignInClient = GoogleSignIn.getClient(this,gso)
+        mSignInClient.signOut()
         button.setOnClickListener {
             signIn(mSignInClient)
         }
+
     }
 
     private fun signIn(gsic:GoogleSignInClient){
