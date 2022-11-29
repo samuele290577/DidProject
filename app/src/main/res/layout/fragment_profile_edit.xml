@@ -21,6 +21,18 @@
 
     </RelativeLayout>
 
+
+    <RelativeLayout
+        android:layout_width="192dp"
+        android:layout_height="192dp"
+        android:background="@drawable/rounded_corner_full"
+        app:layout_constraintBottom_toBottomOf="@+id/profilePicture"
+        app:layout_constraintEnd_toEndOf="@+id/profilePicture"
+        app:layout_constraintStart_toStartOf="@+id/profilePicture"
+        app:layout_constraintTop_toTopOf="@+id/profilePicture">
+
+    </RelativeLayout>
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profilePicture"
         android:layout_width="192dp"
@@ -30,8 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circle"
-        app:srcCompat="@android:drawable/btn_default_small" />
+        app:shapeAppearanceOverlay="@style/circle" />
 
     <ImageButton
         android:id="@+id/editImageBtn"

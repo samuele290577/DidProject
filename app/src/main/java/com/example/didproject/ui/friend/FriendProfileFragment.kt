@@ -53,13 +53,13 @@ class FriendProfileFragment : Fragment() {
         val user = profileViewModel.user.value!!
 
 
-
-
-        val friend=friendViewModel.searchUserById(arguments?.getString("id")!!).toNeighbour()
-        user.friends[friend.id] = friend
-        profileViewModel.updateProfile(user,2)
-
-        profileViewModel.downloadPersonalPlantNeighbour(friend.id)
+        var friend = friendViewModel.searchUserById(arguments?.getString("id")!!).toNeighbour()
+        friendViewModel.users.observe(viewLifecycleOwner) {
+            friend = friendViewModel.searchUserById(friend.id).toNeighbour()
+            user.friends[friend.id] = friend
+            profileViewModel.updateProfile(user, 2)
+            profileViewModel.downloadPersonalPlantNeighbour(friend.id)
+        }
 
         profileViewModel.user.observe(viewLifecycleOwner) {
             bio.text = it.friends[friend.id]?.bio
